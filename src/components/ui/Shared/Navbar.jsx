@@ -12,7 +12,7 @@ const Navbar = () => {
         <img src={logo} alt="" />
       </Link>
       <div className="flex flex-col items-end">
-        <div className="relative shadow-black/10 shadow-lg   bg-gradient-to-t from-primaryBoldColor to-primaryLightColor w-[250.95px] py-3 pe-8 ps-20 text-white rounded-2xl">
+        <div className="relative cursor-pointer shadow-black/10 shadow-lg   bg-gradient-to-t from-primaryBoldColor to-primaryLightColor w-[250.95px] py-3 pe-8 ps-20 text-white rounded-2xl">
           <img
             src={cartCar}
             alt=""

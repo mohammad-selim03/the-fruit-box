@@ -8,6 +8,7 @@ import {
   size,
 } from "@/assets";
 import Container from "../DynamicComponents/Container";
+import Title from "../DynamicComponents/Title";
 
 const Offer = () => {
   const offerData = [
@@ -61,12 +62,23 @@ const Offer = () => {
 
   return (
     <Container>
+      <div className="mt-32 flex flex-col items-center">
+        <Title>WHAT WE OFFER</Title>
+        <p className="text-center text-secondaryTextColor">
+          AWESOMENESS IN EVERYTHING WE DO.
+        </p>
+      </div>
       <div className="mt-20 grid grid-cols-4 gap-5">
         {offerData.map((data) => (
-          <div key={data.title} className="flex flex-col items-center gap-2 border border-black/20 rounded-2xl p-4 cursor-pointer hover:bg-secondaryTextColor/80 group transition-all duration-300 hover:border-secondaryTextColor hover:text-white">
+          <div
+            key={data.title}
+            className="flex flex-col items-center gap-2 border border-black/20 rounded-2xl p-4 cursor-pointer hover:bg-secondaryTextColor/80 group transition-all duration-300 hover:border-secondaryTextColor hover:text-white"
+          >
             <div>{data.image}</div>
             <div className="flex flex-col gap-3">
-              <h3 className="text-center text-primaryBoldColor group-hover:text-white">{data.title}</h3>
+              <h3 className="text-center text-primaryBoldColor group-hover:text-white">
+                {data.title}
+              </h3>
               <p className="font-thin text-center">{data.description}</p>
             </div>
           </div>

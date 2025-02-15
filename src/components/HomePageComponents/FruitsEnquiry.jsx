@@ -1,4 +1,4 @@
-import { enquirybg } from "@/assets"; 
+import { enquirybg, enquiryfruits } from "@/assets"; 
 import Title from "../DynamicComponents/Title";
 import Button from "../DynamicComponents/Button";
 
@@ -56,6 +56,7 @@ const FruitsEnquiry = () => {
           </div>
         </div>
       </div>
+      <img src={enquiryfruits} alt="" className="absolute -bottom-60 right-0" />
     </div>
   );
 };
