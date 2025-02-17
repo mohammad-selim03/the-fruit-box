@@ -30,10 +30,32 @@ const Banner = () => {
           </div>
         </div>
         <div className="absolute bottom-[18%] left-1/2 -translate-x-1/2">
-          <p className="text-[40px] text-center font-extrabold">
-            <span className="text-secondaryTextColor">Guaranteed fresh.</span>{" "}
+          <p
+            className="text-[40px] text-center font-extrabold"
+            style={{
+              textStroke: "2px black",
+              webkitTextStroke: "2px black",
+            }}
+          >
+            <span
+              className="text-green-700 stroke-2 stroke-primaryLightColor"
+              style={{
+                textStroke: "2px black",
+                webkitTextStroke: "2px green",
+              }}
+            >
+              Guaranteed fresh.
+            </span>{" "}
             No contracts.{" "}
-            <span className="text-secondaryTextColor">ree delivery.</span>
+            <span
+              className="text-green-700"
+              style={{
+                textStroke: "2px black",
+                webkitTextStroke: "2px green",
+              }}
+            >
+              ree delivery.
+            </span>
           </p>
           <p className="text-center">
             Try us for just 2 delivereies and discover we why we’re Calgary’s

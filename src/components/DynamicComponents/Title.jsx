@@ -1,9 +1,14 @@
 import { cn } from "@/lib/utils";
 import PropTypes from "prop-types";
 
-const Title = ({ className, children }) => {
+const Title = ({ className, children, style }) => {
   return (
-    <h1 className={cn("text-[64px] font-extrabold z-20", className)}>{children}</h1>
+    <h1
+      className={cn("text-[64px] font-extrabold z-20 uppercase", className)}
+      style={style}
+    >
+      {children}
+    </h1>
   );
 };
 
@@ -12,4 +17,5 @@ export default Title;
 Title.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
+  style: PropTypes.object,
 };
