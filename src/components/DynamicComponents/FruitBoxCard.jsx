@@ -37,7 +37,12 @@ const FruitBoxCard = ({ data }) => {
               )}
             </div>
 
-            <div className={cn("absolute -bottom-32 w-[80%]", data?.description === "" && "-mt-5")}>
+            <div
+              className={cn(
+                "absolute -bottom-32 w-[80%]",
+                data?.description === "" && "-bottom-[120px]"
+              )}
+            >
               <Button className="border-2 rounded-2xl border-white w-full shadow-black/20 shadow-lg py-3">
                 {data?.buttonText}
               </Button>

@@ -13,13 +13,22 @@ const SelectItems = ({ data, placeholder, triggerClass }) => {
   return (
     <div>
       <Select>
-        <SelectTrigger className={cn("bg-white border border-primaryLightColor rounded-2xl", triggerClass)}>
+        <SelectTrigger
+          className={cn(
+            "bg-white border border-primaryLightColor rounded-2xl text-lg",
+            triggerClass
+          )}
+        >
           <SelectValue placeholder={placeholder || ""} />
         </SelectTrigger>
         <SelectContent className="bg-white rounded-2xl">
           <SelectGroup>
             {data?.map((item, idx) => (
-              <SelectItem key={idx} value={item?.value}>
+              <SelectItem
+                key={idx}
+                value={item?.value}
+                className="text-xl border-b text-gray-600 cursor-pointer"
+              >
                 {item?.title}
               </SelectItem>
             ))}
