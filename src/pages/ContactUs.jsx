@@ -1,5 +1,6 @@
-import { contactbanner, maplocation } from "@/assets";
+import { contactbanner, contactfruits, maplocation } from "@/assets";
 import Button from "@/components/DynamicComponents/Button";
+import Container from "@/components/DynamicComponents/Container";
 import Title from "@/components/DynamicComponents/Title";
 
 const ContactUs = () => {
@@ -41,12 +42,14 @@ const ContactUs = () => {
                   </div>
                   <div className="mt-2.5">
                     <Button className="py-6 px-20 rounded-2xl w-full">
-                      Send Enquiry
+                      Submit
                     </Button>
                   </div>
                 </div>
                 <div>
-                  <Title className="text-[48px] capitalize">Ask us anything</Title>
+                  <Title className="text-[48px] capitalize">
+                    Ask us anything
+                  </Title>
                   <p className="font-thin">
                     Our mission is simple: to bring the freshest, most
                     nutritious produce directly from our fields to your table.
@@ -148,6 +151,26 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="mt-96">
+        <Container>
+          <div className="flex items-center gap-5">
+            <div className="flex flex-col w-[773px]">
+              <p className="text-primaryBoldColor text-lg">
+                View our fruit boxes now
+              </p>
+              <h1 className="text-[64px] font-bold pb-10">
+                Assorted fresh fruit boxes <span className="text-secondaryTextColor">Delivered</span> to your office
+              </h1>
+              <Button className="py-5 px-10 rounded-xl shadow-black/20 shadow-md">
+                View Fruit Boxes
+              </Button>
+            </div>
+            <div>
+              <img src={contactfruits} alt="" />
+            </div>
+          </div>
+        </Container>
       </div>
     </div>
   );
