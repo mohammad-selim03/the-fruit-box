@@ -8,7 +8,12 @@ const AboutSection = () => {
     <Container>
       <div className="mt-20 flex items-center justify-between">
         <div className="flex flex-col gap-4 max-w-[805px]">
-          <Title className="text-[56px]">ABOUT THE FRUIT BOX</Title>
+          <Title
+            className="text-[56px]"
+            style={{ textStroke: "2px black", webkitTextStroke: "2px black" }}
+          >
+            ABOUT THE FRUIT BOX
+          </Title>
           <p className="text-secondaryTextColor text-lg">
             Fresh fruit in the Office. Get energized.
           </p>

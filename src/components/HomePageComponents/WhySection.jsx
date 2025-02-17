@@ -8,7 +8,12 @@ const WhySection = () => {
     <Container className="asdf">
       <div className="mt-40 flex items-center justify-between">
         <div className="flex flex-col gap-4 max-w-[805px]">
-          <Title className="text-[56px]">Why office fruit</Title>
+          <Title
+            className="text-[56px]"
+            style={{ textStroke: "2px black", webkitTextStroke: "2px black" }}
+          >
+            Why office fruit
+          </Title>
           <p className="text-secondaryTextColor text-lg">
             Fresh fruit in the Office. Get energized.
           </p>

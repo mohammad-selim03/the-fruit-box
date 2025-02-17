@@ -30,6 +30,10 @@ import ourfruit from "@/assets/home/ourfruit.png";
 import footerbg from "@/assets/home/footerbg.png";
 import footerlogo from "@/assets/home/footerlogo.png";
 import cloud from "@/assets/home/cloud.png";
+import contactbanner from "@/assets/home/contactbanner.png";
+import contactfruits from "@/assets/home/contactfruits.png";
+import maplocation from "@/assets/home/maplocation.png";
+import linktop from "@/assets/home/linktop.png";
 
 export {
   bannerbg,
@@ -64,4 +68,8 @@ export {
   footerbg,
   footerlogo,
   cloud,
+  contactbanner,
+  contactfruits,
+  maplocation,
+  linktop,
 };

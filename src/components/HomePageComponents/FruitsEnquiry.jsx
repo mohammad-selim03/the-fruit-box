@@ -1,4 +1,4 @@
-import { enquirybg, enquiryfruits } from "@/assets"; 
+import { enquirybg, enquiryfruits } from "@/assets";
 import Title from "../DynamicComponents/Title";
 import Button from "../DynamicComponents/Button";
 
@@ -10,7 +10,15 @@ const FruitsEnquiry = () => {
         <div className="bg-white rounded-2xl p-2">
           <div className="h-[769px] w-[960px] bg-secondaryTextColor text-white rounded-2xl p-10">
             <div className="flex flex-col items-center gap-2 w-[90%] mx-auto">
-              <Title className="text-[56px]">Office Fruit Enquiry</Title>
+              <Title
+                className="text-[56px]"
+                style={{
+                  textStroke: "2px white",
+                  webkitTextStroke: "2px white",
+                }}
+              >
+                Office Fruit Enquiry
+              </Title>
               <p className="text-xl text-yellow-500 font-thin">
                 Energize your workplace with fresh fruit deliveries!
               </p>
