@@ -1,6 +1,5 @@
 import { cloud, footerbg, footerlogo } from "@/assets";
-import Button from "@/components/DynamicComponents/Button";
-import Container from "@/components/DynamicComponents/Container";
+import Button from "@/components/DynamicComponents/Button"; 
 
 const Footer = () => {
   return (

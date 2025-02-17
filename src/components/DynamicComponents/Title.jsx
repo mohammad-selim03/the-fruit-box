@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Title = ({ className, children }) => {
   return (
-    <h1 className={cn("text-[64px] font-semibold z-20", className)}>{children}</h1>
+    <h1 className={cn("text-[64px] font-extrabold z-20", className)}>{children}</h1>
   );
 };
 
