@@ -18,3 +18,5 @@ export const servingsData = [
   { title: "90 Servings", value: "90 Servings" },
   { title: "100 Servings", value: "100 Servings" },
 ];
+
+export const Cartheader = ["Price", "Quantity", "Total"];

@@ -14,14 +14,18 @@ import FruitBoxCard from "../DynamicComponents/FruitBoxCard";
 const FruitBoxSection = () => {
   const fruitBoxesData = [
     {
+      id: 1,
       name: "SMALL Fruit Box",
       description: "15 SERVINGS / 5 - 10 STAFF",
-      buttonText: "Order now - $46",
+      buttonText: "Order now - $30.50",
       image: <img src={smallfruits} alt="" />,
       bg: <img src={greenCardbg} alt="" />,
       borderColor: "#75AC46",
+      price: 30.5,
+      quantity: 1,
     },
     {
+      id: 2,
       name: "",
       description:
         "Perfect for offices with 11-20 people. he mix includes and bananas. lus we include a variety of seasonal fruit throughout the year.",
@@ -29,22 +33,30 @@ const FruitBoxSection = () => {
       image: <img src={mediumfruits} alt="" />,
       bg: <img src={orangeCardbg} alt="" />,
       borderColor: "#75AC46",
+      price: 50,
+      quantity: 1,
     },
     {
+      id: 3,
       name: "Large Fruit Box",
       description: "60 servings /  21-40 staff",
       buttonText: "Order now - $46",
       image: <img src={largefruits} alt="" />,
       bg: <img src={greenCardbg} alt="" />,
       borderColor: "#75AC46",
+      price: 78,
+      quantity: 1,
     },
     {
+      id: 4,
       name: "Custom Fruit Box",
       description: "",
       buttonText: "Order now ",
       image: <img src={customfruits} alt="" />,
       bg: <img src={greenCardbg} alt="" />,
       borderColor: "#75AC46",
+      price: 28,
+      quantity: 1,
     },
   ];
 

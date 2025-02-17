@@ -1,6 +1,7 @@
 import Error from "@/components/ui/Shared/Error";
 import Layout from "@/layouts/Layout";
 import About from "@/pages/About";
+import Cart from "@/pages/Cart";
 import ContactUs from "@/pages/ContactUs";
 import Faq from "@/pages/Faq";
 import FruitBox from "@/pages/FruitBox";
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
       {
         path: "/fruit-box",
         element: <FruitBox />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/how-it-works",

@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./App.jsx";
 import { RouterProvider } from "react-router";
 import { router } from "./routes/Routes";
+import ContextProvider from "./context/Context";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
+    <ContextProvider>
+      <RouterProvider router={router}>
+        <App />
+      </RouterProvider>
+    </ContextProvider>
   </StrictMode>
 );

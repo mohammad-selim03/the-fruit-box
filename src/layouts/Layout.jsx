@@ -2,6 +2,7 @@ import Footer from "@/components/ui/Shared/Footer";
 import Navbar from "@/components/ui/Shared/Navbar";
 import { Outlet } from "react-router";
 import { IoIosArrowUp } from "react-icons/io";
+import { Toaster } from "react-hot-toast";
 
 const Layout = () => {
   const handleScrollToTop = () => {
@@ -13,7 +14,7 @@ const Layout = () => {
       <Navbar />
       <Outlet />
       <Footer />
-
+      <Toaster />
       <div
         className="fixed bottom-10 right-10 cursor-pointer z-30"
         onClick={handleScrollToTop}
