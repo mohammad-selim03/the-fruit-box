@@ -1,4 +1,4 @@
-import { contactbanner, contactfruits, maplocation } from "@/assets";
+import { contactbanner, contactfruits } from "@/assets";
 import Button from "@/components/DynamicComponents/Button";
 import Container from "@/components/DynamicComponents/Container";
 import Title from "@/components/DynamicComponents/Title";
@@ -143,8 +143,16 @@ const ContactUs = () => {
                       info@thefruitbox.ca
                     </p>
                   </div>
-                  <div className="py-4 mt-2">
-                    <img src={maplocation} alt="" className="rounded-3xl" />
+                  <div className="py-4 mt-2 rounded-2xl">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206252.80376339954!2d-115.33980715380221!3d36.12516446076304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80beb782a4f57dd1%3A0x3accd5e6d5b379a3!2sLas%20Vegas%2C%20NV%2C%20USA!5e0!3m2!1sen!2sbd!4v1739773135695!5m2!1sen!2sbd"
+                      width="500"
+                      height="300"
+                      style={{ borderRadius: "20px" }}
+                      allowfullscreen=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
                   </div>
                 </div>
               </div>
@@ -160,7 +168,9 @@ const ContactUs = () => {
                 View our fruit boxes now
               </p>
               <h1 className="text-[64px] font-bold pb-10">
-                Assorted fresh fruit boxes <span className="text-secondaryTextColor">Delivered</span> to your office
+                Assorted fresh fruit boxes{" "}
+                <span className="text-secondaryTextColor">Delivered</span> to
+                your office
               </h1>
               <Button className="py-5 px-10 rounded-xl shadow-black/20 shadow-md">
                 View Fruit Boxes
