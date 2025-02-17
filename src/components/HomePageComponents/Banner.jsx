@@ -24,7 +24,7 @@ const Banner = () => {
             <p className="text-white text-[32px]">
               It’s good for you and staff <br /> love it too.
             </p>
-            <Button className="py-5 rounded-3xl shadow-black/20 shadow-md border-2 border-white">
+            <Button className="py-5 px-10 rounded-3xl shadow-black/20 shadow-md border-2 border-white">
               Order a Fruit Box
             </Button>
           </div>

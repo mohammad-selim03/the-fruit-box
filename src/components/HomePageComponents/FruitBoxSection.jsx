@@ -40,7 +40,7 @@ const FruitBoxSection = () => {
     },
     {
       name: "Custom Fruit Box",
-      description: "10 - 100 servings",
+      description: "",
       buttonText: "Order now ",
       image: <img src={customfruits} alt="" />,
       bg: <img src={greenCardbg} alt="" />,
