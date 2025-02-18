@@ -1,5 +1,6 @@
 import { cloud, footerbg, footerlogo } from "@/assets";
-import Button from "@/components/DynamicComponents/Button"; 
+import Button from "@/components/DynamicComponents/Button";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -53,9 +54,12 @@ const Footer = () => {
               <p className="text-sm text-primaryTextColor cursor-pointer hover:underline">
                 Privacy policy
               </p>
-              <p className="text-sm text-primaryTextColor cursor-pointer hover:underline">
+              <Link
+                to={"terms-and-conditions"}
+                className="text-sm text-primaryTextColor cursor-pointer hover:underline"
+              >
                 Terms of use
-              </p>
+              </Link>
             </div>
           </div>
           <div className="w-[383px] h-[190px] bg-[#E07B1A] py-6 px-5 rounded-xl -mt-8">
@@ -90,7 +94,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-        <img src={cloud} alt="" className="absolute bottom-0 right-0" />
+      <img src={cloud} alt="" className="absolute bottom-0 right-0" />
     </div>
   );
 };
