@@ -3,17 +3,25 @@ import Navbar from "@/components/ui/Shared/Navbar";
 import { Outlet } from "react-router";
 import { IoIosArrowUp } from "react-icons/io";
 import { Toaster } from "react-hot-toast";
+import { useLocation } from "react-router";
+import { cn } from "@/lib/utils";
 
 const Layout = () => {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const location = useLocation();
+
   return (
     <div className="font-Comfort font-semibold relative">
       <Navbar />
-      <Outlet />
-      <Footer />
+      <div className={cn("", location.pathname === "/cart" && "bg-[#F0EEE8]")}>
+        <Outlet />
+      </div>
+      <div className={cn("", location.pathname === "/cart" && "-mt-[300px]")}>
+        <Footer />
+      </div>
       <Toaster />
       <div
         className="fixed bottom-10 right-10 cursor-pointer z-30"

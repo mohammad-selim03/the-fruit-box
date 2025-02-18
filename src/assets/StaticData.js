@@ -20,3 +20,56 @@ export const servingsData = [
 ];
 
 export const Cartheader = ["Price", "Quantity", "Total"];
+
+export const frequencyData = [
+  {
+    title: "Weekly(most popular)",
+    value: "Weekly(most popular)",
+  },
+  {
+    title: "Daily",
+    value: "Daily",
+  },
+  {
+    title: "Twice Weekly",
+    value: "Twice Weekly",
+  },
+  {
+    title: "Every 2 Weeks",
+    value: "Every 2 Weeks",
+  },
+  {
+    title: "Friday",
+    value: "One-time only",
+  },
+  {
+    title: "Other - Please add details in the Comment section ",
+    value: "Other - Please add details in the Comment section ",
+  },
+];
+export const daysData = [
+  {
+    title: "Monday",
+    value: "Monday",
+  },
+  {
+    title: "Tuesday",
+    value: "Tuesday",
+  },
+  {
+    title: "Wednesday",
+    value: "Wednesday",
+  },
+  {
+    title: "Thursday",
+    value: "Thursday",
+  },
+  {
+    title: "Friday",
+    value: "Friday",
+  },
+  {
+    title: "Other - Please add details in the Comment section ",
+    value: "Other - Please add details in the Comment section ",
+  },
+];

@@ -35,6 +35,7 @@ import contactfruits from "@/assets/home/contactfruits.png";
 import maplocation from "@/assets/home/maplocation.png";
 import linktop from "@/assets/home/linktop.png";
 import click from "@/assets/home/click.png";
+import logo2 from "@/assets/home/logo2.png";
 
 export {
   bannerbg,
@@ -74,4 +75,5 @@ export {
   maplocation,
   linktop,
   click,
+  logo2,
 };
