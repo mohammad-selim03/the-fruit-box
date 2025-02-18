@@ -36,6 +36,8 @@ import maplocation from "@/assets/home/maplocation.png";
 import linktop from "@/assets/home/linktop.png";
 import click from "@/assets/home/click.png";
 import logo2 from "@/assets/home/logo2.png";
+import commonbanner from "@/assets/home/commonbanner.png";
+import commonsection from "@/assets/home/commonsection.png";
 
 export {
   bannerbg,
@@ -76,4 +78,6 @@ export {
   linktop,
   click,
   logo2,
+  commonbanner,
+  commonsection,
 };

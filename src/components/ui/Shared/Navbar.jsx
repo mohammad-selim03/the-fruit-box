@@ -5,22 +5,39 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
 
-const Navbar = () => { 
-  const [totalQuantity, setTotalQuantity] = useState(0); // Total quantity variable
+const Navbar = () => {
+  const [totalQuantity, setTotalQuantity] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
-    // Function to load cart data
     const loadCartItems = () => {
       const fruitsData = localStorage.getItem("fruits");
-      const parsedData = fruitsData ? JSON.parse(fruitsData) : []; 
 
-      // Calculate total quantity
-      const total = parsedData.reduce(
-        (sum, item) => sum + (item.quantity || 1),
-        0
-      );
-      setTotalQuantity(total);
+      // Ensure fruitsData is parsed correctly as an object
+      let parsedData = [];
+
+      if (fruitsData) {
+        try {
+          parsedData = JSON.parse(fruitsData);
+        } catch (error) {
+          console.error("Error parsing fruits data:", error);
+          parsedData = {}; // Default to an empty object if parsing fails
+        }
+      }
+
+      // Check if parsedData is an object with an array
+      if (parsedData && Array.isArray(parsedData[0])) {
+        const cartItems = parsedData[0]; // Assuming the array is at index 0
+
+        const total = cartItems.reduce(
+          (sum, item) => sum + (item.quantity || 1),
+          0
+        );
+        setTotalQuantity(total);
+      } else {
+        console.error("fruitsData is not an array:", parsedData);
+        setTotalQuantity(0); // Set to 0 if fruitsData is not in expected format
+      }
     };
 
     // Load initial data

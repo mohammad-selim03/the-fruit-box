@@ -16,6 +16,7 @@ const SelectItems = ({
   triggerClass,
   setServings,
   value,
+  setSelectedItem,
 }) => {
   const [availableItems, setAvailableItems] = useState(data || []);
   const [selectedId, setSelectedId] = useState(null);
@@ -24,11 +25,17 @@ const SelectItems = ({
     const updateAvailableItems = () => {
       const cartItems = JSON.parse(localStorage.getItem("fruits")) || [];
 
-      const filteredItems = data?.filter((item) => {
-        return !cartItems.some((cartItem) => cartItem?.id === item?.id);
-      });
+      // Ensure cartItems is an array before using `.some()`
+      if (Array.isArray(cartItems)) {
+        const filteredItems = data?.filter((item) => {
+          return !cartItems.some((cartItem) => cartItem?.id === item?.id);
+        });
 
-      setAvailableItems(filteredItems || []);
+        setAvailableItems(filteredItems || []);
+      } else {
+        console.error("cartItems is not an array:", cartItems);
+        setAvailableItems([]); // Fallback to empty array if cartItems is invalid
+      }
     };
 
     updateAvailableItems();
@@ -45,6 +52,8 @@ const SelectItems = ({
 
   const handleId = (id) => {
     setSelectedId(id);
+    const fruitss = data?.filter((d) => d?.id === id);
+    console.log("fruitss", fruitss);
   };
 
   if (availableItems.length === 0) {
@@ -57,7 +66,10 @@ const SelectItems = ({
 
   return (
     <div>
-      <Select defaultValue={value || ""} onValueChange={setServings}>
+      <Select
+        defaultValue={value || ""}
+        onValueChange={setServings || setSelectedId}
+      >
         <SelectTrigger
           onClick={() => handleId(selectedId)}
           className={cn(
@@ -70,27 +82,35 @@ const SelectItems = ({
         <SelectContent className="bg-white rounded-2xl">
           <SelectGroup>
             {availableItems.map((item, idx) => {
-              console.log("iiiii",item);
               return (
                 <SelectItem
                   key={idx}
                   value={
-                    value || item?.value ? item?.value : item?.name || "value"
+                    value || item?.value
+                      ? item?.value
+                      : item?.name || item?.title || "undefined"
                   }
                   className="text-xl border-b text-gray-600 cursor-pointer"
-                  onClick={() => handleId(item?.id)}
                 >
-                  <span
+                  <p
+                    onClick={() => {
+                      handleId(item);
+                      setSelectedItem(item);
+                    }}
                     className={cn(
                       "flex items-center gap-2",
                       value && "text-xs"
                     )}
                   >
                     {item?.name && (
-                      <img src={item?.image?.props?.src} alt="" className="w-[32px]" />
+                      <img
+                        src={item?.image?.props?.src}
+                        alt=""
+                        className="w-[32px]"
+                      />
                     )}
                     {item?.title || item?.name}
-                  </span>
+                  </p>
                 </SelectItem>
               );
             })}
@@ -109,6 +129,7 @@ SelectItems.propTypes = {
   triggerClass: PropTypes.string,
   value: PropTypes.string,
   setServings: PropTypes.func,
+  setSelectedItem: PropTypes.func,
 };
 
 // import {

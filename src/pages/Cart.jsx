@@ -6,9 +6,7 @@ import { Cartheader, servingsData } from "@/assets/StaticData";
 import toast from "react-hot-toast";
 import Delivery from "@/components/CartPageComponents/Delivery";
 import {
-  apple,
   customfruits,
-  fruitboxbg,
   greenCardbg,
   largefruits,
   mediumfruits,
@@ -16,6 +14,7 @@ import {
   smallfruits,
   logo2,
 } from "@/assets";
+import AddFruits from "@/components/DynamicComponents/AddFruits";
 
 export const fruitBoxesData = [
   {
@@ -68,6 +67,8 @@ export const fruitBoxesData = [
 ];
 const Cart = () => {
   const [fruits, setFruits] = useState([]);
+  const [selectedItem, setSelectedItem] = useState({});
+  console.log("select", selectedItem);
 
   useEffect(() => {
     const fruitsData = localStorage.getItem("fruits");
@@ -76,6 +77,15 @@ const Cart = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (selectedItem && Object.keys(selectedItem).length > 0) {
+      const updatedFruits = [...fruits, selectedItem];
+
+      localStorage.setItem("fruits", JSON.stringify(updatedFruits));
+      setFruits(updatedFruits);
+    }
+  }, [selectedItem]);
+
   const handleIncrement = (id) => {
     const updatedFruits = fruits.map((fruit) => {
       if (fruit.id === id) {
@@ -83,7 +93,7 @@ const Cart = () => {
       }
       return fruit;
     });
-    setFruits(updatedFruits); // Update state
+    setFruits(updatedFruits);
     localStorage.setItem("fruits", JSON.stringify(updatedFruits));
   };
 
@@ -129,7 +139,7 @@ const Cart = () => {
                   </button>
                   <div className="w-[280px] h-fullu">
                     <img
-                      src={fruit?.image}
+                      src={fruit?.image?.props?.src || fruit?.image}
                       alt={fruit?.name}
                       className="w-[280px]"
                     />
@@ -143,10 +153,11 @@ const Cart = () => {
                         </span>
                       )}
                     </h2>
-                    <SelectItems
+                    <AddFruits
                       placeholder="Add another size"
                       triggerClass="border border-gray-300 w-60 placeholder:text-red-400"
                       data={fruitBoxesData}
+                      setSelectedItem={setSelectedItem}
                     />
                   </div>
                   <div className="grid grid-cols-3 gap-5">

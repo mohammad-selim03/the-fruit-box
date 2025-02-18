@@ -1,7 +1,14 @@
-import React from "react";
+import DynamicBanner from "@/components/DynamicComponents/DynamicBanner";
 
 const TermsOfUse = () => {
-  return <div>TermsOfUse</div>;
+  return (
+    <div>
+      <DynamicBanner
+        title="Terms And Conditions"
+        semiTitle="We’re a proud Calgary company."
+      />
+    </div>
+  );
 };
 
 export default TermsOfUse;

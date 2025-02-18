@@ -7,6 +7,7 @@ import Faq from "@/pages/Faq";
 import FruitBox from "@/pages/FruitBox";
 import Home from "@/pages/Home";
 import HowitWorks from "@/pages/HowitWorks";
+import TermsOfUse from "@/pages/TermsOfUse";
 import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter([
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact-us",
         element: <ContactUs />,
+      },
+      {
+        path: "/term-and-conditions",
+        element: <TermsOfUse />,
       },
     ],
   },

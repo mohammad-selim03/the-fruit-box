@@ -15,32 +15,36 @@ const FruitBoxCard = ({ data }) => {
 
   const handleAddToCart = () => {
     setCartItems((prevItems) => {
+      // Ensure prevItems is always an array, even if localStorage is corrupted
       const existingItems = Array.isArray(prevItems) ? prevItems : [];
 
+      // Check if the item is already in the cart
       if (!existingItems.some((item) => item.name === data?.name)) {
         toast.success("Product added to the cart");
 
+        // Create a sanitized data object
         const sanitizedData = {
           id: data?.id,
           name: data?.name,
-          title: data?.title && data?.title,
-          description: data?.description,
-          subDescription: data?.subDescription && data?.subDescription,
-          buttonText: data?.buttonText,
-          image: data?.image?.props?.src || data?.image,
-          bg: data?.bg?.props?.src || data?.bg,
+          title: data?.title || "", // Set default values for missing fields
+          description: data?.description || "",
+          subDescription: data?.subDescription || "",
+          buttonText: data?.buttonText || "",
+          image: data?.image?.props?.src || data?.image || "", // Ensure image is a valid string
+          bg: data?.bg?.props?.src || data?.bg || "", // Ensure background is valid
           price: data?.price * data?.quantity,
-          quantity: data?.quantity,
+          quantity: data?.quantity || 1, // Ensure quantity defaults to 1 if missing
           servings: data?.description === "" && servings,
         };
 
+        // Update cart in the state and localStorage
         const updatedCart = [...existingItems, sanitizedData];
-        localStorage.setItem("fruits", JSON.stringify(updatedCart));
+        localStorage.setItem("fruits", JSON.stringify(updatedCart)); // Store as an array of objects
         return updatedCart;
       } else {
-        toast.error("Product has already in the cart");
+        toast.error("Product has already been added to the cart");
       }
-      return existingItems;
+      return existingItems; // Return previous cart state if the item is already present
     });
   };
 
