@@ -7,8 +7,10 @@ import { click } from "@/assets";
 import toast from "react-hot-toast";
 import { useContext } from "react";
 import { Context } from "@/context/Context";
+import { useState } from "react";
 
 const FruitBoxCard = ({ data }) => {
+  const [servings, setServings] = useState("10 Servings");
   const { setCartItems } = useContext(Context);
 
   const handleAddToCart = () => {
@@ -21,12 +23,15 @@ const FruitBoxCard = ({ data }) => {
         const sanitizedData = {
           id: data?.id,
           name: data?.name,
+          title: data?.title && data?.title,
           description: data?.description,
+          subDescription: data?.subDescription && data?.subDescription,
           buttonText: data?.buttonText,
           image: data?.image?.props?.src || data?.image,
           bg: data?.bg?.props?.src || data?.bg,
-          price: data?.price,
+          price: data?.price * data?.quantity,
           quantity: data?.quantity,
+          servings: data?.description === "" && servings,
         };
 
         const updatedCart = [...existingItems, sanitizedData];
@@ -71,6 +76,7 @@ const FruitBoxCard = ({ data }) => {
                 <SelectItems
                   placeholder="10 Servings"
                   data={servingsData}
+                  setServings={setServings}
                   triggerClass="py-6"
                 />
               )}

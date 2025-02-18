@@ -27,6 +27,8 @@ const FruitBoxSection = () => {
     {
       id: 2,
       name: "",
+      title: "Medium Fruit Box",
+      subDescription: "30+ servings.",
       description:
         "Perfect for offices with 11-20 people. he mix includes and bananas. lus we include a variety of seasonal fruit throughout the year.",
       buttonText: "Order now - $46",

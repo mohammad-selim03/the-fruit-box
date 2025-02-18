@@ -1,14 +1,48 @@
 import { cartCar, logo } from "@/assets";
 import { navItems } from "@/assets/StaticData";
-import { Context } from "@/context/Context";
 import { cn } from "@/lib/utils";
-import { useContext } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router";
 
-const Navbar = () => {
+const Navbar = () => { 
+  const [totalQuantity, setTotalQuantity] = useState(0); // Total quantity variable
   const location = useLocation();
-  const { cartItems } = useContext(Context);
-  console.log(cartItems?.length);
+
+  useEffect(() => {
+    // Function to load cart data
+    const loadCartItems = () => {
+      const fruitsData = localStorage.getItem("fruits");
+      const parsedData = fruitsData ? JSON.parse(fruitsData) : []; 
+
+      // Calculate total quantity
+      const total = parsedData.reduce(
+        (sum, item) => sum + (item.quantity || 1),
+        0
+      );
+      setTotalQuantity(total);
+    };
+
+    // Load initial data
+    loadCartItems();
+
+    // Set up interval to check localStorage every second
+    const intervalId = setInterval(loadCartItems, 1000);
+
+    // Listen for storage events from other tabs
+    const handleStorageChange = (e) => {
+      if (e.key === "fruits") {
+        loadCartItems();
+      }
+    };
+    window.addEventListener("storage", handleStorageChange);
+
+    // Cleanup
+    return () => {
+      clearInterval(intervalId);
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
 
   return (
     <div className="bg-white h-[120px] w-full px-[100px] flex items-center  justify-between">
@@ -24,7 +58,7 @@ const Navbar = () => {
               alt=""
               className="h-[55px] w-[72.5px] absolute -top-2 left-8"
             />
-            <p className="text-left ml-10">Cart / {cartItems?.length || 0}</p>
+            <p className="text-left ml-10">Cart / {totalQuantity || 0}</p>
           </div>
         </Link>
         <div className="flex items-center gap-[50px] mt-2">
