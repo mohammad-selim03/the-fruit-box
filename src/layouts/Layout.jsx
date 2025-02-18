@@ -1,6 +1,6 @@
 import Footer from "@/components/ui/Shared/Footer";
 import Navbar from "@/components/ui/Shared/Navbar";
-import { Outlet } from "react-router";
+import { Outlet, ScrollRestoration } from "react-router";
 import { IoIosArrowUp } from "react-icons/io";
 import { Toaster } from "react-hot-toast";
 import { useLocation } from "react-router";
@@ -15,6 +15,7 @@ const Layout = () => {
 
   return (
     <div className="font-Comfort font-semibold relative">
+      <ScrollRestoration />
       <Navbar />
       <div className={cn("", location.pathname === "/cart" && "bg-[#F0EEE8]")}>
         <Outlet />
