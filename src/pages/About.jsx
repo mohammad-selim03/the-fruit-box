@@ -82,7 +82,7 @@ const About = () => {
               </div>
             </div>
           </div>
-        </div>
+      </div>
         <Container>
           <div className="py-20 pt-[1200px] grid grid-cols-3 items-start gap-10">
             <div className="col-span-2">

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Button from "./Button";
 import SelectItems from "./SelectItems";
 import { servingsData } from "@/assets/StaticData";
-import { click } from "@/assets";
 import toast from "react-hot-toast";
 import { useContext } from "react";
 import { Context } from "@/context/Context";
@@ -50,7 +49,7 @@ const FruitBoxCard = ({ data }) => {
 
   return (
     <div className="relative z-20">
-      <div className="flex items-center relative">
+      <div className="flex items-center relative group cursor-pointer">
         {/* Left Image Section */}
         <div
           className={cn(
@@ -62,19 +61,29 @@ const FruitBoxCard = ({ data }) => {
         </div>
 
         {/* Right Content Section */}
-        <div className="relative">
+        <div className="relative z-20 overflow-hidden">
+          <div
+            className={cn(
+              "bg-primaryLightColor absolute top-0 left-0 translate-y-80 group-hover:translate-y-0 transition-all duration-200 rounded-r-[25px] w-full h-full flex flex-col items-center justify-between py-10"
+            )}
+          >
+            <p className="text-white px-3">{data?.description2}</p>
+            {/* <Button className="border-2 rounded-2xl border-white w-full shadow-black/20 shadow-lg py-3 px-14">
+              {data?.buttonText}
+            </Button> */}
+          </div>
           <img
             src={data?.bg?.props?.src}
             alt="Background"
             className="h-[315.548px]"
           />
           <div className="absolute right-0 px-7 top-[34%] -translate-y-1/2 w-full">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 group-hover:hidden">
               <h2 className="text-[26px] text-white">{data?.name}</h2>
 
               {data?.description ? (
                 <p className={cn("", !data?.name && "-mt-14 text-white")}>
-                  {data?.description}
+                  {data?.subDescription || data?.description}
                 </p>
               ) : (
                 <SelectItems
@@ -90,23 +99,14 @@ const FruitBoxCard = ({ data }) => {
             <div
               onClick={handleAddToCart}
               className={cn(
-                "absolute -bottom-32 w-[80%]",
-                !data?.description && "-bottom-[120px]"
+                "absolute -bottom-32 w-[80%] z-20 group-hover:-bottom-[168px]"
+                // !data?.description && "-bottom-[120px]"
               )}
             >
               <Button className="border-2 rounded-2xl border-white w-full shadow-black/20 shadow-lg py-3">
                 {data?.buttonText}
               </Button>
             </div>
-
-            {/* Click Indicator */}
-            {!data?.name && (
-              <img
-                src={click}
-                alt="Click Indicator"
-                className="absolute -bottom-36 right-6"
-              />
-            )}
           </div>
         </div>
       </div>

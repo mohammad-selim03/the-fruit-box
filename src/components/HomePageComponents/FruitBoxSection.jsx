@@ -17,6 +17,8 @@ const FruitBoxSection = () => {
       id: 1,
       name: "SMALL Fruit Box",
       description: "15 SERVINGS / 5 - 10 STAFF",
+      description2:
+        "Perfect for offices with 11-20 people. he mix includes and bananas. lus we include a variety of seasonal fruit throughout the year.",
       buttonText: "Order now - $30.50",
       image: <img src={smallfruits} alt="" />,
       bg: <img src={greenCardbg} alt="" />,
@@ -26,12 +28,14 @@ const FruitBoxSection = () => {
     },
     {
       id: 2,
-      name: "",
+      name: "Medium Fruit Box",
       title: "Medium Fruit Box",
       subDescription: "30+ servings.",
       description:
         "Perfect for offices with 11-20 people. he mix includes and bananas. lus we include a variety of seasonal fruit throughout the year.",
       buttonText: "Order now - $46",
+      description2:
+        "Perfect for offices with 11-20 people. he mix includes and bananas. lus we include a variety of seasonal fruit throughout the year.",
       image: <img src={mediumfruits} alt="" />,
       bg: <img src={orangeCardbg} alt="" />,
       borderColor: "#75AC46",
@@ -42,6 +46,8 @@ const FruitBoxSection = () => {
       id: 3,
       name: "Large Fruit Box",
       description: "60 servings /  21-40 staff",
+      description2:
+        "Perfect for offices with 11-20 people. he mix includes and bananas. lus we include a variety of seasonal fruit throughout the year.",
       buttonText: "Order now - $46",
       image: <img src={largefruits} alt="" />,
       bg: <img src={greenCardbg} alt="" />,
