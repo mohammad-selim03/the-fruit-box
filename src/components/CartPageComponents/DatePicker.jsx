@@ -1,5 +1,4 @@
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+import { format } from "date-fns"; 
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -10,14 +9,16 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
-export function DatePicker() {
+export function DatePicker({ setSelectedDate }) {
   const [date, setDate] = useState();
   const [openModal, setOpenModal] = useState(false);
 
   const handleSelect = (selectedDate) => {
     setDate(selectedDate);
     setOpenModal(false); // Close the popover when a date is selected
+    setSelectedDate(date);
   };
 
   return (
@@ -58,3 +59,7 @@ export function DatePicker() {
     </Popover>
   );
 }
+
+DatePicker.propTypes = {
+  setSelectedDate: PropTypes.func,
+};

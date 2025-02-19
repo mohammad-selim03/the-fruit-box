@@ -35,7 +35,7 @@ const Navbar = () => {
         );
         setTotalQuantity(total);
       } else {
-        console.error("fruitsData is not an array:", parsedData);
+        // console.error("fruitsData is not an array:", parsedData);
         setTotalQuantity(0); // Set to 0 if fruitsData is not in expected format
       }
     };

@@ -15,6 +15,7 @@ import {
   logo2,
 } from "@/assets";
 import AddFruits from "@/components/DynamicComponents/AddFruits";
+import { useForm } from "react-hook-form";
 
 export const fruitBoxesData = [
   {
@@ -68,7 +69,13 @@ export const fruitBoxesData = [
 const Cart = () => {
   const [fruits, setFruits] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
-  console.log("select", selectedItem);
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     const fruitsData = localStorage.getItem("fruits");
@@ -115,12 +122,16 @@ const Cart = () => {
     toast.success("Fruit deleted successfully");
   };
 
+  const placeOrder = (data) => {
+    console.log("order data", data);
+  };
+
   return (
     <div className=" min-h-[900px] pt-20">
       <Container>
         <div className="border-4 border-primaryBoldColor rounded-3xl p-4 ">
           <div className="bg-white px-5 rounded-3xl py-5 pt-10 w-full">
-            <div className="flex items-center justify-end text-xl font-bold gap-12 ml-3 max-w-6xl">
+            <div className="flex items-center justify-end text-xl font-bold gap-14 ml-6 max-w-6xl">
               {Cartheader?.map((data) => (
                 <p key={data}>{data}</p>
               ))}
@@ -206,7 +217,13 @@ const Cart = () => {
               </p>
             )}
             <div className="pt-16 pb-5">
-              <Delivery />
+              <Delivery
+                register={register}
+                handleSubmit={handleSubmit}
+                errors={errors}
+                control={control}
+                placeOrder={placeOrder}
+              />
             </div>
           </div>
         </div>
