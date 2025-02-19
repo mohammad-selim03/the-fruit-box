@@ -38,6 +38,7 @@ import click from "@/assets/home/click.png";
 import logo2 from "@/assets/home/logo2.png";
 import commonbanner from "@/assets/home/commonbanner.png";
 import commonsection from "@/assets/home/commonsection.png";
+import fruitboxmodallogo from "@/assets/home/fruitboxmodallogo.png";
 
 export {
   bannerbg,
@@ -80,4 +81,5 @@ export {
   logo2,
   commonbanner,
   commonsection,
+  fruitboxmodallogo
 };

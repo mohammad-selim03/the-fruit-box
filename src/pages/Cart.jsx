@@ -17,6 +17,7 @@ import {
 import AddFruits from "@/components/DynamicComponents/AddFruits";
 import { useForm } from "react-hook-form";
 import { SuccessModal } from "@/components/CartPageComponents/SuccessModal";
+import { cn } from "@/lib/utils";
 
 export const fruitBoxesData = [
   {
@@ -112,7 +113,7 @@ const Cart = () => {
 
   const placeOrder = (data) => {
     console.log("order data", data);
-    <SuccessModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />;
+    setIsModalOpen(true);
   };
 
   useEffect(() => {
@@ -140,7 +141,7 @@ const Cart = () => {
   }, [selectedItem]);
 
   return (
-    <div className=" min-h-[900px] pt-20">
+    <div className="min-h-[900px] pt-20">
       <Container>
         <div className="border-4 border-primaryBoldColor rounded-3xl p-4 ">
           <div className="bg-white px-5 rounded-3xl py-5 pt-10 w-full">
@@ -161,11 +162,14 @@ const Cart = () => {
                   >
                     <IoMdClose />
                   </button>
-                  <div className="w-[280px] h-fullu">
+                  <div className="w-[280px] ">
                     <img
                       src={fruit?.image?.props?.src || fruit?.image}
                       alt={fruit?.name}
-                      className="w-[280px]"
+                      className={cn(
+                        "w-[280px]",
+                        fruit?.name === "SMALL Fruit Box" && "w-2/3"
+                      )}
                     />
                   </div>
                   <div className="w-[382px] flex flex-col gap-5">
@@ -237,6 +241,10 @@ const Cart = () => {
                 control={control}
                 placeOrder={placeOrder}
                 onChange={onChange}
+              />
+              <SuccessModal
+                isModalOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
               />
             </div>
           </div>
