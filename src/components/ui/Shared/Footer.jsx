@@ -5,9 +5,9 @@ import { Link } from "react-router";
 const Footer = () => {
   return (
     <div className="relative mt-20">
-      <img src={footerbg} alt="" />
+      <img src={footerbg} alt="" className="w-full h-full" />
 
-      <div className="absolute top-[40%] left-1/2 -translate-x-1/2 w-[1200px] ">
+      <div className="absolute top-[40%] left-1/2 -translate-x-1/2 w-[1200px]  ">
         <div className="grid grid-cols-4 gap-[30px] text-white">
           <div>
             <p className="text-xl uppercase">WHY HAVE FRUIT IN THE OFFICE?</p>

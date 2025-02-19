@@ -143,6 +143,14 @@ const Cart = () => {
   return (
     <div className="min-h-[900px] pt-20">
       <Container>
+        <div className="pb-10">
+          <h1 className="text-[64px] font-bold text-center">
+            Fruit box order form
+          </h1>
+          <p className="text-center uppercase text-secondaryTextColor font-bold">
+            JUST A FEW MORE DETAILS TO DELICIOUSNESS
+          </p>{" "}
+        </div>
         <div className="border-4 border-primaryBoldColor rounded-3xl p-4 ">
           <div className="bg-white px-5 rounded-3xl py-5 pt-10 w-full">
             <div className="flex items-center justify-end text-xl font-bold gap-14 ml-6 max-w-6xl">

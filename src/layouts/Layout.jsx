@@ -17,10 +17,10 @@ const Layout = () => {
     <div className="font-Comfort font-semibold relative">
       <ScrollRestoration />
       <Navbar />
-      <div className={cn("", location.pathname === "/cart" && "bg-[#F0EEE8]")}>
+      <div className={cn("bg-[#F0EEE8]", location.pathname === "/cart" && "bg-[#F0EEE8]")}>
         <Outlet />
       </div>
-      <div className={cn("", location.pathname === "/cart" && "-mt-[300px]")}>
+      <div className={cn("-mt-[300px]", location.pathname === "/cart" && "-mt-[300px]")}>
         <Footer />
       </div>
       <Toaster />
