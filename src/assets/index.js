@@ -39,6 +39,9 @@ import logo2 from "@/assets/home/logo2.png";
 import commonbanner from "@/assets/home/commonbanner.png";
 import commonsection from "@/assets/home/commonsection.png";
 import fruitboxmodallogo from "@/assets/home/fruitboxmodallogo.png";
+import aboutbg from "@/assets/home/aboutbg.png";
+import aboutpagefruits from "@/assets/home/aboutpagefruits.png";
+import van from "@/assets/home/van.png";
 
 export {
   bannerbg,
@@ -81,5 +84,8 @@ export {
   logo2,
   commonbanner,
   commonsection,
-  fruitboxmodallogo
+  fruitboxmodallogo,
+  aboutbg,
+  aboutpagefruits,
+  van,
 };
