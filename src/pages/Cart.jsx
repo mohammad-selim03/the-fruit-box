@@ -16,6 +16,7 @@ import {
 } from "@/assets";
 import AddFruits from "@/components/DynamicComponents/AddFruits";
 import { useForm } from "react-hook-form";
+import { SuccessModal } from "@/components/CartPageComponents/SuccessModal";
 
 export const fruitBoxesData = [
   {
@@ -69,29 +70,16 @@ export const fruitBoxesData = [
 const Cart = () => {
   const [fruits, setFruits] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [totalAmount, setTotalAmount] = useState("");
 
   const {
     register,
     handleSubmit,
     control,
+    onChange,
     formState: { errors },
   } = useForm();
-
-  useEffect(() => {
-    const fruitsData = localStorage.getItem("fruits");
-    if (fruitsData) {
-      setFruits(JSON.parse(fruitsData));
-    }
-  }, []);
-
-  useEffect(() => {
-    if (selectedItem && Object.keys(selectedItem).length > 0) {
-      const updatedFruits = [...fruits, selectedItem];
-
-      localStorage.setItem("fruits", JSON.stringify(updatedFruits));
-      setFruits(updatedFruits);
-    }
-  }, [selectedItem]);
 
   const handleIncrement = (id) => {
     const updatedFruits = fruits.map((fruit) => {
@@ -124,7 +112,32 @@ const Cart = () => {
 
   const placeOrder = (data) => {
     console.log("order data", data);
+    <SuccessModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />;
   };
+
+  useEffect(() => {
+    const storedFruits = localStorage.getItem("fruits");
+    if (storedFruits) {
+      const parsedFruits = JSON.parse(storedFruits);
+      setFruits(parsedFruits);
+
+      const total = parsedFruits.reduce(
+        (sum, fruit) => sum + (fruit?.quantity * fruit?.price || fruit?.price),
+        0
+      );
+      setTotalAmount(total);
+    }
+  }, []);
+
+  console.log("amount data", totalAmount);
+  useEffect(() => {
+    if (selectedItem && Object.keys(selectedItem).length > 0) {
+      const updatedFruits = [...fruits, selectedItem];
+
+      localStorage.setItem("fruits", JSON.stringify(updatedFruits));
+      setFruits(updatedFruits);
+    }
+  }, [selectedItem]);
 
   return (
     <div className=" min-h-[900px] pt-20">
@@ -223,6 +236,7 @@ const Cart = () => {
                 errors={errors}
                 control={control}
                 placeOrder={placeOrder}
+                onChange={onChange}
               />
             </div>
           </div>

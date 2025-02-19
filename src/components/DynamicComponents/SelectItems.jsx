@@ -17,6 +17,7 @@ const SelectItems = ({
   setServings,
   value,
   setSelectedItem,
+  onChange,
 }) => {
   const [availableItems, setAvailableItems] = useState(data || []);
   const [selectedId, setSelectedId] = useState(null);
@@ -68,7 +69,7 @@ const SelectItems = ({
     <div>
       <Select
         defaultValue={value || ""}
-        onValueChange={setServings || setSelectedId}
+        onValueChange={onChange || setServings || setSelectedId }
       >
         <SelectTrigger
           onClick={() => handleId(selectedId)}
@@ -130,6 +131,7 @@ SelectItems.propTypes = {
   value: PropTypes.string,
   setServings: PropTypes.func,
   setSelectedItem: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 // import {

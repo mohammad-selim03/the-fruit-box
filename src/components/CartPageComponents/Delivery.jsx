@@ -7,7 +7,13 @@ import PropTypes from "prop-types";
 import { Controller } from "react-hook-form";
 import { formatDate } from "@/lib/DateFormate";
 
-const Delivery = ({ register, handleSubmit, errors, control, placeOrder }) => {
+const Delivery = ({
+  register,
+  handleSubmit,
+  errors,
+  control,
+  placeOrder, 
+}) => {
   return (
     <form onSubmit={handleSubmit(placeOrder)}>
       <div className="grid grid-cols-2 gap-10 px-[40px]">
@@ -45,24 +51,64 @@ const Delivery = ({ register, handleSubmit, errors, control, placeOrder }) => {
               )}
             </div>
             <div className="grid grid-cols-2 gap-5">
-              <SelectItems
-                triggerClass="border border-gray-300 h-12 text-sm"
-                DeliveryProps={"DeliveryProps"}
-                data={frequencyData}
-                placeholder="Select Frequency"
-              />
-              <SelectItems
-                triggerClass="border border-gray-300 h-12 text-sm"
-                DeliveryProps={"DeliveryProps"}
-                data={daysData}
-                placeholder="Select Day Of Week"
-              />
+              <div>
+                <Controller
+                  name="frequency"
+                  control={control}
+                  defaultValue={""}
+                  rules={{ required: "Frequency is required" }}
+                  render={({ field }) => (
+                    <SelectItems
+                      {...field}
+                      triggerClass="border border-gray-300 h-12 text-sm"
+                      DeliveryProps={"DeliveryProps"}
+                      data={frequencyData}
+                      placeholder="Select Frequency"
+                      onChange={(value) => field.onChange(value)}
+                    />
+                  )}
+                />
+                {errors.frequency && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.frequency.message}
+                  </p>
+                )}
+              </div>
+              <div>
+                <Controller
+                  name="day"
+                  control={control}
+                  defaultValue={""}
+                  rules={{ required: "Days of Week is required" }}
+                  render={({ field }) => (
+                    <SelectItems
+                      {...field}
+                      triggerClass="border border-gray-300 h-12 text-sm"
+                      DeliveryProps={"DeliveryProps"}
+                      data={daysData}
+                      placeholder="Select Day Of Week"
+                      onChange={(value) => field.onChange(value)}
+                    />
+                  )}
+                />
+                {errors.day && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.day.message}
+                  </p>
+                )}
+              </div>
             </div>
 
             <textarea
               className="h-32 w-full border border-gray-300 outline-none p-3 rounded-2xl"
               placeholder="Type comments"
+              {...register("comments", { required: "Comments is required" })}
             ></textarea>
+            {errors.comments && (
+              <p className="text-red-500 text-xs -mt-5">
+                {errors.comments.message}
+              </p>
+            )}
           </div>
         </div>
         <div>
@@ -72,38 +118,95 @@ const Delivery = ({ register, handleSubmit, errors, control, placeOrder }) => {
           <p>Tell us who you are and where you want us to deliver.</p>
           <div className="mt-[40px] flex flex-col gap-[26px]">
             <div className="grid grid-cols-2 gap-5">
-              <input
-                type="text"
-                placeholder="First Name"
-                className="px-5 py-3 rounded-2xl border border-gray-300 w-full outline-none"
-              />
-              <input
-                type="text"
-                placeholder="First Name"
-                className="px-5 py-3 rounded-2xl border border-gray-300 w-full outline-none"
-              />
+              <div>
+                {" "}
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  className="px-5 py-3 rounded-2xl border border-gray-300 w-full outline-none"
+                  {...register("first_name", {
+                    required: "First Name is required",
+                  })}
+                />
+                {errors.first_name && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.first_name.message}
+                  </p>
+                )}
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  className="px-5 py-3 rounded-2xl border border-gray-300 w-full outline-none"
+                  {...register("last_name", {
+                    required: "Last Name is required",
+                  })}
+                />
+                {errors.last_name && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.last_name.message}
+                  </p>
+                )}
+              </div>
             </div>
             <input
               type="text"
               placeholder="Company Name"
               className="px-5 py-3 rounded-2xl border border-gray-300 w-full outline-none"
+              {...register("company_name", {
+                required: "Company Name is required",
+              })}
             />
+            {errors.company_name && (
+              <p className="text-red-500 text-xs -mt-5">
+                {errors.company_name.message}
+              </p>
+            )}
             <input
               type="text"
               placeholder="Street Address"
               className="px-5 py-3 rounded-2xl border border-gray-300 w-full outline-none"
+              {...register("street_address", {
+                required: "Street Address is required",
+              })}
             />
+            {errors.street_address && (
+              <p className="text-red-500 text-xs -mt-5">
+                {errors.street_address.message}
+              </p>
+            )}
             <div className="grid grid-cols-2 gap-5">
-              <input
-                type="text"
-                placeholder="Email"
-                className="px-5 py-3 rounded-2xl border border-gray-300 w-full outline-none"
-              />
-              <input
-                type="text"
-                placeholder="Phone"
-                className="px-5 py-3 rounded-2xl border border-gray-300 w-full outline-none"
-              />
+              <div>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="px-5 py-3 rounded-2xl border border-gray-300 w-full outline-none"
+                  {...register("email", {
+                    required: "Email is required",
+                  })}
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Phone"
+                  className="px-5 py-3 rounded-2xl border border-gray-300 w-full outline-none"
+                  {...register("phone", {
+                    required: "Phone is required",
+                  })}
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.phone.message}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         </div>
