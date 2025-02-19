@@ -65,59 +65,56 @@ export const fruitBoxesData = [
     quantity: 1,
   },
 ];
+
 const FruitBox = () => {
-  const [fruits, setFruits] = useState([]);
+  const [fruits, setFruits] = useState(fruitBoxesData);
   const [servings, setServings] = useState("10 Servings");
   const { setCartItems } = useContext(Context);
 
   // Load cart items from localStorage
   useEffect(() => {
-    const storedFruits = localStorage.getItem("fruits");
-    if (storedFruits) {
-      const parsedFruits = JSON.parse(storedFruits);
-      setFruits(parsedFruits);
+    const storedCart = localStorage.getItem("cartItems");
+    if (storedCart) {
+      setCartItems(JSON.parse(storedCart));
     }
-  }, []);
+  }, [setCartItems]);
 
   // Increment quantity
   const handleIncrement = (id) => {
-    console.log("id", id)
     setFruits((prevFruits) => {
-      const updatedFruits = prevFruits.map((fruit) =>
+      return prevFruits.map((fruit) =>
         fruit.id === id ? { ...fruit, quantity: fruit.quantity + 1 } : fruit
       );
-      localStorage.setItem("fruits", JSON.stringify(updatedFruits));
-      return updatedFruits;
     });
   };
 
   // Decrement quantity
   const handleDecrement = (id) => {
     setFruits((prevFruits) => {
-      const updatedFruits = prevFruits.map((fruit) =>
+      return prevFruits.map((fruit) =>
         fruit.id === id && fruit.quantity > 1
           ? { ...fruit, quantity: fruit.quantity - 1 }
           : fruit
       );
-      localStorage.setItem("fruits", JSON.stringify(updatedFruits));
-      return updatedFruits;
     });
   };
 
   const handleAddToCart = (fruit) => {
     setCartItems((prevItems) => {
       const existingItems = Array.isArray(prevItems) ? prevItems : [];
-
       const itemIndex = existingItems.findIndex((item) => item.id === fruit.id);
 
+      let updatedItems;
       if (itemIndex !== -1) {
-        // If item already exists, update the quantity
-        existingItems[itemIndex].quantity += fruit.quantity;
+        // Update existing item
+        updatedItems = existingItems.map((item, index) =>
+          index === itemIndex
+            ? { ...item, quantity: item.quantity + fruit.quantity }
+            : item
+        );
         toast.success("Quantity updated in the cart");
       } else {
-        // If item is new, add it to the cart
-        toast.success("Product added to the cart");
-
+        // Add new item
         const newItem = {
           id: fruit.id,
           name: fruit.name,
@@ -128,17 +125,16 @@ const FruitBox = () => {
           image: fruit.image?.props?.src || fruit.image || "",
           bg: fruit.bg?.props?.src || fruit.bg || "",
           price: fruit.price,
-          quantity: fruit.quantity || 1,
+          quantity: fruit.quantity,
           servings: fruit.description === "" ? servings : undefined,
         };
-
-        existingItems.push(newItem);
+        updatedItems = [...existingItems, newItem];
+        toast.success("Product added to the cart");
       }
 
-      // Update localStorage
-      localStorage.setItem("fruits", JSON.stringify(existingItems));
-
-      return [...existingItems]; // Update state
+      // Update localStorage with cart items
+      localStorage.setItem("cartItems", JSON.stringify(updatedItems));
+      return updatedItems;
     });
   };
 
@@ -153,80 +149,78 @@ const FruitBox = () => {
         </div>
         <div className="border-[8px] border-secondaryTextColor rounded-3xl p-4">
           <div className="bg-white px-5 rounded-3xl py-5 pt-10 w-full">
-            {fruitBoxesData.length > 0 ? (
-              fruitBoxesData.map((fruit) => {
-                console.log(" dfd", fruit);
-                return (
-                  <div
-                    key={fruit.id}
-                    className="flex items-center gap-12 w-full border-b py-5"
-                  >
-                    <div className="w-[280px]">
-                      <img
-                        src={fruit?.image?.props?.src || fruit?.image}
-                        alt={fruit?.name}
-                        className={cn(
-                          "w-[280px]",
-                          fruit?.name === "SMALL Fruit Box" && "w-2/3"
-                        )}
-                      />
-                    </div>
-                    <div className="w-[382px] flex flex-col gap-5">
-                      <h2 className="text-2xl font-bold">
-                        {fruit.name || fruit?.title}{" "}
-                        {fruit?.name !== "" && (
-                          <span className="text-secondaryTextColor text-lg font-bold">
-                            {fruit?.description}
-                          </span>
-                        )}
-                      </h2>
-                    </div>
-                    <div className="flex flex-col items-center gap-5">
-                      <p className="text-[40px] text-secondaryTextColor w-28 text-center">
-                        ${fruit.price}
-                      </p>
-                      <div>
-                        <div className="flex items-center justify-between gap-2 border border-gray-300 p-1 rounded-xl w-28">
-                          <button
-                            className="rounded bg-primaryLightColor text-black text-xl px-2"
-                            onClick={() => handleDecrement(fruit?.id)}
-                          >
-                            -
-                          </button>
-                          <span className="w-5 flex items-center justify-center">
-                            {fruit?.quantity < 10
-                              ? "0" + fruit?.quantity
-                              : fruit?.quantity}
-                          </span>
-                          <button
-                            className="rounded bg-primaryLightColor text-black text-xl px-2"
-                            onClick={() => handleIncrement(fruit?.id)}
-                          >
-                            +
-                          </button>
-                        </div>
-                        {fruit?.servings && (
-                          <div className="mt-3">
-                            <SelectItems
-                              data={servingsData}
-                              value={fruit?.servings}
-                              triggerClass="border border-gray-300 text-red-400"
-                            />
-                          </div>
-                        )}
-                      </div>
-                    </div>
+            {fruits.length > 0 ? (
+              fruits.map((fruit) => (
+                <div
+                  key={fruit.id}
+                  className="flex items-center gap-12 w-full border-b py-5"
+                >
+                  <div className="w-[280px]">
+                    <img
+                      src={fruit?.image?.props?.src || fruit?.image}
+                      alt={fruit?.name}
+                      className={cn(
+                        "w-[280px]",
+                        fruit?.name === "SMALL Fruit Box" && "w-2/3"
+                      )}
+                    />
+                  </div>
+                  <div className="w-[382px] flex flex-col gap-5">
+                    <h2 className="text-2xl font-bold">
+                      {fruit.name || fruit?.title}{" "}
+                      {fruit?.name !== "" && (
+                        <span className="text-secondaryTextColor text-lg font-bold">
+                          {fruit?.description}
+                        </span>
+                      )}
+                    </h2>
+                  </div>
+                  <div className="flex flex-col items-center gap-5">
+                    <p className="text-[40px] text-secondaryTextColor w-28 text-center">
+                      ${fruit.price}
+                    </p>
                     <div>
-                      <Button
-                        className="capitalize px-14 shadow-black/20 shadow-md py-3 w-full"
-                        onClick={() => handleAddToCart(fruit)}
-                      >
-                        Add to Cart
-                      </Button>
+                      <div className="flex items-center justify-between gap-2 border border-gray-300 p-1 rounded-xl w-28">
+                        <button
+                          className="rounded bg-primaryLightColor text-black text-xl px-2"
+                          onClick={() => handleDecrement(fruit.id)}
+                        >
+                          -
+                        </button>
+                        <span className="w-5 flex items-center justify-center">
+                          {fruit.quantity < 10
+                            ? "0" + fruit.quantity
+                            : fruit.quantity}
+                        </span>
+                        <button
+                          className="rounded bg-primaryLightColor text-black text-xl px-2"
+                          onClick={() => handleIncrement(fruit.id)}
+                        >
+                          +
+                        </button>
+                      </div>
+                      {fruit.description === "" && (
+                        <div className="mt-3">
+                          <SelectItems
+                            data={servingsData}
+                            value={servings}
+                            onChange={setServings}
+                            triggerClass="border border-gray-300 text-red-400"
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
-                );
-              })
+                  <div>
+                    <Button
+                      className="capitalize px-14 shadow-black/20 shadow-md py-3 w-full"
+                      onClick={() => handleAddToCart(fruit)}
+                    >
+                      Add to Cart
+                    </Button>
+                  </div>
+                </div>
+              ))
             ) : (
               <p className="flex items-center justify-center text-4xl font-extrabold h-60">
                 No items in the cart.
