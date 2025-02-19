@@ -69,16 +69,16 @@ const SelectItems = ({
     <div>
       <Select
         defaultValue={value || ""}
-        onValueChange={onChange || setServings || setSelectedId }
+        onValueChange={onChange || setServings || setSelectedId} 
       >
         <SelectTrigger
           onClick={() => handleId(selectedId)}
           className={cn(
-            "bg-white border border-primaryLightColor rounded-2xl text-lg text-nowrap",
+            "bg-white border border-primaryLightColor rounded-2xl text-lg text-nowrap placeholder:text-gray-400",
             triggerClass
           )}
         >
-          <SelectValue placeholder={placeholder || ""} />
+          <SelectValue placeholder={placeholder || ""} className="text-gray-400"/>
         </SelectTrigger>
         <SelectContent className="bg-white rounded-2xl">
           <SelectGroup>

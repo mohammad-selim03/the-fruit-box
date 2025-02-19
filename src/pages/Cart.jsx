@@ -217,7 +217,7 @@ const Cart = () => {
                           <SelectItems
                             data={servingsData}
                             value={fruit?.servings}
-                            triggerClass="border border-gray-300"
+                            triggerClass="border border-gray-300 text-red-400"
                           />
                         </div>
                       )}

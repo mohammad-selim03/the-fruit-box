@@ -25,17 +25,19 @@ export function SuccessModal({ isModalOpen, setIsModalOpen }) {
 
               <div className="flex flex-col items-center gap-[26px] mt-[26px]">
                 <p className="text-[40px]">Thank You for your order!</p>
-                <p>
-                  We’re excited to add your office to our growing Fruit Box
+                <p className="text-[20px] text-center">
+                  We’re excited to add your office to our growing <br /> Fruit Box
                   Family
                 </p>
-                <p>Your order details have been sent to the email provide </p>
-                <p>
-                  We’ll contact you shortly to confirm everything and arrange
+                <p className="text-[20px] text-center">
+                  Your order details have been sent to the email <br /> provide{" "}
+                </p>
+                <p className="text-[20px] text-center">
+                  We’ll contact you shortly to confirm everything <br /> and arrange
                   payment option.
                 </p>
                 <Link onClick={() => handleNavigate()}>
-                  <Button className="py-4">RETURN TO MAIN</Button>
+                  <Button className="py-5 text-xl tracking-wider font-medium px-16 shadow-black/20 shadow-md">RETURN TO MAIN</Button>
                 </Link>
               </div>
             </div>
