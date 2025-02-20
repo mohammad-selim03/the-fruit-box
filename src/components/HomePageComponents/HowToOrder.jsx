@@ -1,9 +1,9 @@
-import { banana, howOrder } from "@/assets";
+import { banana, howOrder, malta } from "@/assets";
 import Button from "../DynamicComponents/Button";
 
 const HowToOrder = () => {
   return (
-    <div className="py-8 relative">
+    <div className="py-8 relative mt-20">
       <div className="relative">
         <img src={howOrder} alt="" />
         <div className="absolute bottom-[220px] left-[920px] -translate-x-1/2">
@@ -15,7 +15,12 @@ const HowToOrder = () => {
       <img
         src={banana}
         alt=""
-        className="absolute bottom-10 -left-28 w-[550px] h-[332px]"
+        className="absolute bottom-10 -left-5 w-[550px] h-[332px]"
+      />
+      <img
+        src={malta}
+        alt=""
+        className="absolute top-0 right-0  "
       />
     </div>
   );

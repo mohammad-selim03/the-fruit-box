@@ -42,6 +42,7 @@ import fruitboxmodallogo from "@/assets/home/fruitboxmodallogo.png";
 import aboutbg from "@/assets/home/aboutbg.png";
 import aboutpagefruits from "@/assets/home/aboutpagefruits.png";
 import van from "@/assets/home/van.png";
+import malta from "@/assets/home/malta.png";
 
 export {
   bannerbg,
@@ -88,4 +89,5 @@ export {
   aboutbg,
   aboutpagefruits,
   van,
+  malta,
 };
