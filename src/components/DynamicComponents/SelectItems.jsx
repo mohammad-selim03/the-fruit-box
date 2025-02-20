@@ -34,7 +34,7 @@ const SelectItems = ({
 
         setAvailableItems(filteredItems || []);
       } else {
-        console.error("cartItems is not an array:", cartItems);
+        // console.error("cartItems is not an array:", cartItems);
         setAvailableItems([]);  
       }
     };
@@ -53,8 +53,7 @@ const SelectItems = ({
 
   const handleId = (id) => {
     setSelectedId(id);
-    const fruitss = data?.filter((d) => d?.id === id);
-    console.log("fruitss", fruitss);
+    const fruitss = data?.filter((d) => d?.id === id); 
   };
 
   if (availableItems.length === 0) {

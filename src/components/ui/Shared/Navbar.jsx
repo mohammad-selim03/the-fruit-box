@@ -19,12 +19,12 @@ const Navbar = () => {
         try {
           parsedData = JSON.parse(fruitsData);
         } catch (error) {
-          console.error("Error parsing fruits data:", error);
+          // console.error("Error parsing fruits data:", error);
           parsedData = [];
         }
       }
 
-      console.log("Parsed data:", parsedData);
+       
 
       // Ensure parsedData is an array before reducing
       if (Array.isArray(parsedData)) {

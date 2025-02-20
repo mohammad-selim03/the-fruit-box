@@ -11,8 +11,7 @@ const Layout = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const location = useLocation();
-  console.log(location.pathname);
+  const location = useLocation(); 
   return (
     <div className="font-Comfort font-semibold relative ">
       <ScrollRestoration />

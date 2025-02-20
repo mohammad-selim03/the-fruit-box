@@ -112,7 +112,6 @@ const Cart = () => {
   };
 
   const placeOrder = (data) => {
-    console.log("order data", data);
     setIsModalOpen(true);
   };
 
@@ -129,8 +128,6 @@ const Cart = () => {
       setTotalAmount(total);
     }
   }, []);
-
-  console.log("amount data", totalAmount);
   useEffect(() => {
     if (selectedItem && Object.keys(selectedItem).length > 0) {
       const updatedFruits = [...fruits, selectedItem];
