@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 const Faq = () => {
   const { data, isLoading, isError } = useGetApi("faqs", true);
   return isLoading ? (
-    <div className="flex items-center justify-center h-80">
+    <div className="flex items-center justify-center h-screen">
       <Loader />
     </div>
   ) : isError ? (
@@ -42,7 +42,7 @@ const Faq = () => {
                       idx == faqData?.length - 1 && "border-none"
                     )}
                   >
-                    <AccordionTrigger className="hover:no-underline text-[#474747]">
+                    <AccordionTrigger className="hover:no-underline text-[#474747] ">
                       {data?.question}
                     </AccordionTrigger>
                     <AccordionContent className="text-[#474747]">
