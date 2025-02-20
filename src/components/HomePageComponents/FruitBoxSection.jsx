@@ -71,15 +71,15 @@ const FruitBoxSection = () => {
   ];
 
   return (
-    <div className="relative z-10 h-[1400px]">
+    <div className="relative z-10 h-[1800px]">
       <img
         src={fruitboxbg}
         alt=""
         className="absolute -top-60 w-full z-[1px] left-0 h-[1700px]"
       />
-      <div className="pt-[135px] pb-9 max-w-[1315px] mx-auto z-20">
+      <div className="pt-[40px] md:pt-[135px] pb-9 max-w-[1315px] mx-auto z-20">
         <div className="flex flex-col items-center justify-center">
-          <div className="pb-20 z-20 flex flex-col items-center justify-center">
+          <div className="pb-5 lg:pb-20 z-20 flex flex-col items-center justify-center">
             <Title
               className="text-black"
               style={{
@@ -89,13 +89,13 @@ const FruitBoxSection = () => {
             >
               OUR FRUIT BOXES
             </Title>
-            <p className="text-secondaryTextColor">
+            <p className="text-secondaryTextColor text-xs md:text-base text-center">
               PACKED WITH FRESH FRUIT SUCH AS APPLES, ORANGES, BANANAS, AND
               SEASONALS.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-[20.67px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-[20.67px] px-5 2xl:px-0">
             {fruitBoxesData?.map((fruitBox, index) => (
               <FruitBoxCard key={index} data={fruitBox} />
             ))}

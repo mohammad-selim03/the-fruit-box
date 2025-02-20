@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Title = ({ className, children, style }) => {
   return (
     <h1
-      className={cn("text-[64px] font-extrabold z-20 uppercase", className)}
+      className={cn("text-[36px] md:text-[64px] font-extrabold z-20 uppercase", className)}
       style={style}
     >
       {children}
