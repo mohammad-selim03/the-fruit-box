@@ -15,36 +15,28 @@ const FruitBoxCard = ({ data }) => {
 
   const handleAddToCart = () => {
     setCartItems((prevItems) => {
-      // Ensure prevItems is always an array, even if localStorage is corrupted
       const existingItems = Array.isArray(prevItems) ? prevItems : [];
 
-      // Check if the item is already in the cart
       if (!existingItems.some((item) => item.name === data?.name)) {
         toast.success("Product added to the cart");
 
-        // Create a sanitized data object
         const sanitizedData = {
           id: data?.id,
           name: data?.name,
-          title: data?.title || "", // Set default values for missing fields
           description: data?.description || "",
-          subDescription: data?.subDescription || "",
-          buttonText: data?.buttonText || "",
-          image: data?.image?.props?.src || data?.image || "", // Ensure image is a valid string
-          bg: data?.bg?.props?.src || data?.bg || "", // Ensure background is valid
-          price: data?.price * data?.quantity,
-          quantity: data?.quantity || 1, // Ensure quantity defaults to 1 if missing
-          servings: data?.description === "" && servings,
+          image: data?.image || "",
+          price: parseInt(data?.price),
+          quantity: data?.quantity || 1,
+          servings: data?.servings,
+          servings_multiple: data?.servings_multiple && servings,
         };
-
-        // Update cart in the state and localStorage
         const updatedCart = [...existingItems, sanitizedData];
-        localStorage.setItem("fruits", JSON.stringify(updatedCart)); // Store as an array of objects
+        localStorage.setItem("fruits", JSON.stringify(updatedCart));
         return updatedCart;
       } else {
         toast.error("Product has already been added to the cart");
       }
-      return existingItems; // Return previous cart state if the item is already present
+      return existingItems;
     });
   };
 
@@ -68,7 +60,11 @@ const FruitBoxCard = ({ data }) => {
               "bg-primaryLightColor absolute top-0 left-0 translate-y-80 group-hover:translate-y-0 transition-all duration-200 rounded-r-[25px] w-full h-full flex flex-col items-center justify-between py-10"
             )}
           >
-            <p className="text-white px-3 line-clamp-4 ">{data?.description}</p>
+            <div>
+              <p className="text-white px-5 line-clamp-4">
+                {data?.description}
+              </p>
+            </div>
           </div>
           <img src={greenCardbg} alt="Background" className="h-[315.548px]" />
           <div className="absolute right-0 px-7 top-[34%] -translate-y-1/2 w-full">

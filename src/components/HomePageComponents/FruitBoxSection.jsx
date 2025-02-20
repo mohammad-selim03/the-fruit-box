@@ -1,12 +1,6 @@
 import {
-  apple,
-  customfruits,
-  fruitboxbg,
-  greenCardbg,
-  largefruits,
-  mediumfruits,
-  orangeCardbg,
-  smallfruits,
+  apple, 
+  fruitboxbg,  
 } from "@/assets";
 import Title from "../DynamicComponents/Title";
 import FruitBoxCard from "../DynamicComponents/FruitBoxCard";
@@ -15,7 +9,7 @@ import Loader from "../ui/Shared/Loader";
 import IsError from "../ui/Shared/IsError";
 
 const FruitBoxSection = () => {
-  const { data: fruitsData, isLoading, isError } = useGetApi("productss", true);
+  const { data: fruitsData, isLoading, isError } = useGetApi("products", true);
   console.log("data", fruitsData);
 
   return isLoading ? (

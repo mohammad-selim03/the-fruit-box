@@ -10,9 +10,19 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import IsError from "@/components/ui/Shared/IsError";
+import Loader from "@/components/ui/Shared/Loader";
+import { useGetApi } from "@/hooks/API/useGetApi";
 import { cn } from "@/lib/utils";
 const Faq = () => {
-  return (
+  const { data, isLoading, isError } = useGetApi("faqs", true);
+  return isLoading ? (
+    <div className="flex items-center justify-center h-80">
+      <Loader />
+    </div>
+  ) : isError ? (
+    <IsError />
+  ) : (
     <div>
       <DynamicBanner
         title="FAQ"
@@ -22,7 +32,7 @@ const Faq = () => {
         <div className="border-4 w-[961.084px] h-full mx-auto border-secondaryTextColor rounded-[50px] p-3">
           <div className="w-[full] h-[full] bg-white mx-auto rounded-[34px] px-5 py-10">
             <Accordion type="single" collapsible className="w-full ">
-              {faqData?.map((data, idx) => { 
+              {data?.map((data, idx) => {
                 return (
                   <AccordionItem
                     key={`index ${idx}`}

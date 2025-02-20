@@ -112,7 +112,7 @@ const Delivery = ({
           </div>
         </div>
         <div>
-          <Title className="text-[40px] capitalize text-secondaryTextColor">
+          <Title className="text-[40px] capitalize text-nowrap text-secondaryTextColor">
             Delivery Location
           </Title>
           <p>Tell us who you are and where you want us to deliver.</p>
@@ -214,7 +214,7 @@ const Delivery = ({
       <div className="py-10 flex items-center justify-center">
         <Button
           type="submit"
-          className="text-primaryLightColor bg-transparent border border-primaryLightColor uppercase px-16 shadow-black/10 shadow-xl"
+          className="text-primaryLightColor bg-transparent border border-primaryLightColor hover:bg-primaryLightColor hover:text-white transition-all duration-300 uppercase px-16 shadow-black/10 shadow-xl"
         >
           PLACE ORDER
         </Button>
