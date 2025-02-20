@@ -14,8 +14,8 @@ const Footer = () => {
             <p className="text-sm text-primaryTextColor">
               Fresh fruit at work makes for happier employees, lowers
               absenteeism, and sends a positive message throughout your
-              company.  Choose your size, choose your delivery schedule, and
-              then we’ll deliver directly to your office.  Start your office
+              company. Choose your size, choose your delivery schedule, and
+              then we&apos;ll deliver directly to your office. Start your office
               fruit delivery today!
             </p>
             <div className="mt-12">
@@ -45,15 +45,24 @@ const Footer = () => {
           <div>
             <p className="text-xl uppercase">CUSTOMER SERVICE </p>
             <div className="flex flex-col gap-3 mt-3">
-              <p className="text-sm text-primaryTextColor cursor-pointer hover:underline">
+              <Link
+                to={"/contact-us"}
+                className="text-sm text-primaryTextColor cursor-pointer hover:underline"
+              >
                 Contact us
-              </p>
-              <p className="text-sm text-primaryTextColor cursor-pointer hover:underline">
+              </Link>
+              <Link
+                to={"/faq"}
+                className="text-sm text-primaryTextColor cursor-pointer hover:underline"
+              >
                 FAQ
-              </p>
-              <p className="text-sm text-primaryTextColor cursor-pointer hover:underline">
+              </Link>
+              <Link
+                to={"terms-and-conditions"}
+                className="text-sm text-primaryTextColor cursor-pointer hover:underline"
+              >
                 Privacy policy
-              </p>
+              </Link>
               <Link
                 to={"terms-and-conditions"}
                 className="text-sm text-primaryTextColor cursor-pointer hover:underline"
@@ -88,7 +97,7 @@ const Footer = () => {
           <div className="flex items-start justify-center gap-1 py-5 text-white border-t border-white/30 ">
             <img src={footerlogo} alt="" className="w-8" />
             <p className="mt-3 text-sm">
-              The Fruit Box Ltd.  Copyright 2021.  All Rights Reserved.  Powered
+              The Fruit Box Ltd. Copyright 2021. All Rights Reserved. Powered
               by the Awesomeness of Fresh Fruit.
             </p>
           </div>
