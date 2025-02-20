@@ -16,7 +16,7 @@ const Layout = () => {
     <div className="font-Comfort font-semibold relative ">
       <ScrollRestoration />
       <Navbar />
-      {/* <div
+      <div
         className={cn(
           "bg-[#F0EEE8] pb-96 pt-10",
           location.pathname === "/cart" && "bg-[#F0EEE8]",
@@ -24,15 +24,15 @@ const Layout = () => {
         )}
       >
         <Outlet />
-      </div> */}
-      {/* <div
+      </div>
+      <div
         className={cn(
           "-mt-[300px]",
           location.pathname === "/cart" && "-mt-[300px]"
         )}
       >
-        <Footer />
-      </div> */}
+        {/* <Footer /> */}
+      </div>
       <Toaster />
       <div
         className="fixed bottom-10 right-10 cursor-pointer z-30"

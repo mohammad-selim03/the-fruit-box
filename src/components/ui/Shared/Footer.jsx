@@ -1,14 +1,16 @@
-import { cloud, footerbg, footerlogo } from "@/assets";
+import { cloud, footerbg, footerbg1, footerlogo } from "@/assets";
 import Button from "@/components/DynamicComponents/Button";
 import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <div className="relative mt-20">
-      <img src={footerbg} alt="" className="w-full h-full" />
+    <div className="relative mt-20  h-full">
+      {/* bg-[#F68F2A] */}
+      <img src={footerbg} alt="" className="w-full h-full lg:h-[700px]  " />
+      {/* <img src={footerbg1} alt="" className="w-full h-full" /> */}
 
-      <div className="absolute top-[40%] left-1/2 -translate-x-1/2 w-[1300px]  ">
-        <div className="flex items-start gap-[20px] text-white">
+      <div className="absolute top-[40%] left-1/2 w-full -translate-x-1/2 px-[200px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 items-start gap-[20px] text-white">
           <div className="w-full">
             <p className="text-xl uppercase pb-8">
               WHY HAVE FRUIT IN THE OFFICE?
@@ -26,7 +28,7 @@ const Footer = () => {
               </Button>
             </div>
           </div>
-          <div className="w-[828px]">
+          <div className=" ">
             <p className="text-xl uppercase pb-5">ABOUT COMPANY</p>
 
             <div className="flex flex-col gap-3 mt-3">
@@ -44,7 +46,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div className="w-[828px]">
+          <div className=" ">
             <p className="text-xl uppercase pb-5">CUSTOMER SERVICE </p>
             <div className="flex flex-col gap-3 mt-3">
               <Link
@@ -73,7 +75,7 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="w-full h-[220px] bg-[#E07B1A] py-6 px-5 rounded-xl -mt-6">
+          <div className="w-full h-fit bg-[#E07B1A] py-6 px-5 rounded-xl -mt-6">
             <p className="text-xl uppercase pb-5">CONNECT WITH US</p>
             <div className="flex flex-col gap-3 mt-3">
               <p className="text-xs text-[#FFD600]">

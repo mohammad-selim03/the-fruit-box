@@ -5,33 +5,32 @@ const Banner = () => {
   return (
     <div>
       <div className="relative z-20">
-        <img src={bannerbg} alt="" className="h-[1150px] w-full " />
+        <img src={bannerbg} alt="" className="h-[800px] md:h-[1000px] lg:h-[1150px] w-full " />
         <img
           src={homebanner}
           alt=""
-          className="absolute top-0 left-0 h-[825px]"
+          className="absolute top-0 left-0 aspect-video w-full h-[500px] md:h-[600px] lg:h-[825px]"
         />
-        <div>
-          <img
-            src={orderPhoto}
-            alt=""
-            className="absolute top-[30%] left-[30%] -translate-x-1/2 -translate-y-1/2"
-          />
-          <div className="absolute top-[17%] left-[17%] flex flex-col gap-3">
-            <h2 className="text-[64px] leading-none font-bold text-white ">
+        <div className="absolute top-[30%] lg:top-[40%] left-[40%] lg:left-[30%] -translate-x-1/2 -translate-y-1/2">
+          <img src={orderPhoto} alt="" className=" " />
+          <div className="absolute top-[15%] left-[12%] flex flex-col gap-1 sm:gap-3">
+            <h2
+              className="text-[16px] md:text-[32px] lg:text-[64px] font-bold text-white leading-none"
+              style={{ stroke: "white", webkitTextStroke: "2px white" }}
+            >
               OFFICE FRUIT <br /> DELIVERY
             </h2>
-            <p className="text-white text-[32px]">
+            <p className="text-white text-[12px] md:text-[16px] lg:text-[32px]">
               It’s good for you and staff <br /> love it too.
             </p>
-            <Button className="py-5 px-10 rounded-3xl shadow-black/20 shadow-md border-2 border-white">
+            <Button className="py-2 md:py-5 px-5 md:px-10 rounded-3xl shadow-black/20 shadow-md border-2 border-white text-xs md:text-base">
               Order a Fruit Box
             </Button>
           </div>
         </div>
-        <div className="absolute bottom-[17%] left-1/2 -translate-x-1/2 w-full">
+        <div className="absolute bottom-[20%] md:bottom-[17%] left-1/2 -translate-x-1/2 w-full">
           <p
-            className="text-[40px] text-center font-extrabold"
+            className="text-[20px] md:text-[40px] text-center font-extrabold"
             style={{
               textStroke: "2px black",
               webkitTextStroke: "2px black",
@@ -57,7 +56,7 @@ const Banner = () => {
               ree delivery.
             </span>
           </p>
-          <p className="text-center">
+          <p className="text-center text-xs md:text-base">
             Try us for just 2 delivereies and discover we why we’re Calgary’s
             premier office fruit supplier.
           </p>

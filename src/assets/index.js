@@ -28,6 +28,7 @@ import servingsizes from "@/assets/home/servingsizes.png";
 import frequency from "@/assets/home/frequency.png";
 import ourfruit from "@/assets/home/ourfruit.png";
 import footerbg from "@/assets/home/footerbg.png";
+import footerbg1 from "@/assets/home/footerbg1.png";
 import footerlogo from "@/assets/home/footerlogo.png";
 import cloud from "@/assets/home/cloud.png";
 import contactbanner from "@/assets/home/contactbanner.png";
@@ -75,6 +76,7 @@ export {
   frequency,
   ourfruit,
   footerbg,
+  footerbg1,
   footerlogo,
   cloud,
   contactbanner,

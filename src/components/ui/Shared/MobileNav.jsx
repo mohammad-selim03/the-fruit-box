@@ -1,7 +1,4 @@
-import { cartCar } from "@/assets";
-import Button from "@/components/DynamicComponents/Button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { cartCar } from "@/assets"; 
 import {
   Sheet,
   SheetClose,
