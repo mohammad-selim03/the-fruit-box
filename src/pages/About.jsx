@@ -6,7 +6,7 @@ import Title from "@/components/DynamicComponents/Title";
 
 const About = () => {
   return (
-    <div className="pb-80">
+    <div>
       <DynamicBanner title="ABOUT" semiTitle="We’re a proud Calgary company." />
       <div className="relative mt-20">
         <div className="flex flex-col gap-3 text-[#38302F] w-[948px] mx-[280px]">

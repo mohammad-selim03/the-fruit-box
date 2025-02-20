@@ -13,7 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 const Faq = () => {
   return (
-    <div className="pb-80">
+    <div>
       <DynamicBanner
         title="FAQ"
         semiTitle="Fresh fruit delivered to your office."

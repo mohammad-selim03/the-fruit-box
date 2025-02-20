@@ -6,7 +6,7 @@ import Title from "@/components/DynamicComponents/Title";
 
 const HowitWorks = () => {
   return (
-    <div className="pb-80">
+    <div className=" ">
       <DynamicBanner
         title="HOW IT WORKS"
         semiTitle="What a great idea!
@@ -39,7 +39,7 @@ const HowitWorks = () => {
           </p>
         </div>
         <div className="flex flex-col gap-3 text-[#38302F] w-[948px] mx-[300px]">
-          <Title className="capitalize">We’re growing… and focused!</Title>
+          <Title className="capitalize text-nowrap">We’re growing… and focused!</Title>
           <p>
             Our business continues to grow – thanks to our amazing customers!
             Our customers range from 5 to 500+ staff. The secret? Exceptional

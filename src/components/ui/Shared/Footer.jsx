@@ -7,25 +7,27 @@ const Footer = () => {
     <div className="relative mt-20">
       <img src={footerbg} alt="" className="w-full h-full" />
 
-      <div className="absolute top-[40%] left-1/2 -translate-x-1/2 w-[1200px]  ">
-        <div className="grid grid-cols-4 gap-[30px] text-white">
-          <div>
-            <p className="text-xl uppercase">WHY HAVE FRUIT IN THE OFFICE?</p>
+      <div className="absolute top-[40%] left-1/2 -translate-x-1/2 w-[1300px]  ">
+        <div className="flex items-start gap-[20px] text-white">
+          <div className="w-full">
+            <p className="text-xl uppercase pb-8">
+              WHY HAVE FRUIT IN THE OFFICE?
+            </p>
             <p className="text-sm text-primaryTextColor">
               Fresh fruit at work makes for happier employees, lowers
-              absenteeism, and sends a positive message throughout your
-              company. Choose your size, choose your delivery schedule, and
-              then we&apos;ll deliver directly to your office. Start your office
+              absenteeism, and sends a positive message throughout your company.
+              Choose your size, choose your delivery schedule, and then
+              we&apos;ll deliver directly to your office. Start your office
               fruit delivery today!
             </p>
             <div className="mt-12">
-              <Button className="py-5 rounded-2xl shadow-black/20 shadow-md border-2 border-white">
+              <Button className="py-5 px-10 rounded-2xl shadow-black/20 shadow-md border-2 border-white">
                 Order a Fruit Box
               </Button>
             </div>
           </div>
-          <div>
-            <p className="text-xl uppercase">ABOUT COMPANY</p>
+          <div className="w-[828px]">
+            <p className="text-xl uppercase pb-5">ABOUT COMPANY</p>
 
             <div className="flex flex-col gap-3 mt-3">
               <p className="text-sm text-primaryTextColor cursor-pointer hover:underline">
@@ -42,8 +44,8 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div>
-            <p className="text-xl uppercase">CUSTOMER SERVICE </p>
+          <div className="w-[828px]">
+            <p className="text-xl uppercase pb-5">CUSTOMER SERVICE </p>
             <div className="flex flex-col gap-3 mt-3">
               <Link
                 to={"/contact-us"}
@@ -71,8 +73,8 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="w-[383px] h-[190px] bg-[#E07B1A] py-6 px-5 rounded-xl -mt-8">
-            <p className="text-xl uppercase">CONNECT WITH US</p>
+          <div className="w-full h-[220px] bg-[#E07B1A] py-6 px-5 rounded-xl -mt-6">
+            <p className="text-xl uppercase pb-5">CONNECT WITH US</p>
             <div className="flex flex-col gap-3 mt-3">
               <p className="text-xs text-[#FFD600]">
                 <span className="font-semibold text-sm text-white">
@@ -97,8 +99,8 @@ const Footer = () => {
           <div className="flex items-start justify-center gap-1 py-5 text-white border-t border-white/30 ">
             <img src={footerlogo} alt="" className="w-8" />
             <p className="mt-3 text-sm">
-              The Fruit Box Ltd. Copyright 2021. All Rights Reserved. Powered
-              by the Awesomeness of Fresh Fruit.
+              The Fruit Box Ltd. Copyright 2021. All Rights Reserved. Powered by
+              the Awesomeness of Fresh Fruit.
             </p>
           </div>
         </div>
