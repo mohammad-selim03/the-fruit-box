@@ -12,15 +12,26 @@ const Layout = () => {
   };
 
   const location = useLocation();
-
+  console.log(location.pathname);
   return (
-    <div className="font-Comfort font-semibold relative">
+    <div className="font-Comfort font-semibold relative ">
       <ScrollRestoration />
       <Navbar />
-      <div className={cn("bg-[#F0EEE8]", location.pathname === "/cart" && "bg-[#F0EEE8]")}>
+      <div
+        className={cn(
+          "bg-[#F0EEE8] pb-96 pt-10",
+          location.pathname === "/cart" && "bg-[#F0EEE8]",
+          location.pathname === "/" && "bg-transparent"
+        )}
+      >
         <Outlet />
       </div>
-      <div className={cn("-mt-[300px]", location.pathname === "/cart" && "-mt-[300px]")}>
+      <div
+        className={cn(
+          "-mt-[300px]",
+          location.pathname === "/cart" && "-mt-[300px]"
+        )}
+      >
         <Footer />
       </div>
       <Toaster />

@@ -78,20 +78,22 @@ const FruitBoxCard = ({ data }) => {
             className="h-[315.548px]"
           />
           <div className="absolute right-0 px-7 top-[34%] -translate-y-1/2 w-full">
-            <div className="flex flex-col gap-4 group-hover:hidden">
-              <h2 className="text-[26px] text-white">{data?.name}</h2>
+            <div className="flex flex-col gap-4">
+              <h2 className="text-[26px] text-white group-hover:hidden">{data?.name}</h2>
 
               {data?.description ? (
-                <p className={cn("", !data?.name && "-mt-14 text-white")}>
+                <p className={cn("group-hover:hidden", !data?.name && "-mt-14 text-white")}>
                   {data?.subDescription || data?.description}
                 </p>
               ) : (
-                <SelectItems
-                  placeholder="10 Servings"
-                  data={servingsData}
-                  setServings={setServings}
-                  triggerClass="py-6"
-                />
+                <div className="group-hover:absolute group-hover:-bottom-28 group-hover:w-[80%]">
+                  <SelectItems
+                    placeholder="10 Servings"
+                    data={servingsData}
+                    setServings={setServings}
+                    triggerClass="py-6"
+                  />
+                </div>
               )}
             </div>
 
@@ -99,7 +101,7 @@ const FruitBoxCard = ({ data }) => {
             <div
               onClick={handleAddToCart}
               className={cn(
-                "absolute -bottom-32 w-[80%] z-20 group-hover:-bottom-[168px]"
+                "absolute -bottom-32 w-[80%] z-20 group-hover:-bottom-[168px] flex flex-col gap-8"
                 // !data?.description && "-bottom-[120px]"
               )}
             >

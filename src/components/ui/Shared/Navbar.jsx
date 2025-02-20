@@ -13,7 +13,6 @@ const Navbar = () => {
     const loadCartItems = () => {
       const fruitsData = localStorage.getItem("fruits");
 
-      // Ensure fruitsData is parsed correctly as an object
       let parsedData = [];
 
       if (fruitsData) {
@@ -21,32 +20,30 @@ const Navbar = () => {
           parsedData = JSON.parse(fruitsData);
         } catch (error) {
           console.error("Error parsing fruits data:", error);
-          parsedData = {}; // Default to an empty object if parsing fails
+          parsedData = [];
         }
       }
 
-      // Check if parsedData is an object with an array
-      if (parsedData && Array.isArray(parsedData[0])) {
-        const cartItems = parsedData[0]; // Assuming the array is at index 0
+      console.log("Parsed data:", parsedData);
 
-        const total = cartItems.reduce(
-          (sum, item) => sum + (item.quantity || 1),
+      // Ensure parsedData is an array before reducing
+      if (Array.isArray(parsedData)) {
+        const total = parsedData.reduce(
+          (sum, item) => sum + (item.quantity || 1), // Default quantity to 1 if missing
           0
         );
         setTotalQuantity(total);
       } else {
-        // console.error("fruitsData is not an array:", parsedData);
-        setTotalQuantity(0); // Set to 0 if fruitsData is not in expected format
+        setTotalQuantity(0);
       }
     };
 
-    // Load initial data
     loadCartItems();
 
-    // Set up interval to check localStorage every second
+    // Set interval to update cart items every second
     const intervalId = setInterval(loadCartItems, 1000);
 
-    // Listen for storage events from other tabs
+    // Listen for changes in localStorage
     const handleStorageChange = (e) => {
       if (e.key === "fruits") {
         loadCartItems();
@@ -54,7 +51,6 @@ const Navbar = () => {
     };
     window.addEventListener("storage", handleStorageChange);
 
-    // Cleanup
     return () => {
       clearInterval(intervalId);
       window.removeEventListener("storage", handleStorageChange);
@@ -62,7 +58,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="bg-white h-[120px] w-full px-[100px] flex items-center  justify-between">
+    <div className="bg-white h-[120px] w-full px-[100px] flex items-center  justify-between fixed top-0 z-[999] shadow-black/5 shadow-xl">
       <Link to={"/"}>
         <img src={logo} alt="" />
       </Link>

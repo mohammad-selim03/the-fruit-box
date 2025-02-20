@@ -59,6 +59,8 @@ const FruitBoxSection = () => {
       id: 4,
       name: "Custom Fruit Box",
       description: "",
+      description2:
+        "Perfect for offices with 11-20 people. he mix includes and bananas. lus we include a variety of seasonal fruit throughout the year.",
       buttonText: "Order now ",
       image: <img src={customfruits} alt="" />,
       bg: <img src={greenCardbg} alt="" />,

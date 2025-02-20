@@ -35,7 +35,7 @@ const SelectItems = ({
         setAvailableItems(filteredItems || []);
       } else {
         console.error("cartItems is not an array:", cartItems);
-        setAvailableItems([]); // Fallback to empty array if cartItems is invalid
+        setAvailableItems([]);  
       }
     };
 
@@ -74,7 +74,7 @@ const SelectItems = ({
         <SelectTrigger
           onClick={() => handleId(selectedId)}
           className={cn(
-            "bg-white border border-primaryLightColor rounded-2xl text-lg text-nowrap placeholder:text-gray-400",
+            "bg-white border border-primaryLightColor rounded-2xl text-lg text-nowrap placeholder:text-gray-400 z-40",
             triggerClass
           )}
         >
