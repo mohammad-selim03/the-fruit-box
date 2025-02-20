@@ -10,68 +10,23 @@ import {
 } from "@/assets";
 import Title from "../DynamicComponents/Title";
 import FruitBoxCard from "../DynamicComponents/FruitBoxCard";
+import { useGetApi } from "@/hooks/API/useGetApi";
+import Loader from "../ui/Shared/Loader";
+import IsError from "../ui/Shared/IsError";
 
 const FruitBoxSection = () => {
-  const fruitBoxesData = [
-    {
-      id: 1,
-      name: "SMALL Fruit Box",
-      description: "15 SERVINGS / 5 - 10 STAFF",
-      description2:
-        "Perfect for offices with 11-20 people. he mix includes and bananas. lus we include a variety of seasonal fruit throughout the year.",
-      buttonText: "Order now - $30.50",
-      image: <img src={smallfruits} alt="" />,
-      bg: <img src={greenCardbg} alt="" />,
-      borderColor: "#75AC46",
-      price: 30.5,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      name: "Medium Fruit Box",
-      title: "Medium Fruit Box",
-      subDescription: "30+ servings.",
-      description:
-        "Perfect for offices with 11-20 people. he mix includes and bananas. lus we include a variety of seasonal fruit throughout the year.",
-      buttonText: "Order now - $46",
-      description2:
-        "Perfect for offices with 11-20 people. he mix includes and bananas. lus we include a variety of seasonal fruit throughout the year.",
-      image: <img src={mediumfruits} alt="" />,
-      bg: <img src={orangeCardbg} alt="" />,
-      borderColor: "#75AC46",
-      price: 50,
-      quantity: 1,
-    },
-    {
-      id: 3,
-      name: "Large Fruit Box",
-      description: "60 servings /  21-40 staff",
-      description2:
-        "Perfect for offices with 11-20 people. he mix includes and bananas. lus we include a variety of seasonal fruit throughout the year.",
-      buttonText: "Order now - $46",
-      image: <img src={largefruits} alt="" />,
-      bg: <img src={greenCardbg} alt="" />,
-      borderColor: "#75AC46",
-      price: 78,
-      quantity: 1,
-    },
-    {
-      id: 4,
-      name: "Custom Fruit Box",
-      description: "",
-      description2:
-        "Perfect for offices with 11-20 people. he mix includes and bananas. lus we include a variety of seasonal fruit throughout the year.",
-      buttonText: "Order now ",
-      image: <img src={customfruits} alt="" />,
-      bg: <img src={greenCardbg} alt="" />,
-      borderColor: "#75AC46",
-      price: 28,
-      quantity: 1,
-    },
-  ];
+  const { data: fruitsData, isLoading, isError } = useGetApi("productss", true);
+  console.log("data", fruitsData);
 
-  return (
-    <div className="relative z-10 h-[1800px]">
+  return isLoading ? (
+    <div className="flex items-center justify-center h-80">
+      {" "}
+      <Loader />
+    </div>
+  ) : isError ? (
+    <IsError />
+  ) : (
+    <div className="relative z-10 h-[1500px]">
       <img
         src={fruitboxbg}
         alt=""
@@ -96,7 +51,7 @@ const FruitBoxSection = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-[20.67px] px-5 2xl:px-0">
-            {fruitBoxesData?.map((fruitBox, index) => (
+            {fruitsData?.map((fruitBox, index) => (
               <FruitBoxCard key={index} data={fruitBox} />
             ))}
           </div>

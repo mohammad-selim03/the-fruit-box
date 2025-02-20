@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { useContext } from "react";
 import { Context } from "@/context/Context";
 import { useState } from "react";
+import { greenCardbg } from "@/assets";
 
 const FruitBoxCard = ({ data }) => {
   const [servings, setServings] = useState("10 Servings");
@@ -57,7 +58,7 @@ const FruitBoxCard = ({ data }) => {
             !data?.name && "border-SecondaryBg"
           )}
         >
-          <img src={data?.image?.props?.src} alt={data?.name || "Fruit"} />
+          <img src={data?.image} alt={data?.name || "Fruit"} />
         </div>
 
         {/* Right Content Section */}
@@ -67,33 +68,32 @@ const FruitBoxCard = ({ data }) => {
               "bg-primaryLightColor absolute top-0 left-0 translate-y-80 group-hover:translate-y-0 transition-all duration-200 rounded-r-[25px] w-full h-full flex flex-col items-center justify-between py-10"
             )}
           >
-            <p className="text-white px-3">{data?.description2}</p>
-            {/* <Button className="border-2 rounded-2xl border-white w-full shadow-black/20 shadow-lg py-3 px-14">
-              {data?.buttonText}
-            </Button> */}
+            <p className="text-white px-3 line-clamp-4 ">{data?.description}</p>
           </div>
-          <img
-            src={data?.bg?.props?.src}
-            alt="Background"
-            className="h-[315.548px]"
-          />
+          <img src={greenCardbg} alt="Background" className="h-[315.548px]" />
           <div className="absolute right-0 px-7 top-[34%] -translate-y-1/2 w-full">
             <div className="flex flex-col gap-4">
-              <h2 className="text-[26px] text-white group-hover:hidden">{data?.name}</h2>
-
-              {data?.description ? (
-                <p className={cn("group-hover:hidden", !data?.name && "-mt-14 text-white")}>
-                  {data?.subDescription || data?.description}
-                </p>
-              ) : (
-                <div className="group-hover:absolute group-hover:-bottom-28 group-hover:w-[80%]">
-                  <SelectItems
-                    placeholder="10 Servings"
-                    data={servingsData}
-                    setServings={setServings}
-                    triggerClass="py-6"
-                  />
-                </div>
+              {data?.name && (
+                <h2 className="text-[26px] text-white group-hover:hidden capitalize">
+                  {data?.name}
+                </h2>
+              )}
+              {data?.servings_multiple && (
+                <>
+                  <div className="group-hover:absolute group-hover:-bottom-28 group-hover:w-[80%]">
+                    <SelectItems
+                      placeholder="10 Servings"
+                      data={servingsData}
+                      setServings={setServings}
+                      triggerClass="py-6"
+                    />
+                  </div>
+                </>
+              )}
+              {data?.servings && (
+                <h2 className="text-base text-white group-hover:hidden">
+                  {data?.servings}
+                </h2>
               )}
             </div>
 
@@ -106,7 +106,7 @@ const FruitBoxCard = ({ data }) => {
               )}
             >
               <Button className="border-2 rounded-2xl border-white w-full shadow-black/20 shadow-lg py-3">
-                {data?.buttonText}
+                Order now ${data?.price}
               </Button>
             </div>
           </div>
