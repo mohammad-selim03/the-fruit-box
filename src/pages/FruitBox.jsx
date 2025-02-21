@@ -10,6 +10,7 @@ import { logo2 } from "@/assets";
 import { useGetApi } from "@/hooks/API/useGetApi";
 import Loader from "@/components/ui/Shared/Loader";
 import IsError from "@/components/ui/Shared/IsError";
+import FruitCard from "@/components/HomePageComponents/FruitCard";
 
 const FruitBox = () => {
   const { data, isLoading, isError } = useGetApi("products", true);
@@ -27,59 +28,24 @@ const FruitBox = () => {
   }, [setCartItems]);
 
   // Increment quantity
-  const handleIncrement = (id) => {
-    setFruits((prevFruits) => {
-      return prevFruits.map((fruit) =>
-        fruit.id === id ? { ...fruit, quantity: fruit.quantity + 1 } : fruit
-      );
-    });
-  };
+  // const handleIncrement = (id) => {
+  //   setFruits((prevFruits) => {
+  //     return prevFruits.map((fruit) =>
+  //       fruit.id === id ? { ...fruit, quantity: fruit.quantity + 1 } : fruit
+  //     );
+  //   });
+  // };
 
-  // Decrement quantity
-  const handleDecrement = (id) => {
-    setFruits((prevFruits) => {
-      return prevFruits.map((fruit) =>
-        fruit.id === id && fruit.quantity > 1
-          ? { ...fruit, quantity: fruit.quantity - 1 }
-          : fruit
-      );
-    });
-  };
-
-  const handleAddToCart = (fruit) => {
-    setCartItems((prevItems) => {
-      const existingItems = Array.isArray(prevItems) ? prevItems : [];
-      const itemIndex = existingItems.findIndex((item) => item.id === fruit.id);
-
-      let updatedItems;
-      if (itemIndex !== -1) {
-        // Update existing item
-        updatedItems = existingItems.map((item, index) =>
-          index === itemIndex
-            ? { ...item, quantity: item.quantity + fruit.quantity }
-            : item
-        );
-        toast.success("Quantity updated in the cart");
-      } else {
-        // Add new item
-        const newItem = {
-          id: fruit.id,
-          name: fruit.name,
-          description: fruit.description || "",
-          image: fruit.image,
-          price: fruit.price,
-          quantity: fruit.quantity || 1,
-          servings: fruit.description === "" ? servings : undefined,
-        };
-        updatedItems = [...existingItems, newItem];
-        toast.success("Product added to the cart");
-      }
-
-      // Update localStorage with cart items
-      localStorage.setItem("cartItems", JSON.stringify(updatedItems));
-      return updatedItems;
-    });
-  };
+  // // Decrement quantity
+  // const handleDecrement = (id) => {
+  //   setFruits((prevFruits) => {
+  //     return prevFruits.map((fruit) =>
+  //       fruit.id === id && fruit.quantity > 1
+  //         ? { ...fruit, quantity: fruit.quantity - 1 }
+  //         : fruit
+  //     );
+  //   });
+  // };
 
   return isLoading ? (
     <div className="flex items-center justify-center h-screen">
@@ -99,79 +65,7 @@ const FruitBox = () => {
         <div className="border-[8px] border-secondaryTextColor rounded-3xl p-4">
           <div className="bg-white px-5 rounded-3xl py-5 pt-10 w-full">
             {data.length > 0 ? (
-              data.map((fruit) => (
-                <div
-                  key={fruit.id}
-                  className="flex items-center gap-12 w-full border-b py-5"
-                >
-                  <div className="w-[200px]">
-                    <img
-                      src={fruit?.image?.props?.src || fruit?.image}
-                      alt={fruit?.name}
-                      className={cn(
-                        "w-[200px]",
-                        fruit?.name === "SMALL Fruit Box" && "w-2/3"
-                      )}
-                    />
-                  </div>
-                  <div className="w-[382px] flex flex-col gap-5">
-                    <h2 className="text-2xl font-bold">
-                      {fruit.name}{" "}
-                      {fruit?.servings && (
-                        <span className="text-secondaryTextColor text-lg font-bold">
-                          {fruit?.servings}
-                        </span>
-                      )}
-                    </h2>
-                    <p className="line-clamp-3">{fruit?.description}</p>
-                  </div>
-                  <div className="flex flex-col items-center gap-5">
-                    <p className="text-[40px] text-secondaryTextColor w-28 text-center">
-                      ${fruit.price}
-                    </p>
-                    <div>
-                      <div className="flex items-center justify-between gap-2 border border-gray-300 p-1 rounded-xl w-28">
-                        <button
-                          className="rounded bg-primaryLightColor text-black text-xl px-2"
-                          onClick={() => handleDecrement(fruit.id)}
-                        >
-                          -
-                        </button>
-                        <span className="w-5 flex items-center justify-center">
-                          {/* {fruit.quantity < 10
-                            ? "0" + fruit.quantity
-                            : fruit.quantity} */}{" "}
-                          1
-                        </span>
-                        <button
-                          className="rounded bg-primaryLightColor text-black text-xl px-2"
-                          onClick={() => handleIncrement(fruit.id)}
-                        >
-                          +
-                        </button>
-                      </div>
-                      {fruit.description === "" && (
-                        <div className="mt-3">
-                          <SelectItems
-                            data={servingsData}
-                            value={servings}
-                            onChange={setServings}
-                            triggerClass="border border-gray-300 text-red-400"
-                          />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  <div>
-                    <Button
-                      className="capitalize px-14 shadow-black/20 shadow-md py-3 w-full"
-                      onClick={() => handleAddToCart(fruit)}
-                    >
-                      Add to Cart
-                    </Button>
-                  </div>
-                </div>
-              ))
+              data.map((fruit) => <FruitCard key={data?.id} data={fruit} />)
             ) : (
               <p className="flex items-center justify-center text-4xl font-extrabold h-60">
                 No items in the cart.

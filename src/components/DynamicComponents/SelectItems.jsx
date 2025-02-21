@@ -35,7 +35,7 @@ const SelectItems = ({
         setAvailableItems(filteredItems || []);
       } else {
         // console.error("cartItems is not an array:", cartItems);
-        setAvailableItems([]);  
+        setAvailableItems([]);
       }
     };
 
@@ -53,7 +53,7 @@ const SelectItems = ({
 
   const handleId = (id) => {
     setSelectedId(id);
-    const fruitss = data?.filter((d) => d?.id === id); 
+    const fruitss = data?.filter((d) => d?.id === id);
   };
 
   if (availableItems.length === 0) {
@@ -64,11 +64,13 @@ const SelectItems = ({
     );
   }
 
+  console.log(data[0?.title]);
+
   return (
     <div>
       <Select
-        defaultValue={value || ""}
-        onValueChange={onChange || setServings || setSelectedId} 
+        
+        onValueChange={onChange || setServings || setSelectedId}
       >
         <SelectTrigger
           onClick={() => handleId(selectedId)}
@@ -77,7 +79,9 @@ const SelectItems = ({
             triggerClass
           )}
         >
-          <SelectValue placeholder={placeholder || ""} className="text-gray-400"/>
+          <SelectValue
+            placeholder={placeholder } 
+          />
         </SelectTrigger>
         <SelectContent className="bg-white rounded-2xl">
           <SelectGroup>

@@ -29,10 +29,7 @@ const AddFruits = ({
     }
 
     const selectedItem = data?.find(
-      (item) =>
-        item?.id === selectedId ||
-        item?.name === selectedId ||
-        item?.title === selectedId
+      (item) => item?.id === selectedId || item?.name === selectedId
     );
 
     setSelectedItem(selectedItem || null);
@@ -113,6 +110,7 @@ export default AddFruits;
 AddFruits.propTypes = {
   data: PropTypes.array.isRequired,
   placeholder: PropTypes.string,
+  selectedItem: PropTypes.string,
   triggerClass: PropTypes.string,
   value: PropTypes.string,
   setServings: PropTypes.func,

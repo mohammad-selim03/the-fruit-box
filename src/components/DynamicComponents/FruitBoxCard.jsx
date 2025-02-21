@@ -82,6 +82,7 @@ const FruitBoxCard = ({ data }) => {
                       data={servingsData}
                       setServings={setServings}
                       triggerClass="py-6"
+                      value="10 Servings"
                     />
                   </div>
                 </>

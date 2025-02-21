@@ -21,7 +21,7 @@ const Cart = () => {
   const [totalAmount, setTotalAmount] = useState("");
   const [servings, setServings] = useState("");
 
-  const { data: fruitsData, isLoading, isError } = useGetApi("products", true);
+  const { data: fruitsData } = useGetApi("products", true);
 
   const {
     register,
@@ -72,45 +72,35 @@ const Cart = () => {
     postData(combineData);
   };
 
-  if (isSuccess) {
-    setIsModalOpen(true);
-    toast.success("Order submitted successfully");
-  }
-  if (isPostingError) {
-    toast.error("Failed to submit order");
-  }
-
-  // Load fruits from localStorage only on mount
   useEffect(() => {
     const storedFruits = localStorage.getItem("fruits");
     if (storedFruits) {
       const parsedFruits = JSON.parse(storedFruits);
       setFruits(parsedFruits);
     }
-  }, []); // Runs only once
+  }, []);
 
-  // Update fruitsObject and totalAmount when fruits state changes
   useEffect(() => {
     if (fruits.length > 0) {
       // Transform array into a single object
       const fruitsObject = fruits.reduce((acc, fruit, index) => {
         acc[`product_id[${index}]`] = fruit.id;
-        acc[`quantity[${index}]`] = fruit.quantity;
-        acc[`name[${index}]`] = fruit.name;
-        acc[`servings[${index}]`] = fruit.servings;
+        acc[`quantity[${index}]`] = fruit.quantity || 1;
+        acc[`servings[${index}]`] = fruit?.servings || servings;
+        // acc[`name[${index}]`] = fruit.name;
         return acc;
       }, {});
 
       console.log("Updated Fruits Object:", fruitsObject);
       setFruitsObject(fruitsObject);
-      // Calculate total amount
+
       const total = fruits.reduce(
         (sum, fruit) => sum + (fruit?.quantity * fruit?.price || fruit?.price),
         0
       );
       setTotalAmount(total);
     }
-  }, [fruits]); // Runs only when `fruits` state changes
+  }, [fruits]);
 
   useEffect(() => {
     if (selectedItem && Object.keys(selectedItem).length > 0) {
@@ -131,6 +121,20 @@ const Cart = () => {
     }
   }, [selectedItem, servings]);
 
+  useEffect(() => {
+    if (isSuccess) {
+      setIsModalOpen(true);
+      toast.success("Order submitted successfully");
+      localStorage.removeItem("fruits");
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isPostingError) {
+      toast.error("Failed to submit order");
+    }
+  }, [isPostingError]);
+
   return (
     <div className="min-h-[900px] pt-20">
       <Container>
@@ -144,11 +148,13 @@ const Cart = () => {
         </div>
         <div className="border-4 border-primaryBoldColor rounded-3xl p-4 ">
           <div className="bg-white px-5 rounded-3xl py-5 pt-10 w-full">
-            <div className="flex items-center justify-end text-xl font-bold gap-14 ml-6 max-w-6xl">
-              {Cartheader?.map((data) => (
-                <p key={data}>{data}</p>
-              ))}
-            </div>
+            {fruits?.length > 0 && (
+              <div className="flex items-center justify-end text-xl font-bold gap-14 ml-6 max-w-6xl">
+                {Cartheader?.map((data) => (
+                  <p key={data}>{data}</p>
+                ))}
+              </div>
+            )}
             {fruits.length > 0 ? (
               fruits.map((fruit) => {
                 return (
@@ -202,9 +208,7 @@ const Cart = () => {
                             -
                           </button>
                           <span className="w-5 flex items-center justify-center">
-                            {fruit?.quantity < 10
-                              ? "0" + fruit?.quantity
-                              : fruit?.quantity}
+                            {fruit?.quantity ? fruit?.quantity : 1}
                           </span>
                           <button
                             className="rounded bg-primaryLightColor text-black text-xl px-2"
@@ -225,7 +229,9 @@ const Cart = () => {
                         )}
                       </div>
                       <p className="text-[26px] w-10 text-secondaryTextColor ml-5">
-                        ${parseInt(fruit.price) * parseInt(fruit.quantity)}
+                        $
+                        {parseInt(fruit.price) *
+                          parseInt(fruit.quantity ? fruit.quantity : 1)}
                       </p>
                     </div>
                   </div>
@@ -236,22 +242,24 @@ const Cart = () => {
                 No items in the cart.
               </p>
             )}
-            <div className="pt-16 pb-5">
-              <Delivery
-                register={register}
-                handleSubmit={handleSubmit}
-                errors={errors}
-                control={control}
-                isPosting={isPosting}
-                isPostingError={isPostingError}
-                placeOrder={placeOrder}
-                onChange={onChange}
-              />
-              <SuccessModal
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
-              />
-            </div>
+            {fruits.length > 0 && (
+              <div className="pt-16 pb-5">
+                <Delivery
+                  register={register}
+                  handleSubmit={handleSubmit}
+                  errors={errors}
+                  control={control}
+                  isPosting={isPosting}
+                  isPostingError={isPostingError}
+                  placeOrder={placeOrder}
+                  onChange={onChange}
+                />
+                <SuccessModal
+                  isModalOpen={isModalOpen}
+                  setIsModalOpen={setIsModalOpen}
+                />
+              </div>
+            )}
           </div>
         </div>
         <div className="py-10 w-[950px] mx-auto">
