@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 
 const FruitCard = ({ data }) => {
   const [servings, setServings] = useState("10 Servings");
-  const [quantity, setQuantity] = useState(1);  
+  const [quantity, setQuantity] = useState(1);
   const { setCartItems } = useContext(Context);
 
   const handleIncrement = () => {
@@ -37,7 +37,7 @@ const FruitCard = ({ data }) => {
       description: data?.description || "",
       image: data?.image || "",
       price: parseInt(data?.price),
-      quantity,  
+      quantity,
       servings: data?.servings,
       servings_multiple: data?.servings_multiple && servings,
     };
@@ -49,12 +49,18 @@ const FruitCard = ({ data }) => {
   };
 
   return (
-    <div key={data?.id} className="flex items-center gap-12 w-full border-b py-5">
+    <div
+      key={data?.id}
+      className="flex items-center gap-12 w-full border-b py-5"
+    >
       <div className="w-[200px]">
         <img
           src={data?.image}
           alt={data?.name}
-          className={cn("w-[200px]", data?.name === "SMALL Fruit Box" && "w-2/3")}
+          className={cn(
+            "w-[200px]",
+            data?.name === "SMALL Fruit Box" && "w-2/3"
+          )}
         />
       </div>
       <div className="w-[382px] flex flex-col gap-5">
@@ -80,7 +86,9 @@ const FruitCard = ({ data }) => {
             >
               -
             </button>
-            <span className="w-5 flex items-center justify-center">{quantity}</span>
+            <span className="w-5 flex items-center justify-center">
+              {quantity}
+            </span>
             <button
               className="rounded bg-primaryLightColor text-black text-xl px-2"
               onClick={handleIncrement}
@@ -88,7 +96,7 @@ const FruitCard = ({ data }) => {
               +
             </button>
           </div>
-          {data?.description === "" && (
+          {data?.servings_multiple && (
             <div className="mt-3">
               <SelectItems
                 data={servingsData}
