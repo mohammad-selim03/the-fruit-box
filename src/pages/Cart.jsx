@@ -195,7 +195,7 @@ const Cart = () => {
                         setSelectedItem={setSelectedItem}
                       />
                     </div>
-                    <div className="grid grid-cols-3 gap-5 border-4 max-w-[380px]">
+                    <div className="grid grid-cols-3 gap-5 max-w-[380px]">
                       <p className="text-[26px] w-28 text-center ml-3">
                         ${parseInt(fruit.price)}
                       </p>
