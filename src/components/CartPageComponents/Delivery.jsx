@@ -6,13 +6,15 @@ import { DatePicker } from "./DatePicker";
 import PropTypes from "prop-types";
 import { Controller } from "react-hook-form";
 import { formatDate } from "@/lib/DateFormate";
+import Loader from "../ui/Shared/Loader";
 
 const Delivery = ({
   register,
   handleSubmit,
   errors,
   control,
-  placeOrder, 
+  placeOrder,
+  isPosting, 
 }) => {
   return (
     <form onSubmit={handleSubmit(placeOrder)}>
@@ -76,7 +78,7 @@ const Delivery = ({
               </div>
               <div>
                 <Controller
-                  name="day"
+                  name="day_of_week"
                   control={control}
                   defaultValue={""}
                   rules={{ required: "Days of Week is required" }}
@@ -102,7 +104,7 @@ const Delivery = ({
             <textarea
               className="h-32 w-full border border-gray-300 outline-none p-3 rounded-2xl"
               placeholder="Type comments"
-              {...register("comments", { required: "Comments is required" })}
+              {...register("comment", { required: "Comments is required" })}
             ></textarea>
             {errors.comments && (
               <p className="text-red-500 text-xs -mt-5">
@@ -167,13 +169,13 @@ const Delivery = ({
               type="text"
               placeholder="Street Address"
               className="px-5 py-3 rounded-2xl border border-gray-300 w-full outline-none"
-              {...register("street_address", {
+              {...register("address", {
                 required: "Street Address is required",
               })}
             />
-            {errors.street_address && (
+            {errors.address && (
               <p className="text-red-500 text-xs -mt-5">
-                {errors.street_address.message}
+                {errors.address.message}
               </p>
             )}
             <div className="grid grid-cols-2 gap-5">
@@ -197,13 +199,13 @@ const Delivery = ({
                   type="text"
                   placeholder="Phone"
                   className="px-5 py-3 rounded-2xl border border-gray-300 w-full outline-none"
-                  {...register("phone", {
-                    required: "Phone is required",
+                  {...register("number", {
+                    required: "Number is required",
                   })}
                 />
-                {errors.phone && (
+                {errors.number && (
                   <p className="text-red-500 text-xs mt-1">
-                    {errors.phone.message}
+                    {errors.number.message}
                   </p>
                 )}
               </div>
@@ -216,7 +218,13 @@ const Delivery = ({
           type="submit"
           className="text-primaryLightColor bg-transparent border border-primaryLightColor hover:bg-primaryLightColor hover:text-white transition-all duration-300 uppercase px-16 shadow-black/10 shadow-xl"
         >
-          PLACE ORDER
+          {isPosting ? (
+            <p className="flex items-center justify-center gap-2">
+              Submitting <Loader size={30} />
+            </p>
+          ) : (
+            "PLACE ORDER"
+          )}
         </Button>
       </div>
     </form>
@@ -231,4 +239,6 @@ Delivery.propTypes = {
   errors: PropTypes.object,
   control: PropTypes.object,
   placeOrder: PropTypes.func,
+  isPosting: PropTypes.bool,
+  isPostingError: PropTypes.bool,
 };

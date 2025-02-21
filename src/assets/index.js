@@ -44,6 +44,7 @@ import aboutbg from "@/assets/home/aboutbg.png";
 import aboutpagefruits from "@/assets/home/aboutpagefruits.png";
 import van from "@/assets/home/van.png";
 import malta from "@/assets/home/malta.png";
+import contactpageimg from "@/assets/home/contactpageimg.png";
 
 export {
   bannerbg,
@@ -92,4 +93,5 @@ export {
   aboutpagefruits,
   van,
   malta,
+  contactpageimg,
 };

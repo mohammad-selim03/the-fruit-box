@@ -14,6 +14,7 @@ import IsError from "@/components/ui/Shared/IsError";
 import Loader from "@/components/ui/Shared/Loader";
 import { useGetApi } from "@/hooks/API/useGetApi";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router";
 const Faq = () => {
   const { data, isLoading, isError } = useGetApi("faqs", true);
   return isLoading ? (
@@ -62,9 +63,9 @@ const Faq = () => {
               <span className="text-secondaryTextColor">Delivered</span> to your
               office
             </Title>
-            <div className="py-5">
+            <Link to={"/fruit-box"} className="py-5">
               <Button className="py-6 px-20 ">View Fruit Boxes</Button>
-            </div>
+            </Link>
           </div>
           <div>
             <img src={contactfruits} alt="" />

@@ -11,16 +11,17 @@ import { useForm } from "react-hook-form";
 import { SuccessModal } from "@/components/CartPageComponents/SuccessModal";
 import { cn } from "@/lib/utils";
 import { useGetApi } from "@/hooks/API/useGetApi";
+import { UsePostApi } from "@/hooks/API/usePostApi";
 
 const Cart = () => {
   const [fruits, setFruits] = useState([]);
+  const [fruitsObject, setFruitsObject] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [totalAmount, setTotalAmount] = useState("");
   const [servings, setServings] = useState("");
 
   const { data: fruitsData, isLoading, isError } = useGetApi("products", true);
-  console.log("data", fruitsData);
 
   const {
     register,
@@ -58,25 +59,59 @@ const Cart = () => {
     localStorage.setItem("fruits", JSON.stringify(updatedFruits));
     toast.success("Fruit deleted successfully");
   };
+  const {
+    postData,
+    isLoading: isPosting,
+    isError: isPostingError,
+    isSuccess,
+  } = UsePostApi("order/store");
 
   const placeOrder = (data) => {
-    setIsModalOpen(true);
-    console.log("dataaaaaaaaaaaa", fruits, data);
+    console.log("dataaaaaaaaaaaa", { ...data, ...fruitsObject });
+    const combineData = { ...data, ...fruitsObject };
+    postData(combineData);
   };
-  console.log("frutisssadfas", fruits);
+
+  if (isSuccess) {
+    setIsModalOpen(true);
+    toast.success("Order submitted successfully");
+  }
+  if (isPostingError) {
+    toast.error("Failed to submit order");
+  }
+
+  // Load fruits from localStorage only on mount
   useEffect(() => {
     const storedFruits = localStorage.getItem("fruits");
     if (storedFruits) {
       const parsedFruits = JSON.parse(storedFruits);
       setFruits(parsedFruits);
+    }
+  }, []); // Runs only once
 
-      const total = parsedFruits.reduce(
+  // Update fruitsObject and totalAmount when fruits state changes
+  useEffect(() => {
+    if (fruits.length > 0) {
+      // Transform array into a single object
+      const fruitsObject = fruits.reduce((acc, fruit, index) => {
+        acc[`product_id[${index}]`] = fruit.id;
+        acc[`quantity[${index}]`] = fruit.quantity;
+        acc[`name[${index}]`] = fruit.name;
+        acc[`servings[${index}]`] = fruit.servings;
+        return acc;
+      }, {});
+
+      console.log("Updated Fruits Object:", fruitsObject);
+      setFruitsObject(fruitsObject);
+      // Calculate total amount
+      const total = fruits.reduce(
         (sum, fruit) => sum + (fruit?.quantity * fruit?.price || fruit?.price),
         0
       );
       setTotalAmount(total);
     }
-  }, []);
+  }, [fruits]); // Runs only when `fruits` state changes
+
   useEffect(() => {
     if (selectedItem && Object.keys(selectedItem).length > 0) {
       const updatedFruits = [...fruits, selectedItem];
@@ -116,8 +151,6 @@ const Cart = () => {
             </div>
             {fruits.length > 0 ? (
               fruits.map((fruit) => {
-                const iii = parseInt(fruit?.price);
-                console.log(typeof iii);
                 return (
                   <div
                     key={fruit.id}
@@ -209,6 +242,8 @@ const Cart = () => {
                 handleSubmit={handleSubmit}
                 errors={errors}
                 control={control}
+                isPosting={isPosting}
+                isPostingError={isPostingError}
                 placeOrder={placeOrder}
                 onChange={onChange}
               />
