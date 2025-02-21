@@ -3,6 +3,7 @@ import Button from "@/components/DynamicComponents/Button";
 import Container from "@/components/DynamicComponents/Container";
 import DynamicBanner from "@/components/DynamicComponents/DynamicBanner";
 import Title from "@/components/DynamicComponents/Title";
+import { Link } from "react-router";
 
 const HowitWorks = () => {
   return (
@@ -39,7 +40,9 @@ const HowitWorks = () => {
           </p>
         </div>
         <div className="flex flex-col gap-3 text-[#38302F] w-[948px] mx-[300px]">
-          <Title className="capitalize text-nowrap">We’re growing… and focused!</Title>
+          <Title className="capitalize text-nowrap">
+            We’re growing… and focused!
+          </Title>
           <p>
             Our business continues to grow – thanks to our amazing customers!
             Our customers range from 5 to 500+ staff. The secret? Exceptional
@@ -103,9 +106,9 @@ const HowitWorks = () => {
                 <span className="text-secondaryTextColor">Delivered</span> to
                 your office
               </Title>
-              <div className="py-5">
+              <Link to={"/fruit-box"} className="py-5">
                 <Button className="py-6 px-20 ">View Fruit Boxes</Button>
-              </div>
+              </Link>
             </div>
             <div>
               <img src={contactfruits} alt="" />

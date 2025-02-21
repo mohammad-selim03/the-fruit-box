@@ -124,7 +124,7 @@ const Cart = () => {
   useEffect(() => {
     if (isSuccess) {
       setIsModalOpen(true);
-      toast.success("Order submitted successfully");
+      // toast.success("Order submitted successfully");
       localStorage.removeItem("fruits");
     }
   }, [isSuccess]);
@@ -218,10 +218,14 @@ const Cart = () => {
                           </button>
                         </div>
                         {fruit?.servings_multiple && (
-                          <div className="mt-3">
+                          <div className="mt-3 w-32">
                             <SelectItems
                               data={servingsData}
-                              value={fruit?.servings}
+                              value={
+                                fruit?.servings ||
+                                fruit?.servings_multiple ||
+                                servings
+                              }
                               setServings={setServings}
                               triggerClass="border border-gray-300 text-red-400"
                             />

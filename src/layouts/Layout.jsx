@@ -31,7 +31,7 @@ const Layout = () => {
           location.pathname === "/cart" && "-mt-[300px]"
         )}
       >
-        {/* <Footer /> */}
+        <Footer />
       </div>
       <Toaster />
       <div

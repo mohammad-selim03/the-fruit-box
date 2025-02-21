@@ -69,7 +69,7 @@ const SelectItems = ({
   return (
     <div>
       <Select
-        value={value || "Select"}
+        defaultValue={value || "Select"}
         onValueChange={onChange || setServings || setSelectedId}
       >
         <SelectTrigger

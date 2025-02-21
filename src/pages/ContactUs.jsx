@@ -6,6 +6,7 @@ import Title from "@/components/DynamicComponents/Title";
 import { aboutbg } from "@/assets";
 import DynamicBanner from "@/components/DynamicComponents/DynamicBanner";
 import Contact from "@/components/HomePageComponents/Contact";
+import { Link } from "react-router";
 const ContactUs = () => {
   return (
     <div>
@@ -14,7 +15,7 @@ const ContactUs = () => {
           title="CONTACT US"
           semiTitle="We’re a super friendly company."
         />
-        <div className="relative mt-20">
+        <div className="relative">
           <img
             src={reminder}
             alt=""
@@ -71,7 +72,7 @@ const ContactUs = () => {
             </div>
           </div>
           <Container>
-            <div className="py-20 pt-[1200px] grid grid-cols-3 items-start gap-10">
+            <div className=" py-20 pt-[1800px] grid grid-cols-3 items-start gap-10">
               <div className="col-span-2">
                 <p className="text-primaryBoldColor">
                   View our fruit boxes now
@@ -81,9 +82,9 @@ const ContactUs = () => {
                   <span className="text-secondaryTextColor">Delivered</span> to
                   your office
                 </Title>
-                <div className="py-5">
+                <Link to={"/fruit-box"} className="py-5">
                   <Button className="py-6 px-20 ">View Fruit Boxes</Button>
-                </div>
+                </Link>
               </div>
               <div>
                 <img src={contactfruits} alt="" />
