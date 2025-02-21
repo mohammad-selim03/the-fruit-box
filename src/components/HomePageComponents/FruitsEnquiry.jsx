@@ -37,7 +37,7 @@ const FruitsEnquiry = () => {
           >
             <div className="flex flex-col items-center gap-2 w-[90%] mx-auto">
               <Title
-                className="text-[48px]"
+                className="text-[48px] md:text-[48px]"
                 style={{
                   textStroke: "2px white",
                   webkitTextStroke: "2px white",
