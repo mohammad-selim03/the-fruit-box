@@ -69,7 +69,7 @@ const SelectItems = ({
   return (
     <div>
       <Select
-        
+        value={value || "Select"}
         onValueChange={onChange || setServings || setSelectedId}
       >
         <SelectTrigger
@@ -79,9 +79,7 @@ const SelectItems = ({
             triggerClass
           )}
         >
-          <SelectValue
-            placeholder={placeholder } 
-          />
+          <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent className="bg-white rounded-2xl">
           <SelectGroup>
