@@ -149,7 +149,7 @@ const Cart = () => {
         <div className="border-4 border-primaryBoldColor rounded-3xl p-4 ">
           <div className="bg-white px-5 rounded-3xl py-5 pt-10 w-full">
             {fruits?.length > 0 && (
-              <div className="flex items-center justify-end text-xl font-bold gap-14 ml-6 max-w-6xl">
+              <div className="flex items-center justify-end text-xl font-bold gap-16 ml-10 max-w-6xl">
                 {Cartheader?.map((data) => (
                   <p key={data}>{data}</p>
                 ))}
@@ -195,7 +195,7 @@ const Cart = () => {
                         setSelectedItem={setSelectedItem}
                       />
                     </div>
-                    <div className="grid grid-cols-3 gap-5">
+                    <div className="grid grid-cols-3 gap-5 border-4 max-w-[380px]">
                       <p className="text-[26px] w-28 text-center ml-3">
                         ${parseInt(fruit.price)}
                       </p>
@@ -207,7 +207,7 @@ const Cart = () => {
                           >
                             -
                           </button>
-                          <span className="w-5 flex items-center justify-center">
+                          <span className="w-5 flex items-center justify-center ">
                             {fruit?.quantity ? fruit?.quantity : 1}
                           </span>
                           <button
@@ -228,7 +228,7 @@ const Cart = () => {
                           </div>
                         )}
                       </div>
-                      <p className="text-[26px] w-10 text-secondaryTextColor ml-5">
+                      <p className="text-[26px]  w-10 text-secondaryTextColor ml-5">
                         $
                         {parseInt(fruit.price) *
                           parseInt(fruit.quantity ? fruit.quantity : 1)}
