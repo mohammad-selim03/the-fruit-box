@@ -103,7 +103,7 @@ const FruitBoxCard = ({ data }) => {
               )}
             >
               <Button className="border-2 rounded-2xl border-white w-full shadow-black/20 shadow-lg py-3">
-                Order now ${data?.price}
+                Order now ${parseInt(data?.price)}
               </Button>
             </div>
           </div>
