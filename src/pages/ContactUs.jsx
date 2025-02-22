@@ -125,7 +125,7 @@ const ContactUs = () => {
             </div>
           </div>
           <Container>
-            <div className=" py-20 pt-[1800px] grid grid-cols-3 items-start gap-10">
+            <div className="   pt-[1800px] grid grid-cols-3 items-start gap-10">
               <div className="col-span-2">
                 <p className="text-primaryBoldColor">
                   View our fruit boxes now
