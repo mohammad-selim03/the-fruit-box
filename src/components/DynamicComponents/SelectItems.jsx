@@ -55,7 +55,7 @@ const SelectItems = ({
   };
 
   if (availableItems.length === 0) {
-    return  ;
+    return;
   }
 
   console.log(data[0?.title]);
@@ -81,7 +81,7 @@ const SelectItems = ({
               return (
                 <SelectItem
                   key={idx}
-                  value={item?.name || "undefined"}
+                  value={item?.value || item?.name || "undefined"}
                   className="text-xl border-b text-gray-600 cursor-pointer"
                 >
                   <p
@@ -101,7 +101,7 @@ const SelectItems = ({
                         className="w-[32px]"
                       />
                     )}
-                    {item?.name}
+                    {item?.value || item?.name}
                   </p>
                 </SelectItem>
               );

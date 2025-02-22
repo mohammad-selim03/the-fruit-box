@@ -9,12 +9,17 @@ import { greenCardbg } from "@/assets";
 
 const FruitBoxCard = ({ data }) => {
   // Initialize state with first serving's data if available
-  const initialServing = data?.servings?.[0] || { name: "10 Servings", price: "10.00" };
+  const initialServing = data?.servings?.[0] || {
+    name: "10 Servings",
+    price: "10.00",
+  };
   const [selectedServing, setSelectedServing] = useState(initialServing);
   const { setCartItems } = useContext(Context);
 
-  const handleServingChange = (servingName) => { 
-    const selected = data?.servings?.find(serving => serving.name === servingName);
+  const handleServingChange = (servingName) => {
+    const selected = data?.servings?.find(
+      (serving) => serving.name === servingName
+    );
     if (selected) {
       setSelectedServing(selected);
     }
@@ -32,12 +37,14 @@ const FruitBoxCard = ({ data }) => {
           name: data?.name,
           description: data?.description || "",
           image: data?.image || "",
-          price: selectedServing?.price ? parseFloat(selectedServing.price) : parseFloat(data?.price),
+          price: selectedServing?.price
+            ? parseFloat(selectedServing.price)
+            : parseInt(data?.price),
           quantity: data?.quantity || 1,
           servings: data?.servings_single || "",
           servings_multiple: data?.price_multiple ? selectedServing.name : null,
         };
-        
+
         const updatedCart = [...existingItems, sanitizedData];
         localStorage.setItem("fruits", JSON.stringify(updatedCart));
         return updatedCart;
@@ -102,8 +109,9 @@ const FruitBoxCard = ({ data }) => {
               )}
             >
               <Button className="border-2 rounded-2xl border-white w-full shadow-black/20 shadow-lg py-3">
-                Order now ${data?.price_multiple 
-                  ? parseFloat(selectedServing?.price).toFixed(2) 
+                Order now $
+                {data?.price_multiple
+                  ? parseFloat(selectedServing?.price).toFixed(2)
                   : parseFloat(data?.price).toFixed(2)}
               </Button>
             </div>
