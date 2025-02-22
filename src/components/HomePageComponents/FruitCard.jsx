@@ -6,6 +6,7 @@ import { useState, useContext } from "react";
 import { Context } from "@/context/Context";
 import PropTypes from "prop-types";
 import toast from "react-hot-toast";
+import { FiMinus, FiPlus } from "react-icons/fi";
 
 const FruitCard = ({ data }) => {
   const [servings, setServings] = useState("10 Servings");
@@ -81,19 +82,19 @@ const FruitCard = ({ data }) => {
         <div>
           <div className="flex items-center justify-between gap-2 border border-gray-300 p-1 rounded-xl w-28">
             <button
-              className="rounded bg-primaryLightColor text-black text-xl px-2"
+              className="rounded bg-primaryLightColor text-black text-xl px-2 py-2"
               onClick={handleDecrement}
             >
-              -
+              <FiMinus className="text-sm text-black/80" />
             </button>
             <span className="w-5 flex items-center justify-center">
               {quantity}
             </span>
             <button
-              className="rounded bg-primaryLightColor text-black text-xl px-2"
+              className="rounded bg-primaryLightColor text-black text-xl px-2 py-2"
               onClick={handleIncrement}
             >
-              +
+              <FiPlus className="text-sm text-black/80" />
             </button>
           </div>
           {data?.servings_multiple && (

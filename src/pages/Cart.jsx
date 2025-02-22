@@ -203,19 +203,19 @@ const Cart = () => {
                       <div>
                         <div className="flex items-center justify-between gap-2 border border-gray-300 p-2  rounded-xl w-32">
                           <button
-                            className="rounded bg-primaryLightColor text-black text-xl px-2"
+                            className="rounded bg-primaryLightColor text-black text-xl px-2 py-2"
                             onClick={() => handleDecrement(fruit?.id)}
                           >
-                            <FiMinus className="text-black/80"/>
+                            <FiMinus className="text-black/80 text-sm"/>
                           </button>
                           <span className="w-5 flex items-center justify-center ">
                             {fruit?.quantity ? fruit?.quantity : 1}
                           </span>
                           <button
-                            className="rounded bg-primaryLightColor text-black text-xl px-2"
+                            className="rounded bg-primaryLightColor text-black text-xl px-2 py-2"
                             onClick={() => handleIncrement(fruit?.id)}
                           >
-                            <FiPlus className="text-black/80"/>
+                            <FiPlus className="text-black/80 text-sm"/>
                           </button>
                         </div>
                         {fruit?.servings_multiple && (

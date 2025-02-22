@@ -61,11 +61,7 @@ const AddFruits = ({
   };
 
   if (availableItems.length === 0) {
-    return (
-      <div className="p-4 text-center text-gray-600 bg-gray-100 rounded-2xl">
-        All items already added to cart
-      </div>
-    );
+    return ;
   }
 
   return (

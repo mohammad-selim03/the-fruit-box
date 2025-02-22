@@ -1,10 +1,5 @@
-import { useEffect, useState, useContext } from "react";
-import Button from "@/components/DynamicComponents/Button";
-import Container from "@/components/DynamicComponents/Container";
-import SelectItems from "@/components/DynamicComponents/SelectItems";
-import { servingsData } from "@/assets/StaticData";
-import { cn } from "@/lib/utils";
-import toast from "react-hot-toast";
+import { useEffect, useState, useContext } from "react"; 
+import Container from "@/components/DynamicComponents/Container"; 
 import { Context } from "@/context/Context";
 import { logo2 } from "@/assets";
 import { useGetApi } from "@/hooks/API/useGetApi";
@@ -14,12 +9,10 @@ import FruitCard from "@/components/HomePageComponents/FruitCard";
 import DynamicBanner from "@/components/DynamicComponents/DynamicBanner";
 
 const FruitBox = () => {
-  const { data, isLoading, isError } = useGetApi("products", true);
-  const [fruits, setFruits] = useState(data);
-  const [servings, setServings] = useState("10 Servings");
+  const { data, isLoading, isError } = useGetApi("products", true);  
   const { setCartItems } = useContext(Context);
 
-  console.log(fruits);
+ 
   // Load cart items from localStorage
   useEffect(() => {
     const storedCart = localStorage.getItem("cartItems");
