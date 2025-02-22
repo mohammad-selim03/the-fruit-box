@@ -46,7 +46,7 @@ const FruitBoxCard = ({ data }) => {
         {/* Left Image Section */}
         <div
           className={cn(
-            "w-[325.678px] h-[315.548px] flex items-center justify-center bg-white border border-r-0 border-secondaryTextColor rounded-l-[30px]",
+            "w-[325.678px] h-[315.548px] flex items-center justify-center bg-white border border-r-0 border-secondaryTextColor group-hover:border-primaryBoldColor rounded-l-[30px]",
             !data?.name && "border-SecondaryBg"
           )}
         >
@@ -57,7 +57,7 @@ const FruitBoxCard = ({ data }) => {
         <div className="relative z-20 overflow-hidden">
           <div
             className={cn(
-              "bg-primaryLightColor absolute top-0 left-0 translate-y-80 group-hover:translate-y-0 transition-all duration-200 rounded-r-[25px] w-full h-full flex flex-col items-center justify-between py-10"
+              "bg-primaryBoldColor absolute top-0 left-0 translate-y-80 group-hover:translate-y-0 transition-all duration-200 rounded-r-[25px] w-full h-full flex flex-col items-center justify-between py-10"
             )}
           >
             <div>

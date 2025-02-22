@@ -52,7 +52,7 @@ const FruitBoxSection = () => {
         </div>
       </div>
       {/* <img src={boxStyle} alt="" className="absolute bottom-3 left-0" /> */}
-      <img src={apple} className=" absolute -bottom-32 left-0" alt="" />
+      <img src={apple} className=" absolute -bottom-10 left-0" alt="" />
     </div>
   );
 };

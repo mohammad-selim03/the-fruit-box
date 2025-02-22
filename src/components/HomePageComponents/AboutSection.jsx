@@ -2,6 +2,7 @@ import Title from "../DynamicComponents/Title";
 import Button from "../DynamicComponents/Button";
 import { aboutFruits } from "@/assets";
 import Container from "../DynamicComponents/Container";
+import { Link } from "react-router";
 
 const AboutSection = () => {
   return (
@@ -26,9 +27,11 @@ const AboutSection = () => {
             surrounding areas. We deliver to offices of all sizes. Give us a try
             and discover why we’re Calgary’s favorite office fruit supplier.
           </p>
-          <Button className="text-primaryLightColor border border-primaryLightColor bg-transparent px-10 py-3 hover:bg-primaryLightColor hover:text-white transition-all duration-300 mt-10">
-            SEE MORE ABOUT THIS
-          </Button>
+          <Link to={"/about-us"}>
+            <Button className="text-primaryLightColor border border-primaryLightColor bg-transparent px-10 py-3 hover:bg-primaryLightColor hover:text-white transition-all duration-300 mt-10">
+              SEE MORE ABOUT THIS
+            </Button>
+          </Link>
         </div>
         <div>
           <img
