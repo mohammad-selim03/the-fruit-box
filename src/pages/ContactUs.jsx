@@ -95,7 +95,7 @@ const ContactUs = () => {
                 className="absolute top-40 right-0"
               />
 
-              <div className="absolute top-[60%] left-[10%] flex items-start justify-between">
+              <div className="absolute top-[60%] left-1/2 -translate-x-1/2 flex items-start justify-between">
                 <div className="text-white w-[772px] text-left">
                   <Title style={{stroke: "white", webkitTextStroke: "2px white"}}>
                     CONNECT{" "}
