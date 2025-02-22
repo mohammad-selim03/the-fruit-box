@@ -95,16 +95,16 @@ const ContactUs = () => {
                 className="absolute top-40 right-0"
               />
 
-              <div className="absolute top-[60%] left-[10%] flex items-center justify-between">
+              <div className="absolute top-[60%] left-[10%] flex items-start justify-between">
                 <div className="text-white w-[772px] text-left">
-                  <Title>
+                  <Title style={{stroke: "white", webkitTextStroke: "2px white"}}>
                     CONNECT{" "}
-                    <span className="text-primaryLightColor">WITH US</span>
+                    <span className="text-primaryLightColor"  style={{stroke: "#FFB500", webkitTextStroke: "2px #FFB500"}}>WITH US</span>
                   </Title>
                   <p className="font-thin text-primaryLightColor -mt-2">
                     Reliable Office Fruit Delivery.
                   </p>
-                  <div className="font-thin mt-2 flex flex-col gap-3">
+                  <div className="font-thin mt-[32px] flex flex-col gap-3">
                     <p className="grid grid-cols-2 gap-5">
                       <span>The Fruit Box Ltd.</span>
                       <span>Office: 587.351.5720</span>
