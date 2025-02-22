@@ -20,7 +20,7 @@ const ContactUs = () => {
 
         const calgaryOffice = [51.0447, -113.9317];
 
-        const map = L.map("map").setView(calgaryOffice, 15);
+        const map = L.map("map").setView(calgaryOffice, 10);
 
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
           maxZoom: 19,
@@ -98,7 +98,7 @@ const ContactUs = () => {
               <div className="absolute top-[60%] left-[10%] flex items-center justify-between">
                 <div className="text-white w-[772px] text-left">
                   <Title>
-                    CONNECT
+                    CONNECT{" "}
                     <span className="text-primaryLightColor">WITH US</span>
                   </Title>
                   <p className="font-thin text-primaryLightColor -mt-2">

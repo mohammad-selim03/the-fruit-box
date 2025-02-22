@@ -28,25 +28,7 @@ const FruitBox = () => {
     }
   }, [setCartItems]);
 
-  // Increment quantity
-  // const handleIncrement = (id) => {
-  //   setFruits((prevFruits) => {
-  //     return prevFruits.map((fruit) =>
-  //       fruit.id === id ? { ...fruit, quantity: fruit.quantity + 1 } : fruit
-  //     );
-  //   });
-  // };
-
-  // // Decrement quantity
-  // const handleDecrement = (id) => {
-  //   setFruits((prevFruits) => {
-  //     return prevFruits.map((fruit) =>
-  //       fruit.id === id && fruit.quantity > 1
-  //         ? { ...fruit, quantity: fruit.quantity - 1 }
-  //         : fruit
-  //     );
-  //   });
-  // };
+ 
 
   return isLoading ? (
     <div className="flex items-center justify-center h-screen">

@@ -63,20 +63,20 @@ const FruitCard = ({ data }) => {
           )}
         />
       </div>
-      <div className="w-[382px] flex flex-col gap-5">
-        <h2 className="text-2xl font-bold">
+      <div className="w-[382px] flex flex-col gap-2">
+        <h2 className="text-2xl font-bold text-[#798090] capitalize line-clamp-1">
           {data?.name}{" "}
           {data?.servings && (
-            <span className="text-secondaryTextColor text-lg font-bold">
+            <span className="text-secondaryTextColor text-2xl font-bold">
               {data?.servings}
             </span>
           )}
         </h2>
-        <p className="line-clamp-3">{data?.description}</p>
+        <p className="line-clamp-3 font-extralight">{data?.description}</p>
       </div>
       <div className="flex flex-col items-center gap-5">
         <p className="text-[40px] text-secondaryTextColor w-28 text-center">
-          ${data?.price}
+          ${parseInt(data?.price)}
         </p>
         <div>
           <div className="flex items-center justify-between gap-2 border border-gray-300 p-1 rounded-xl w-28">
