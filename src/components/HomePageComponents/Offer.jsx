@@ -68,7 +68,7 @@ const Offer = () => {
         >
           WHAT WE OFFER
         </Title>
-        <p className="text-center text-secondaryTextColor">
+        <p className="text-center text-2xl text-secondaryTextColor">
           AWESOMENESS IN EVERYTHING WE DO.
         </p>
       </div>
@@ -76,14 +76,14 @@ const Offer = () => {
         {offerData.map((data) => (
           <div
             key={data.title}
-            className="flex flex-col items-center gap-2 border border-black/20 rounded-2xl p-4 cursor-pointer hover:bg-secondaryTextColor/80 group transition-all duration-300 hover:border-secondaryTextColor hover:text-white"
+            className="flex flex-col items-center w-[317px] h-[306px] gap-2 border border-[#A2A2A2] rounded-2xl p-4 cursor-pointer hover:bg-secondaryTextColor/80 group transition-all duration-300 hover:border-secondaryTextColor hover:text-white"
           >
             <div>{data.image}</div>
             <div className="flex flex-col gap-3">
-              <h3 className="text-center text-primaryBoldColor group-hover:text-white">
+              <h3 className="text-center text-primaryBoldColor group-hover:text-white text-2xl">
                 {data.title}
               </h3>
-              <p className="font-thin text-center">{data.description}</p>
+              <p className="font-thin text-center text-lg">{data.description}</p>
             </div>
           </div>
         ))}

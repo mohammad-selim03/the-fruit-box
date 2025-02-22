@@ -10,8 +10,8 @@ const Footer = () => {
       {/* <img src={footerbg1} alt="" className="w-full h-full" /> */}
 
       <div className="absolute top-[40%] left-1/2 w-full -translate-x-1/2 px-[200px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 items-start gap-[20px] text-white">
-          <div className="w-full">
+        <div className="flex flex-wrap items-start gap-[30px] text-white">
+          <div className="w-[401px]">
             <p className="text-xl uppercase pb-8">
               WHY HAVE FRUIT IN THE OFFICE?
             </p>
@@ -23,7 +23,7 @@ const Footer = () => {
               fruit delivery today!
             </p>
             <div className="mt-12">
-              <Button className="py-5 px-10 rounded-2xl shadow-black/20 shadow-md border-2 border-white">
+              <Button className="py-5 px-10 rounded-[24px] shadow-black/20 shadow-md border-2 border-white">
                 Order a Fruit Box
               </Button>
             </div>
@@ -75,7 +75,7 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="w-full h-fit bg-[#E07B1A] py-6 px-5 rounded-xl -mt-6">
+          <div className="w-[383px] h-fit bg-[#E07B1A] py-6 px-5 rounded-xl -mt-6">
             <p className="text-xl uppercase pb-5">CONNECT WITH US</p>
             <div className="flex flex-col gap-3 mt-3">
               <p className="text-xs text-[#FFD600]">
