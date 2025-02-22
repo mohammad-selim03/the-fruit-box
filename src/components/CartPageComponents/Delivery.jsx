@@ -14,16 +14,16 @@ const Delivery = ({
   errors,
   control,
   placeOrder,
-  isPosting, 
+  isPosting,
 }) => {
   return (
     <form onSubmit={handleSubmit(placeOrder)}>
       <div className="grid grid-cols-2 gap-10 px-[40px]">
         <div>
-          <Title className="text-[40px] capitalize text-secondaryTextColor">
+          <Title className="md:text-[40px] capitalize text-secondaryTextColor">
             Delivery options
           </Title>
-          <p>
+          <p className="text-[#798090]">
             Tell us when you would like fruit delivered and how often. Feel free
             to add a comment.
           </p>
@@ -114,10 +114,12 @@ const Delivery = ({
           </div>
         </div>
         <div>
-          <Title className="text-[40px] capitalize text-nowrap text-secondaryTextColor">
+          <Title className="md:text-[40px] capitalize text-nowrap text-secondaryTextColor">
             Delivery Location
           </Title>
-          <p>Tell us who you are and where you want us to deliver.</p>
+          <p className="text-[#798090]">
+            Tell us who you are and where you want us to deliver.
+          </p>
           <div className="mt-[40px] flex flex-col gap-[26px]">
             <div className="grid grid-cols-2 gap-5">
               <div>

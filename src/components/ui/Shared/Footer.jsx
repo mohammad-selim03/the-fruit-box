@@ -1,4 +1,4 @@
-import { cloud, footerbg, footerlogo } from "@/assets";
+import { cloud, footerbg, footerbg1, footerlogo } from "@/assets";
 import Button from "@/components/DynamicComponents/Button";
 import { Link } from "react-router";
 
@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className="relative mt-20  h-full">
       {/* bg-[#F68F2A] */}
-      <img src={footerbg} alt="" className="w-full h-full lg:h-[700px]  " />
+      <img src={footerbg1} alt="" className="w-full h-full lg:h-[700px]  " />
       {/* <img src={footerbg1} alt="" className="w-full h-full" /> */}
 
       <div className="absolute top-[40%] left-1/2 w-full -translate-x-1/2 px-[200px]">

@@ -12,6 +12,7 @@ import { SuccessModal } from "@/components/CartPageComponents/SuccessModal";
 import { cn } from "@/lib/utils";
 import { useGetApi } from "@/hooks/API/useGetApi";
 import { UsePostApi } from "@/hooks/API/usePostApi";
+import { FiMinus, FiPlus } from "react-icons/fi";
 
 const Cart = () => {
   const [fruits, setFruits] = useState([]);
@@ -179,7 +180,7 @@ const Cart = () => {
                       />
                     </div>
                     <div className="w-[382px] flex flex-col gap-5">
-                      <h2 className="text-2xl font-bold">
+                      <h2 className="text-2xl font-bold text-[#798090] capitalize">
                         {fruit.name} {"   "}
                         {fruit?.servings && (
                           <span className="text-secondaryTextColor text-lg font-bold">
@@ -189,23 +190,23 @@ const Cart = () => {
                       </h2>
                       <AddFruits
                         placeholder="Add another size"
-                        triggerClass="border border-gray-300 w-60 placeholder:text-red-400"
+                        triggerClass="border border-gray-300 w-60 placeholder:text-red-400 py-3 h-14"
                         data={fruitsData}
                         selectedItem={selectedItem}
                         setSelectedItem={setSelectedItem}
                       />
                     </div>
-                    <div className="grid grid-cols-3 gap-5 max-w-[380px]">
-                      <p className="text-[26px] w-28 text-center ml-3">
+                    <div className="grid grid-cols-3 gap-5 max-w-[400px]">
+                      <p className="text-[26px] w-28 text-center ml-1">
                         ${parseInt(fruit.price)}
                       </p>
                       <div>
-                        <div className="flex items-center justify-between gap-2 border border-gray-300 p-1 rounded-xl w-32">
+                        <div className="flex items-center justify-between gap-2 border border-gray-300 p-2  rounded-xl w-32">
                           <button
                             className="rounded bg-primaryLightColor text-black text-xl px-2"
                             onClick={() => handleDecrement(fruit?.id)}
                           >
-                            -
+                            <FiMinus className="text-black/80"/>
                           </button>
                           <span className="w-5 flex items-center justify-center ">
                             {fruit?.quantity ? fruit?.quantity : 1}
@@ -214,7 +215,7 @@ const Cart = () => {
                             className="rounded bg-primaryLightColor text-black text-xl px-2"
                             onClick={() => handleIncrement(fruit?.id)}
                           >
-                            +
+                            <FiPlus className="text-black/80"/>
                           </button>
                         </div>
                         {fruit?.servings_multiple && (
@@ -232,7 +233,7 @@ const Cart = () => {
                           </div>
                         )}
                       </div>
-                      <p className="text-[26px]  w-10 text-secondaryTextColor ml-5">
+                      <p className="text-[26px]  text-secondaryTextColor text-center">
                         $
                         {parseInt(fruit.price) *
                           parseInt(fruit.quantity ? fruit.quantity : 1)}

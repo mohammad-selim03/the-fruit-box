@@ -71,12 +71,13 @@ const AddFruits = ({
   return (
     <div>
       <Select
+      className="text-black"
         value={selectedItem || selectedId || ""}
         onValueChange={handleSelection}
       >
         <SelectTrigger
           className={cn(
-            "bg-white border border-primaryLightColor rounded-2xl text-lg text-nowrap",
+            "bg-white border border-primaryLightColor rounded-2xl text-lg text-nowrap text-gray-400",
             triggerClass
           )}
         >
