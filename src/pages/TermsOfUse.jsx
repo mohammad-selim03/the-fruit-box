@@ -1,6 +1,9 @@
+import { contactfruits, logo2 } from "@/assets";
+import Button from "@/components/DynamicComponents/Button";
 import Container from "@/components/DynamicComponents/Container";
 import DynamicBanner from "@/components/DynamicComponents/DynamicBanner";
 import Title from "@/components/DynamicComponents/Title";
+import { Link } from "react-router";
 
 const TermsOfUse = () => {
   return (
@@ -405,6 +408,22 @@ const TermsOfUse = () => {
               relates the Sales Agreement and/or these Terms in any court in
               Calgary, Alberta, that has jurisdiction over the subject matter.
             </p>
+          </div>
+        </div>
+        <div className=" py-10 grid grid-cols-3 items-start gap-10">
+          <div className="col-span-2">
+            <p className="text-primaryBoldColor">View our fruit boxes now</p>
+            <Title className="capitalize  leading-noe">
+              Assorted fresh fruit boxes{" "}
+              <span className="text-secondaryTextColor">Delivered</span> to your
+              office
+            </Title>
+            <Link to={"/fruit-box"} className="py-5">
+              <Button className="py-6 px-20 ">View Fruit Boxes</Button>
+            </Link>
+          </div>
+          <div>
+            <img src={contactfruits} alt="" />
           </div>
         </div>
       </Container>
