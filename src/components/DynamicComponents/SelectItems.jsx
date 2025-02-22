@@ -26,7 +26,6 @@ const SelectItems = ({
     const updateAvailableItems = () => {
       const cartItems = JSON.parse(localStorage.getItem("fruits")) || [];
 
-      // Ensure cartItems is an array before using `.some()`
       if (Array.isArray(cartItems)) {
         const filteredItems = data?.filter((item) => {
           return !cartItems.some((cartItem) => cartItem?.id === item?.id);
@@ -34,7 +33,6 @@ const SelectItems = ({
 
         setAvailableItems(filteredItems || []);
       } else {
-        // console.error("cartItems is not an array:", cartItems);
         setAvailableItems([]);
       }
     };
@@ -57,11 +55,7 @@ const SelectItems = ({
   };
 
   if (availableItems.length === 0) {
-    return (
-      <div className="p-4 text-center text-gray-600 bg-gray-100 rounded-2xl">
-        All items already added to cart
-      </div>
-    );
+    return  ;
   }
 
   console.log(data[0?.title]);
@@ -87,11 +81,7 @@ const SelectItems = ({
               return (
                 <SelectItem
                   key={idx}
-                  value={
-                    value || item?.value
-                      ? item?.value
-                      : item?.name || item?.title || "undefined"
-                  }
+                  value={item?.name || "undefined"}
                   className="text-xl border-b text-gray-600 cursor-pointer"
                 >
                   <p
@@ -106,12 +96,12 @@ const SelectItems = ({
                   >
                     {item?.name && (
                       <img
-                        src={item?.image?.props?.src}
+                        src={item?.image?.props?.src || item?.image}
                         alt=""
                         className="w-[32px]"
                       />
                     )}
-                    {item?.title || item?.name}
+                    {item?.name}
                   </p>
                 </SelectItem>
               );

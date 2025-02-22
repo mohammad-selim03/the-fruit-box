@@ -87,7 +87,7 @@ const Cart = () => {
       const fruitsObject = fruits.reduce((acc, fruit, index) => {
         acc[`product_id[${index}]`] = fruit.id;
         acc[`quantity[${index}]`] = fruit.quantity || 1;
-        acc[`servings[${index}]`] = fruit?.servings || servings;
+        acc[`servings[${index}]`] = servings;
         // acc[`name[${index}]`] = fruit.name;
         return acc;
       }, {});
@@ -182,7 +182,12 @@ const Cart = () => {
                     <div className="w-[382px] flex flex-col gap-5">
                       <h2 className="text-2xl font-bold text-[#798090] capitalize">
                         {fruit.name} {"   "}
-                        {fruit?.servings && (
+                        {fruit?.price_multiple !== null && (
+                          <span className="text-secondaryTextColor text-lg font-bold">
+                            {fruit?.servings}
+                          </span>
+                        )}
+                        {fruit?.servings_single !== null && (
                           <span className="text-secondaryTextColor text-lg font-bold">
                             {fruit?.servings}
                           </span>
@@ -206,7 +211,7 @@ const Cart = () => {
                             className="rounded bg-primaryLightColor text-black text-xl px-2 py-2"
                             onClick={() => handleDecrement(fruit?.id)}
                           >
-                            <FiMinus className="text-black/80 text-sm"/>
+                            <FiMinus className="text-black/80 text-sm" />
                           </button>
                           <span className="w-5 flex items-center justify-center ">
                             {fruit?.quantity ? fruit?.quantity : 1}
@@ -215,7 +220,7 @@ const Cart = () => {
                             className="rounded bg-primaryLightColor text-black text-xl px-2 py-2"
                             onClick={() => handleIncrement(fruit?.id)}
                           >
-                            <FiPlus className="text-black/80 text-sm"/>
+                            <FiPlus className="text-black/80 text-sm" />
                           </button>
                         </div>
                         {fruit?.servings_multiple && (
