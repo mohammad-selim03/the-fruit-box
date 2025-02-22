@@ -28,7 +28,7 @@ function Calendar2({ className, classNames, showOutsideDays = true, ...props }) 
         day_range_end: "day-range-end",
         day_selected:
           "bg-gray-300 text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-        day_today: "text-white font-bold rounded-md",
+        day_today: " outline-none font-bold rounded-md",
         head_cell_today: "bg-yellow-500 text-white font-bold",
         day_outside:
           "day-outside text-muted-foreground aria-selected:bg-accent/50 aria-selected:text-muted-foreground",
