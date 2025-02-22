@@ -1,7 +1,4 @@
-import {
-  apple, 
-  fruitboxbg,  
-} from "@/assets";
+import { apple, fruitboxbg } from "@/assets";
 import Title from "../DynamicComponents/Title";
 import FruitBoxCard from "../DynamicComponents/FruitBoxCard";
 import { useGetApi } from "@/hooks/API/useGetApi";
@@ -10,7 +7,6 @@ import IsError from "../ui/Shared/IsError";
 
 const FruitBoxSection = () => {
   const { data: fruitsData, isLoading, isError } = useGetApi("products", true);
- 
 
   return isLoading ? (
     <div className="flex items-center justify-center h-80">
@@ -20,11 +16,11 @@ const FruitBoxSection = () => {
   ) : isError ? (
     <IsError />
   ) : (
-    <div className="relative z-10 h-[1500px]">
+    <div className="relative z-10 h-[1700px]">
       <img
         src={fruitboxbg}
         alt=""
-        className="absolute -top-60 w-full z-[1px] left-0 h-[1700px]"
+        className="absolute -top-60 w-full z-[1px] left-0 h-full"
       />
       <div className="pt-[40px] md:pt-[135px] pb-9 max-w-[1315px] mx-auto z-20">
         <div className="flex flex-col items-center justify-center">
@@ -52,7 +48,7 @@ const FruitBoxSection = () => {
         </div>
       </div>
       {/* <img src={boxStyle} alt="" className="absolute bottom-3 left-0" /> */}
-      <img src={apple} className=" absolute -bottom-10 left-0" alt="" />
+      <img src={apple} className=" absolute bottom-40 -left-20" alt="" />
     </div>
   );
 };

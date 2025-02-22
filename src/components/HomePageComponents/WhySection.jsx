@@ -5,8 +5,8 @@ import Title from "../DynamicComponents/Title";
 
 const WhySection = () => {
   return (
-    <Container className="asdf">
-      <div className="mt-40 flex items-center justify-between">
+    <Container>
+      <div className="  flex items-center justify-between">
         <div className="flex flex-col gap-4 max-w-[805px]">
           <Title
             className="text-[56px]"

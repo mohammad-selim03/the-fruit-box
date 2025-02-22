@@ -1,7 +1,6 @@
 import { banana, howOrder, malta } from "@/assets";
 import Button from "../DynamicComponents/Button";
-import { Link } from "react-router";
-import { DatePicker } from "../CartPageComponents/DatePicker";
+import { Link } from "react-router"; 
 import { CustomDate } from "./CustomDate";
 
 const HowToOrder = () => {

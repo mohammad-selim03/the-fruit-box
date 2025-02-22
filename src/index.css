@@ -8,3 +8,11 @@
   color: black;
   background: orange;
 }
+
+#map {
+  height: 352px; 
+  width: 100%; 
+  border: 2px solid white;
+  border-radius: 20px;
+  overflow: hidden;
+}

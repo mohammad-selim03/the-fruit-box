@@ -2,12 +2,57 @@ import { contactfruits, contactpageimg, reminder } from "@/assets";
 import Button from "@/components/DynamicComponents/Button";
 import Container from "@/components/DynamicComponents/Container";
 import Title from "@/components/DynamicComponents/Title";
-
+import "leaflet/dist/leaflet.css";
 import { aboutbg } from "@/assets";
 import DynamicBanner from "@/components/DynamicComponents/DynamicBanner";
 import Contact from "@/components/HomePageComponents/Contact";
 import { Link } from "react-router";
+import { useEffect } from "react";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import { useState } from "react";
 const ContactUs = () => {
+  const [mapLoaded, setMapLoaded] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined" && !mapLoaded) {
+      import("leaflet").then((L) => {
+        if (!document.getElementById("map")) return;
+
+        const calgaryOffice = [51.0447, -113.9317];
+
+        const map = L.map("map").setView(calgaryOffice, 15);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution: "© OpenStreetMap contributors",
+        }).addTo(map);
+
+        // Set default Google Maps-like marker
+        const defaultMarker = L.icon({
+          iconUrl: markerIcon,
+          shadowUrl: markerShadow,
+          iconSize: [25, 41],
+          iconAnchor: [12, 41],
+          popupAnchor: [1, -34],
+          shadowSize: [41, 41],
+        });
+
+        L.marker(calgaryOffice, { icon: defaultMarker })
+          .addTo(map)
+          .bindPopup(
+            "<b>The Fruit Box Ltd.</b><br>#115, 11929 – 40th Street S.E.<br>Calgary, Alberta T2Z 4M8"
+          )
+          .openPopup();
+
+        setTimeout(() => {
+          map.invalidateSize();
+        }, 500);
+
+        setMapLoaded(true);
+      });
+    }
+  }, [mapLoaded]);
+
   return (
     <div>
       <div>
@@ -70,16 +115,11 @@ const ContactUs = () => {
                     <span>T2Z 4M8 </span>
                   </div>
                 </div>
-                <div>
-                  <iframe
-                    src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=36.125164460763045,-115.33980715380218"
-                    width="600"
-                    height="450"
-                    // style="border-radius: 30px;"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
+                <div className="w-[560px]">
+                  <div
+                    id="map"
+                    className="rounded-lg border border-gray-200 shadow-lg z-30"
+                  ></div>
                 </div>
               </div>
             </div>
