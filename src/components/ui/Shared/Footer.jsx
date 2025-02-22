@@ -1,4 +1,4 @@
-import { cloud, footerbg, footerbg1, footerlogo } from "@/assets";
+import { cloud, footerbg, footerlogo } from "@/assets";
 import Button from "@/components/DynamicComponents/Button";
 import { Link } from "react-router";
 
@@ -23,9 +23,11 @@ const Footer = () => {
               fruit delivery today!
             </p>
             <div className="mt-12">
-              <Button className="py-5 px-10 rounded-[24px] shadow-black/20 shadow-md border-2 border-white">
-                Order a Fruit Box
-              </Button>
+              <Link to={"/fruit-box"}>
+                <Button className="py-5 px-10 rounded-[24px] shadow-black/20 shadow-md border-2 border-white">
+                  Order a Fruit Box
+                </Button>
+              </Link>
             </div>
           </div>
           <div className=" ">

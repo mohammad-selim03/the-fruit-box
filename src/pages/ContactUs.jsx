@@ -50,23 +50,36 @@ const ContactUs = () => {
                 className="absolute top-40 right-0"
               />
 
-              <div className="absolute top-[60%] right-[10%]">
-                <div className="text-white w-[772px] text-right">
-                  <h2 className="text-[40px]">
-                    Companies are making the{" "}
-                    <span className="text-primaryLightColor">switch.</span>
-                  </h2>
-                  <p className="font-thin">
-                    Corporate customers are switching to The Fruit Box. In 2014
-                    alone, more than a third of our new customers have switched
-                    to us from a competitive service. While the reasons vary
-                    from poor quality to unreliable service to poor customer
-                    support, at The Fruit Box, we know we have a small window of
-                    opportunity to make our customer experience enjoyable and
-                    effortless. That’s why we’re so focused on providing office
-                    customers (and only office customers) with a reliable and
-                    hassle-free experience.
+              <div className="absolute top-[60%] left-[10%] flex items-center justify-between">
+                <div className="text-white w-[772px] text-left">
+                  <Title>
+                    CONNECT
+                    <span className="text-primaryLightColor">WITH US</span>
+                  </Title>
+                  <p className="font-thin text-primaryLightColor -mt-2">
+                    Reliable Office Fruit Delivery.
                   </p>
+                  <div className="font-thin mt-2 flex flex-col gap-3">
+                    <p className="grid grid-cols-2 gap-5">
+                      <span>The Fruit Box Ltd.</span>
+                      <span>Office: 587.351.5720</span>
+                      <span>#115, 11929 – 40th Street S.E.</span>
+                      <span>mail: info @ thefruitbox.ca</span>
+                    </p>
+                    <span>Calgary, Alberta </span>
+                    <span>T2Z 4M8 </span>
+                  </div>
+                </div>
+                <div>
+                  <iframe
+                    src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=36.125164460763045,-115.33980715380218"
+                    width="600"
+                    height="450"
+                    // style="border-radius: 30px;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
               </div>
             </div>

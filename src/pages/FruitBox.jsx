@@ -11,6 +11,7 @@ import { useGetApi } from "@/hooks/API/useGetApi";
 import Loader from "@/components/ui/Shared/Loader";
 import IsError from "@/components/ui/Shared/IsError";
 import FruitCard from "@/components/HomePageComponents/FruitCard";
+import DynamicBanner from "@/components/DynamicComponents/DynamicBanner";
 
 const FruitBox = () => {
   const { data, isLoading, isError } = useGetApi("products", true);
@@ -55,6 +56,10 @@ const FruitBox = () => {
     <IsError />
   ) : (
     <div className="min-h-[900px] pt-20">
+      <DynamicBanner
+        title="ORDER"
+        semiTitle="Fresh fruit delivered to your office."
+      />
       <Container>
         <div className="pb-10 text-center">
           <h1 className="text-[64px] font-bold">Fruit Box Products</h1>

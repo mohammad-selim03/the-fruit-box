@@ -1,12 +1,17 @@
 import { banana, howOrder, malta } from "@/assets";
 import Button from "../DynamicComponents/Button";
 import { Link } from "react-router";
+import { DatePicker } from "../CartPageComponents/DatePicker";
+import { CustomDate } from "./CustomDate";
 
 const HowToOrder = () => {
   return (
     <div className="py-8 relative mt-20">
       <div className="relative">
-        <img src={howOrder} alt="" />
+        <img src={howOrder} alt="" className="z-10" />
+        <div className="absolute top-[47%] left-[600px] z-30">
+          <CustomDate />
+        </div>
         <Link
           to={"/fruit-box"}
           className="absolute bottom-[220px] left-[920px] -translate-x-1/2"
