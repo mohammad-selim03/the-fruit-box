@@ -63,8 +63,8 @@ const SelectItems2 = ({
     <div>
       <Select
         className="text-black"
-        defaultValue={value || data?.value || data?.name || "none"}
-        value={value || data?.value || data?.name || "none"}
+        defaultValue={value || data?.value || data?.name || ""}
+        value={value || data?.value || data?.name || ""}
         onValueChange={onChange || setServings || setSelectedId}
       >
         <SelectTrigger
@@ -74,7 +74,7 @@ const SelectItems2 = ({
             triggerClass
           )}
         >
-          <SelectValue placeholder={placeholder} />
+          <SelectValue placeholder={value ? undefined : placeholder} />
         </SelectTrigger>
         <SelectContent className="bg-white rounded-2xl text-left">
           <SelectGroup>
@@ -135,6 +135,7 @@ SelectItems2.propTypes = {
   placeholder: PropTypes.string,
   triggerClass: PropTypes.string,
   valueClass: PropTypes.string,
+  singleValue: PropTypes.string,
   value: PropTypes.string,
   setServings: PropTypes.func,
   setSelectedItem: PropTypes.func,
