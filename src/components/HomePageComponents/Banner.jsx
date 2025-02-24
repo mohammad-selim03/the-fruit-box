@@ -1,11 +1,16 @@
 import { bannerbg, homebanner, orderPhoto } from "@/assets";
 import Button from "../DynamicComponents/Button";
+import { Link } from "react-router";
 
 const Banner = () => {
   return (
     <div>
       <div className="relative z-20">
-        <img src={bannerbg} alt="" className="h-[800px] md:h-[1000px] lg:h-[1150px] w-full " />
+        <img
+          src={bannerbg}
+          alt=""
+          className="h-[800px] md:h-[1000px] lg:h-[1150px] w-full "
+        />
         <img
           src={homebanner}
           alt=""
@@ -23,9 +28,11 @@ const Banner = () => {
             <p className="text-white text-[12px] md:text-[16px] lg:text-[32px]">
               It’s good for you and staff <br /> love it too.
             </p>
-            <Button className="py-2 md:py-5 px-5 md:px-10 rounded-3xl shadow-black/20 shadow-md border-2 border-white text-xs md:text-base">
-              Order a Fruit Box
-            </Button>
+            <Link to={"/fruit-box"}>
+              <Button className="py-2 md:py-5 px-5 md:px-10 rounded-3xl shadow-black/20 shadow-md border-2 border-white text-xs md:text-base">
+                Order a Fruit Box
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="absolute bottom-[20%] md:bottom-[17%] left-1/2 -translate-x-1/2 w-full">

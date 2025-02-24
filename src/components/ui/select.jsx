@@ -23,23 +23,23 @@ const SelectTrigger = React.forwardRef(
       {children}
       <SelectPrimitive.Icon asChild>
         {
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="27"
-            height="26"
-            viewBox="0 0 27 26"
-            fill="none"
-          >
-            <path
-              d="M4.8335 9.75L13.5002 18.4167L22.1668 9.75"
-              stroke="#4C9811"
-              strokeWidth="1.73333"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          // <svg
+          //   xmlns="http://www.w3.org/2000/svg"
+          //   width="27"
+          //   height="26"
+          //   viewBox="0 0 27 26"
+          //   fill="none"
+          // >
+          //   <path
+          //     d="M4.8335 9.75L13.5002 18.4167L22.1668 9.75"
+          //     stroke="#4C9811"
+          //     strokeWidth="1.73333"
+          //     strokeLinecap="round"
+          //     strokeLinejoin="round"
+          //   />
+          // </svg>
         }
-        {/* <ChevronDown className="h-4 w-4 opacity-50" /> */}
+        <ChevronDown className="text-sm md:text-xl opacity-50 text-secondaryTextColor" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   )
@@ -124,16 +124,16 @@ const SelectItem = React.forwardRef(
     <SelectPrimitive.Item
       ref={ref}
       className={cn(
-        "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "relative  w-full cursor-default select-none items-center rounded-sm py-1.5  pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         className
       )}
       {...props}
     >
-      <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+      {/* <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
         <SelectPrimitive.ItemIndicator>
           <Check className="h-4 w-4" />
         </SelectPrimitive.ItemIndicator>
-      </span>
+      </span> */}
 
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     </SelectPrimitive.Item>

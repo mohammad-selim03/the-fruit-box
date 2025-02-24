@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Loader from "../ui/Shared/Loader";
 import { useEffect } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const FruitsEnquiry = () => {
   const {
@@ -29,6 +30,10 @@ const FruitsEnquiry = () => {
   }, [isSuccess, reset]);
   if (isError) {
     toast.error("Data submitted failed");
+  }
+
+  function onChange(value) {
+    console.log("Captcha value:", value);
   }
 
   return (
@@ -152,7 +157,13 @@ const FruitsEnquiry = () => {
                   )}
                 </div>
               </div>
-              <div className="mt-12">
+              <div className="block">
+                <ReCAPTCHA
+                  sitekey="6LeareAqAAAAANvL1jbOY7UankeAq6vjKNORXKi4"
+                  onChange={onChange}
+                />
+              </div>
+              <div className=" ">
                 <Button className="py-6 px-20 rounded-2xl" disabled={isLoading}>
                   {isLoading ? (
                     <p className="flex items-center justify-center gap-2">

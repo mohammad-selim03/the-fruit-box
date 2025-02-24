@@ -12,6 +12,7 @@ export function SuccessModal({ isModalOpen, setIsModalOpen }) {
     setIsModalOpen(false);
     setTimeout(() => {
       navigate("/");
+      window.location.reload()
     }, 1000);
   };
 

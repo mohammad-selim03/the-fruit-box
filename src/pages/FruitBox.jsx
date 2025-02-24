@@ -1,5 +1,5 @@
-import { useEffect, useState, useContext } from "react"; 
-import Container from "@/components/DynamicComponents/Container"; 
+import { useEffect, useContext } from "react";
+import Container from "@/components/DynamicComponents/Container";
 import { Context } from "@/context/Context";
 import { logo2 } from "@/assets";
 import { useGetApi } from "@/hooks/API/useGetApi";
@@ -9,10 +9,9 @@ import FruitCard from "@/components/HomePageComponents/FruitCard";
 import DynamicBanner from "@/components/DynamicComponents/DynamicBanner";
 
 const FruitBox = () => {
-  const { data, isLoading, isError } = useGetApi("products", true);  
+  const { data, isLoading, isError } = useGetApi("products", true);
   const { setCartItems } = useContext(Context);
 
- 
   // Load cart items from localStorage
   useEffect(() => {
     const storedCart = localStorage.getItem("cartItems");
@@ -20,8 +19,6 @@ const FruitBox = () => {
       setCartItems(JSON.parse(storedCart));
     }
   }, [setCartItems]);
-
- 
 
   return isLoading ? (
     <div className="flex items-center justify-center h-screen">
@@ -45,7 +42,11 @@ const FruitBox = () => {
         <div className="border-[8px] border-secondaryTextColor rounded-3xl p-4">
           <div className="bg-white px-5 rounded-3xl py-5 pt-10 w-full">
             {data.length > 0 ? (
-              data.map((fruit) => <FruitCard key={data?.id} data={fruit} />)
+              data.map((fruit, idx) => (
+                <div key={`index - ${idx}`}>
+                  <FruitCard data={fruit} />
+                </div>
+              ))
             ) : (
               <p className="flex items-center justify-center text-4xl font-extrabold h-60">
                 No items in the cart.

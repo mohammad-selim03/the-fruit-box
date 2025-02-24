@@ -91,12 +91,19 @@ const FruitBoxCard = ({ data }) => {
                   {data?.name}
                 </h2>
               )}
+              {data?.servings_single ? (
+                <p className="group-hover:hidden capitalize">
+                  {data?.servings_single}
+                </p>
+              ) : (
+                <p className="group-hover:hidden">10 - 100 Servings</p>
+              )}
               {data?.price_multiple !== null && (
                 <div className="group-hover:absolute group-hover:-bottom-28 group-hover:w-[80%]">
                   <SelectItems
                     data={data?.servings}
                     setServings={handleServingChange}
-                    triggerClass="py-6"
+                    triggerClass="py-6 px-2 text-lg text-left "
                     value={selectedServing.name}
                   />
                 </div>

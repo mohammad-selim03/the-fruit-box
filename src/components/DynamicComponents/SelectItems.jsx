@@ -18,6 +18,7 @@ const SelectItems = ({
   value,
   setSelectedItem,
   onChange,
+  valueClass,
 }) => {
   const [availableItems, setAvailableItems] = useState(data || []);
   const [selectedId, setSelectedId] = useState(null);
@@ -26,14 +27,16 @@ const SelectItems = ({
     const updateAvailableItems = () => {
       const cartItems = JSON.parse(localStorage.getItem("fruits")) || [];
 
-      if (Array.isArray(cartItems)) {
-        const filteredItems = data?.filter((item) => {
-          return !cartItems.some((cartItem) => cartItem?.id === item?.id);
-        });
+      if (Array.isArray(data)) {
+        if (Array.isArray(cartItems)) {
+          const filteredItems = data?.filter((item) => {
+            return !cartItems.some((cartItem) => cartItem?.id === item?.id);
+          });
 
-        setAvailableItems(filteredItems || []);
-      } else {
-        setAvailableItems([]);
+          setAvailableItems(filteredItems || []);
+        } else {
+          setAvailableItems([]);
+        }
       }
     };
 
@@ -63,19 +66,21 @@ const SelectItems = ({
   return (
     <div>
       <Select
-        defaultValue={value || "Select"}
+        className="text-black"
+        defaultValue={value || "none"}
+        value={value || "none"}
         onValueChange={onChange || setServings || setSelectedId}
       >
         <SelectTrigger
           onClick={() => handleId(selectedId)}
           className={cn(
-            "bg-white border border-primaryLightColor rounded-2xl text-lg text-nowrap placeholder:text-gray-400 z-40",
+            "bg-white text-black border border-primaryLightColor rounded-2xl text-lg text-nowrap placeholder:text-gray-400  w-full z-40",
             triggerClass
           )}
         >
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
-        <SelectContent className="bg-white rounded-2xl">
+        <SelectContent className="bg-white rounded-2xl text-left">
           <SelectGroup>
             {availableItems.map((item, idx) => {
               return (
@@ -89,10 +94,7 @@ const SelectItems = ({
                       handleId(item);
                       setSelectedItem(item);
                     }}
-                    className={cn(
-                      "flex items-center gap-2",
-                      value && "text-xs"
-                    )}
+                    className={cn("gap-2 text-sm px-2 ", valueClass)}
                   >
                     {item?.name && (
                       <img
@@ -101,7 +103,7 @@ const SelectItems = ({
                         className="w-[32px]"
                       />
                     )}
-                    {item?.value || item?.name}
+                    {item?.value || value || item?.name}
                   </p>
                 </SelectItem>
               );
@@ -119,6 +121,7 @@ SelectItems.propTypes = {
   data: PropTypes.array,
   placeholder: PropTypes.string,
   triggerClass: PropTypes.string,
+  valueClass: PropTypes.string,
   value: PropTypes.string,
   setServings: PropTypes.func,
   setSelectedItem: PropTypes.func,

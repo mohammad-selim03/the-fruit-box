@@ -1,6 +1,5 @@
 import Button from "@/components/DynamicComponents/Button";
 import SelectItems from "@/components/DynamicComponents/SelectItems";
-import { servingsData } from "@/assets/StaticData";
 import { cn } from "@/lib/utils";
 import { useState, useContext } from "react";
 import { Context } from "@/context/Context";
@@ -9,9 +8,22 @@ import toast from "react-hot-toast";
 import { FiMinus, FiPlus } from "react-icons/fi";
 
 const FruitCard = ({ data }) => {
-  const [servings, setServings] = useState("10 Servings");
+  const initialServing = data?.servings?.[0] || {
+    name: "10 Servings",
+    price: "10.00",
+  };
+  const [selectedServing, setSelectedServing] = useState(initialServing);
   const [quantity, setQuantity] = useState(1);
   const { setCartItems } = useContext(Context);
+
+  const handleServingChange = (servingName) => {
+    const selected = data?.servings?.find(
+      (serving) => serving.name === servingName
+    );
+    if (selected) {
+      setSelectedServing(selected);
+    }
+  };
 
   const handleIncrement = () => {
     setQuantity((prev) => prev + 1);
@@ -37,10 +49,10 @@ const FruitCard = ({ data }) => {
       name: data?.name,
       description: data?.description || "",
       image: data?.image || "",
-      price: parseInt(data?.price),
-      quantity,
-      servings: data?.servings,
-      servings_multiple: data?.servings_multiple && servings,
+      price: parseFloat(selectedServing?.price),
+      quantity, 
+      servings_multiple: data?.price_multiple ? selectedServing.name : null,
+      servings_id: data?.price_multiple && selectedServing,
     };
 
     const updatedCart = [...storedCart, newItem];
@@ -65,11 +77,15 @@ const FruitCard = ({ data }) => {
         />
       </div>
       <div className="w-[382px] flex flex-col gap-2">
-        <h2 className="text-2xl font-bold text-[#798090] capitalize line-clamp-1">
+        <h2 className="text-2xl font-bold text-[#798090] capitalize line-clamp-2">
           {data?.name}{" "}
-          {data?.servings && (
+          {data?.servings_single ? (
             <span className="text-secondaryTextColor text-2xl font-bold">
-              {data?.servings}
+              {data?.servings_single}
+            </span>
+          ) : (
+            <span className="text-secondaryTextColor text-2xl font-bold">
+              10-100 Servings
             </span>
           )}
         </h2>
@@ -77,10 +93,14 @@ const FruitCard = ({ data }) => {
       </div>
       <div className="flex flex-col items-center gap-5">
         <p className="text-[40px] text-secondaryTextColor w-28 text-center">
-          ${parseInt(data?.price)}
+          {selectedServing?.price ? (
+            <p>${parseInt(selectedServing.price)}</p>
+          ) : (
+            <p className="text-xs">Select servings to show price</p>
+          )}
         </p>
         <div>
-          <div className="flex items-center justify-between gap-2 border border-gray-300 p-1 rounded-xl w-28">
+          <div className="flex items-center justify-between gap-2 border border-gray-300 p-1 rounded-xl max-w-[100px]">
             <button
               className="rounded bg-primaryLightColor text-black text-xl px-2 py-2"
               onClick={handleDecrement}
@@ -88,6 +108,7 @@ const FruitCard = ({ data }) => {
               <FiMinus className="text-sm text-black/80" />
             </button>
             <span className="w-5 flex items-center justify-center">
+              {quantity < 10 && "0"}
               {quantity}
             </span>
             <button
@@ -97,13 +118,14 @@ const FruitCard = ({ data }) => {
               <FiPlus className="text-sm text-black/80" />
             </button>
           </div>
-          {data?.servings_multiple && (
+          {data?.price_multiple && (
             <div className="mt-3">
               <SelectItems
-                data={servingsData}
-                value={servings}
-                onChange={setServings}
-                triggerClass="border border-gray-300 text-red-400"
+                data={data?.servings}
+                value={selectedServing?.name}
+                setServings={handleServingChange}
+                triggerClass="border border-gray-300 text-gray-500 max-w-[100px] px-0 rounded-xl"
+                valueClass="text-[10px]"
               />
             </div>
           )}

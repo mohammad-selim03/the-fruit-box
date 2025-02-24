@@ -67,8 +67,7 @@ const Cart = () => {
     isSuccess,
   } = UsePostApi("order/store");
 
-  const placeOrder = (data) => {
-    console.log("dataaaaaaaaaaaa", { ...data, ...fruitsObject });
+  const placeOrder = (data) => { 
     const combineData = { ...data, ...fruitsObject };
     postData(combineData);
   };
@@ -158,6 +157,7 @@ const Cart = () => {
             )}
             {fruits.length > 0 ? (
               fruits.map((fruit) => {
+                console.log(fruit?.servings_multiple);
                 return (
                   <div
                     key={fruit.id}
@@ -226,14 +226,11 @@ const Cart = () => {
                         {fruit?.servings_multiple && (
                           <div className="mt-3 w-32">
                             <SelectItems
-                              data={servingsData}
-                              value={
-                                fruit?.servings ||
-                                fruit?.servings_multiple ||
-                                servings
-                              }
+                              data={fruit?.servings}
+                              value={fruit?.servings_multiple}
                               setServings={setServings}
                               triggerClass="border border-gray-300 text-red-400"
+                              valueClass={"text-xs px-0"}
                             />
                           </div>
                         )}
