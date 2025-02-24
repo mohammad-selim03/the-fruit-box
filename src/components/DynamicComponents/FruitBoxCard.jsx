@@ -13,6 +13,7 @@ const FruitBoxCard = ({ data }) => {
     name: "10 Servings",
     price: "10.00",
   };
+  console.log("servings id", data?.servings);
   const [selectedServing, setSelectedServing] = useState(initialServing);
   const { setCartItems } = useContext(Context);
 
@@ -43,6 +44,7 @@ const FruitBoxCard = ({ data }) => {
           quantity: data?.quantity || 1,
           servings: data?.servings_single || "",
           servings_multiple: data?.price_multiple ? selectedServing.name : null,
+          servings_id: data?.price_multiple && selectedServing,
         };
 
         const updatedCart = [...existingItems, sanitizedData];

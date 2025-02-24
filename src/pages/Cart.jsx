@@ -85,10 +85,10 @@ const Cart = () => {
     if (fruits.length > 0) {
       // Transform array into a single object
       const fruitsObject = fruits.reduce((acc, fruit, index) => {
-        acc[`product_id[${index}]`] = fruit.id;
-        acc[`quantity[${index}]`] = fruit.quantity || 1;
-        acc[`servings[${index}]`] = servings;
-        // acc[`name[${index}]`] = fruit.name;
+        acc[`items[${index}][product_id]`] = fruit.id;
+        acc[`items[${index}][quantity]`] = fruit.quantity || 1;
+        acc[`items[${index}][service_id]`] =
+          fruit?.servings_id?.pivot?.serving_id || null;
         return acc;
       }, {});
 
