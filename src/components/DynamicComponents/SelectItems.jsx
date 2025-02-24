@@ -19,6 +19,7 @@ const SelectItems = ({
   setSelectedItem,
   onChange,
   valueClass,
+  singleValue,
 }) => {
   const [availableItems, setAvailableItems] = useState(data || []);
   const [selectedId, setSelectedId] = useState(null);
@@ -27,16 +28,14 @@ const SelectItems = ({
     const updateAvailableItems = () => {
       const cartItems = JSON.parse(localStorage.getItem("fruits")) || [];
 
-      if (Array.isArray(data)) {
-        if (Array.isArray(cartItems)) {
-          const filteredItems = data?.filter((item) => {
-            return !cartItems.some((cartItem) => cartItem?.id === item?.id);
-          });
+      if (!singleValue && Array.isArray(cartItems)) {
+        const filteredItems = data?.filter((item) => {
+          return !cartItems.some((cartItem) => cartItem?.id === item?.id);
+        });
 
-          setAvailableItems(filteredItems || []);
-        } else {
-          setAvailableItems([]);
-        }
+        setAvailableItems(filteredItems || []);
+      } else {
+        setAvailableItems([]);
       }
     };
 
@@ -61,7 +60,7 @@ const SelectItems = ({
     return;
   }
 
-  console.log(data[0?.title]);
+  console.log(singleValue);
 
   return (
     <div>
@@ -82,32 +81,49 @@ const SelectItems = ({
         </SelectTrigger>
         <SelectContent className="bg-white rounded-2xl text-left">
           <SelectGroup>
-            {availableItems.map((item, idx) => {
-              return (
-                <SelectItem
-                  key={idx}
-                  value={item?.value || item?.name || "undefined"}
-                  className="text-xl border-b text-gray-600 cursor-pointer"
+            {singleValue ? (
+              <SelectItem
+                value={singleValue}
+                className="text-xl border-b text-gray-600 cursor-pointer"
+              >
+                <p
+                  onClick={() => {
+                    handleId(singleValue);
+                    setSelectedItem(singleValue);
+                  }}
+                  className={cn("gap-2 text-sm px-2 ", valueClass)}
                 >
-                  <p
-                    onClick={() => {
-                      handleId(item);
-                      setSelectedItem(item);
-                    }}
-                    className={cn("gap-2 text-sm px-2 ", valueClass)}
+                  {singleValue}
+                </p>
+              </SelectItem>
+            ) : (
+              availableItems.map((item, idx) => {
+                return (
+                  <SelectItem
+                    key={idx}
+                    value={item?.value || item?.name || "undefined"}
+                    className="text-xl border-b text-gray-600 cursor-pointer"
                   >
-                    {item?.name && (
-                      <img
-                        src={item?.image?.props?.src || item?.image}
-                        alt=""
-                        className="w-[32px]"
-                      />
-                    )}
-                    {item?.value || item?.name || value }
-                  </p>
-                </SelectItem>
-              );
-            })}
+                    <p
+                      onClick={() => {
+                        handleId(item);
+                        setSelectedItem(item);
+                      }}
+                      className={cn("gap-2 text-sm px-2 ", valueClass)}
+                    >
+                      {item?.name && (
+                        <img
+                          src={item?.image?.props?.src || item?.image}
+                          alt=""
+                          className="w-[32px]"
+                        />
+                      )}
+                      {item?.value || item?.name || value}
+                    </p>
+                  </SelectItem>
+                );
+              })
+            )}
           </SelectGroup>
         </SelectContent>
       </Select>

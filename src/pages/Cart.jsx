@@ -67,7 +67,7 @@ const Cart = () => {
     isSuccess,
   } = UsePostApi("order/store");
 
-  const placeOrder = (data) => { 
+  const placeOrder = (data) => {
     const combineData = { ...data, ...fruitsObject };
     postData(combineData);
   };
@@ -182,12 +182,11 @@ const Cart = () => {
                     <div className="w-[382px] flex flex-col gap-5">
                       <h2 className="text-2xl font-bold text-[#798090] capitalize">
                         {fruit.name} {"   "}
-                        {fruit?.price_multiple !== null && (
+                        {fruit?.servings_multiple !== null ? (
                           <span className="text-secondaryTextColor text-lg font-bold">
-                            {fruit?.servings}
+                            Custom Fruits
                           </span>
-                        )}
-                        {fruit?.servings_single !== null && (
+                        ) : (
                           <span className="text-secondaryTextColor text-lg font-bold">
                             {fruit?.servings}
                           </span>
@@ -224,12 +223,13 @@ const Cart = () => {
                           </button>
                         </div>
                         {fruit?.servings_multiple && (
-                          <div className="mt-3 w-32">
+                          <div className="mt-3 w-32 ">
                             <SelectItems
-                              data={fruit?.servings}
+                              data={servingsData}
+                              // singleValue={fruit?.servings_multiple}
                               value={fruit?.servings_multiple}
                               setServings={setServings}
-                              triggerClass="border border-gray-300 text-red-400"
+                              triggerClass="border border-gray-300 text-red-400 py-2"
                               valueClass={"text-xs px-0"}
                             />
                           </div>
