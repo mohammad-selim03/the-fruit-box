@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
-const SelectItems = ({
+const SelectItems2 = ({
   data,
   placeholder,
   triggerClass,
@@ -22,7 +22,7 @@ const SelectItems = ({
   singleValue,
 }) => {
   const [availableItems, setAvailableItems] = useState(data || []);
-  const [selectedId, setSelectedId] = useState(null); 
+  const [selectedId, setSelectedId] = useState(null);
   useEffect(() => {
     const updateAvailableItems = () => {
       const cartItems = JSON.parse(localStorage.getItem("fruits")) || [];
@@ -58,7 +58,6 @@ const SelectItems = ({
   if (availableItems.length === 0) {
     return;
   }
- 
 
   return (
     <div>
@@ -75,7 +74,7 @@ const SelectItems = ({
             triggerClass
           )}
         >
-          <SelectValue placeholder={placeholder || "Select"} />
+          <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent className="bg-white rounded-2xl text-left">
           <SelectGroup>
@@ -129,9 +128,9 @@ const SelectItems = ({
   );
 };
 
-export default SelectItems;
+export default SelectItems2;
 
-SelectItems.propTypes = {
+SelectItems2.propTypes = {
   data: PropTypes.array,
   placeholder: PropTypes.string,
   triggerClass: PropTypes.string,

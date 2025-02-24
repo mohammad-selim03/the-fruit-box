@@ -1,12 +1,12 @@
 import { daysData, frequencyData } from "@/assets/StaticData";
 import Button from "../DynamicComponents/Button";
-import SelectItems from "../DynamicComponents/SelectItems";
 import Title from "../DynamicComponents/Title";
 import { DatePicker } from "./DatePicker";
 import PropTypes from "prop-types";
 import { Controller } from "react-hook-form";
 import { formatDate } from "@/lib/DateFormate";
 import Loader from "../ui/Shared/Loader";
+import SelectItems2 from "../DynamicComponents/SelectItems2";
 
 const Delivery = ({
   register,
@@ -60,7 +60,7 @@ const Delivery = ({
                   defaultValue={""}
                   rules={{ required: "Frequency is required" }}
                   render={({ field }) => (
-                    <SelectItems
+                    <SelectItems2
                       {...field}
                       triggerClass="border border-gray-300 h-12 text-sm"
                       DeliveryProps={"DeliveryProps"}
@@ -83,7 +83,7 @@ const Delivery = ({
                   defaultValue={""}
                   rules={{ required: "Days of Week is required" }}
                   render={({ field }) => (
-                    <SelectItems
+                    <SelectItems2
                       {...field}
                       triggerClass="border border-gray-300 h-12 text-sm"
                       DeliveryProps={"DeliveryProps"}

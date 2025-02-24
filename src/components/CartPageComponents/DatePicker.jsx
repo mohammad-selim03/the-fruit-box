@@ -31,7 +31,11 @@ export function DatePicker({ setSelectedDate }) {
             !date && "text-muted-foreground"
           )}
         >
-          {date ? format(date, "PPP") : <span className="text-gray-500 font-bold">Select Start Date</span>}
+          {date ? (
+            format(date, "PPP")
+          ) : (
+            <span className="text-gray-500 font-bold">Select Start Date</span>
+          )}
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -54,6 +58,7 @@ export function DatePicker({ setSelectedDate }) {
           selected={date}
           onSelect={handleSelect}
           initialFocus
+          disabled={(date) => date <= new Date()}
         />
       </PopoverContent>
     </Popover>

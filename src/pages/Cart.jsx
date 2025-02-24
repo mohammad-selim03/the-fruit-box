@@ -221,14 +221,13 @@ const Cart = () => {
                       />
                     </div>
                     <div className="grid grid-cols-3 gap-5 max-w-[400px]">
-                      {fruit?.servings_multiple !== null ? (
-                        <p className="text-[26px] w-28 text-center ml-1">
-                          {/* ${parseFloat(fruit.price)} */}$
-                          {parseFloat(selectedServing.price)}
+                      {fruit?.price_multiple !== null ? (
+                        <p className="text-[26px] w-28 text-center ml-1"> 
+                          ${parseFloat(selectedServing.price)}
                         </p>
                       ) : (
                         <p className="text-[26px] w-28 text-center ml-1">
-                          ${parseFloat(fruit.price)}
+                          ${parseFloat(fruit?.price)}
                         </p>
                       )}
                       <div>
