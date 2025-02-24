@@ -202,7 +202,7 @@ const Cart = () => {
                     </div>
                     <div className="grid grid-cols-3 gap-5 max-w-[400px]">
                       <p className="text-[26px] w-28 text-center ml-1">
-                        ${parseInt(fruit.price)}
+                        ${parseFloat(fruit.price)}
                       </p>
                       <div>
                         <div className="flex items-center justify-between gap-2 border border-gray-300 p-2  rounded-xl w-32">
@@ -213,6 +213,7 @@ const Cart = () => {
                             <FiMinus className="text-black/80 text-sm" />
                           </button>
                           <span className="w-5 flex items-center justify-center ">
+                            {fruit?.quantity < 10 && "0"}
                             {fruit?.quantity ? fruit?.quantity : 1}
                           </span>
                           <button
@@ -237,17 +238,28 @@ const Cart = () => {
                       </div>
                       <p className="text-[26px]  text-secondaryTextColor text-center">
                         $
-                        {parseInt(fruit.price) *
-                          parseInt(fruit.quantity ? fruit.quantity : 1)}
+                        {parseFloat(fruit.price) *
+                          parseFloat(fruit.quantity ? fruit.quantity : 1)}
                       </p>
                     </div>
                   </div>
                 );
               })
             ) : (
-              <p className="flex items-center justify-center text-4xl font-extrabold h-60">
-                No items in the cart.
-              </p>
+              <>
+                <p className="flex items-center justify-center text-4xl font-extrabold h-60">
+                  No items in the cart.
+                </p>
+                <div className="flex items-center justify-center">
+                  <AddFruits
+                    placeholder="Choose a Box size."
+                    triggerClass="border border-gray-300 w-60 placeholder:text-red-400 py-3 h-14"
+                    data={fruitsData}
+                    selectedItem={selectedItem}
+                    setSelectedItem={setSelectedItem}
+                  />
+                </div>
+              </>
             )}
             {fruits.length > 0 && (
               <div className="pt-16 pb-5">

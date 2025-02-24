@@ -8,10 +8,7 @@ import toast from "react-hot-toast";
 import { FiMinus, FiPlus } from "react-icons/fi";
 
 const FruitCard = ({ data }) => {
-  const initialServing = data?.servings?.[0] || {
-    name: "10 Servings",
-    price: "10.00",
-  };
+  const initialServing = data?.servings?.[0] || [];
   const [selectedServing, setSelectedServing] = useState(initialServing);
   const [quantity, setQuantity] = useState(1);
   const { setCartItems } = useContext(Context);
@@ -49,8 +46,9 @@ const FruitCard = ({ data }) => {
       name: data?.name,
       description: data?.description || "",
       image: data?.image || "",
-      price: parseFloat(selectedServing?.price),
-      quantity, 
+      price:
+        data?.price !== null ? data?.price : parseFloat(selectedServing?.price),
+      quantity,
       servings_multiple: data?.price_multiple ? selectedServing.name : null,
       servings_id: data?.price_multiple && selectedServing,
     };
@@ -60,7 +58,7 @@ const FruitCard = ({ data }) => {
     setCartItems(updatedCart);
     toast.success("Product added to the cart");
   };
-
+  console.log("data price", data?.price);
   return (
     <div
       key={data?.id}
@@ -92,15 +90,27 @@ const FruitCard = ({ data }) => {
         <p className="line-clamp-3 font-extralight">{data?.description}</p>
       </div>
       <div className="flex flex-col items-center gap-5">
-        <p className="text-[40px] text-secondaryTextColor w-28 text-center">
-          {selectedServing?.price ? (
-            <p>${parseInt(selectedServing.price)}</p>
-          ) : (
-            <p className="text-xs">Select servings to show price</p>
-          )}
-        </p>
+        {data?.servings_single === null ? (
+          <p className="text-[40px] text-secondaryTextColor w-28 text-center">
+            {selectedServing?.price ? (
+              <p>${parseFloat(selectedServing.price)}</p>
+            ) : (
+              <p className="text-xs">Select servings to show price</p>
+            )}
+          </p>
+        ) : (
+          <p className="text-[40px] text-secondaryTextColor w-28 text-center">
+            {data?.price ? (
+              <p>
+                ${parseFloat(data?.price) * parseFloat(data?.quantity || 1)}
+              </p>
+            ) : (
+              <p className="text-xs">Select servings to show price</p>
+            )}
+          </p>
+        )}
         <div>
-          <div className="flex items-center justify-between gap-2 border border-gray-300 p-1 rounded-xl max-w-[100px]">
+          <div className="flex items-center justify-between gap-2 border border-gray-300 p-1 rounded-xl max-w-[120px]">
             <button
               className="rounded bg-primaryLightColor text-black text-xl px-2 py-2"
               onClick={handleDecrement}
@@ -131,8 +141,15 @@ const FruitCard = ({ data }) => {
           )}
         </div>
       </div>
-      <div onClick={handleAddToCart}>
-        <Button className="capitalize px-14 shadow-black/20 shadow-md py-3 w-full">
+      <div
+        className={cn("", data?.price === null && " cursor-none")}
+        onClick={handleAddToCart}
+      >
+        <Button
+          className={cn(
+            "capitalize px-14 shadow-black/20 shadow-md py-3 w-full"
+          )}
+        >
           Add to Cart
         </Button>
       </div>
