@@ -92,6 +92,9 @@ importers:
       react-fast-marquee:
         specifier: ^1.6.5
         version: 1.6.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-google-autocomplete:
+        specifier: ^2.7.4
+        version: 2.7.4(react@18.3.1)
       react-google-recaptcha:
         specifier: ^3.1.0
         version: 3.1.0(react@18.3.1)
@@ -2067,6 +2070,11 @@ packages:
     peerDependencies:
       react: '>= 16.8.0 || ^18.0.0'
       react-dom: '>= 16.8.0 || ^18.0.0'
+
+  react-google-autocomplete@2.7.4:
+    resolution: {integrity: sha512-BeEk2mjzgJcfiCueuKBofm5+RxHUIr0+POn9Yw8merK4Yd0jcOp9Lk/IGJySbz1GTi2Jqvi7V4dbw/DPLD1HMA==}
+    peerDependencies:
+      react: '>=16.8.0'
 
   react-google-recaptcha@3.1.0:
     resolution: {integrity: sha512-cYW2/DWas8nEKZGD7SCu9BSuVz8iOcOLHChHyi7upUuVhkpkhYG/6N3KDiTQ3XAiZ2UAZkfvYKMfAHOzBOcGEg==}
@@ -4473,6 +4481,12 @@ snapshots:
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+
+  react-google-autocomplete@2.7.4(react@18.3.1):
+    dependencies:
+      lodash.debounce: 4.0.8
+      prop-types: 15.8.1
+      react: 18.3.1
 
   react-google-recaptcha@3.1.0(react@18.3.1):
     dependencies:
