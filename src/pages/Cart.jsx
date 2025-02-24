@@ -268,19 +268,21 @@ const Cart = () => {
                             <FiPlus className="text-black/80 text-sm" />
                           </button>
                         </div>
-                        {fruit?.servings_multiple && (
-                          <div className="mt-3 w-32 ">
-                            <SelectItems
-                              data={tempservingsData?.servings}
-                              value={selectedServing?.name}
-                              setServings={handleServingChange}
-                              triggerClass="border border-gray-300 text-gray-500 py-2"
-                              valueClass={"text-xs px-0"}
-                            />
-                          </div>
-                        )}
+                        {fruit?.servings_multiple ||
+                          (fruit?.servings_single === null && (
+                            <div className="mt-3 w-32 ">
+                              <SelectItems
+                                data={tempservingsData?.servings}
+                                value={selectedServing?.name}
+                                setServings={handleServingChange}
+                                triggerClass="border border-gray-300 text-gray-500 py-2"
+                                valueClass={"text-xs px-0"}
+                              />
+                            </div>
+                          ))}
                       </div>
-                      {fruit?.servings_multiple ? (
+                      {fruit?.servings_multiple ||
+                      fruit?.servings_single === null ? (
                         <p className="text-[26px]  text-secondaryTextColor text-center">
                           $
                           {parseFloat(selectedServing.price) *
