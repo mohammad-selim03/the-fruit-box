@@ -58,7 +58,9 @@ const FruitCard = ({ data }) => {
     setCartItems(updatedCart);
     toast.success("Product added to the cart");
   };
-  console.log("data price", data?.price);
+  // console.log("data price", data?.price);
+ 
+
   return (
     <div
       key={data?.id}

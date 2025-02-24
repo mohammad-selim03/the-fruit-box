@@ -21,8 +21,20 @@ const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [totalAmount, setTotalAmount] = useState("");
   const [servings, setServings] = useState("");
+  const [tempservingsData, setTempservingsData] = useState({});
+  const initialServing = tempservingsData?.servings?.[0] || [];
+  const [selectedServing, setSelectedServing] = useState(initialServing);
 
   const { data: fruitsData } = useGetApi("products", true);
+
+  const handleServingChange = (servingName) => {
+    const selected = tempservingsData?.servings?.find(
+      (serving) => serving.name === servingName
+    );
+    if (selected) {
+      setSelectedServing(selected);
+    }
+  };
 
   const {
     register,
@@ -78,7 +90,15 @@ const Cart = () => {
       const parsedFruits = JSON.parse(storedFruits);
       setFruits(parsedFruits);
     }
+    const data = localStorage.getItem("servingsData");
+    if (data) {
+      const parsedFruits = JSON.parse(data);
+      console.log("parsed data", parsedFruits);
+      setTempservingsData(parsedFruits);
+    }
   }, []);
+
+  console.log("servings  state", selectedServing);
 
   useEffect(() => {
     if (fruits.length > 0) {
@@ -91,7 +111,7 @@ const Cart = () => {
         return acc;
       }, {});
 
-      console.log("Updated Fruits Object:", fruitsObject);
+      // console.log("Updated Fruits Object:", fruitsObject);
       setFruitsObject(fruitsObject);
 
       const total = fruits.reduce(
@@ -182,13 +202,13 @@ const Cart = () => {
                     <div className="w-[382px] flex flex-col gap-5">
                       <h2 className="text-2xl font-bold text-[#798090] capitalize">
                         {fruit.name} {"   "}
-                        {fruit?.servings_multiple !== null ? (
-                          <span className="text-secondaryTextColor text-lg font-bold">
-                            Custom Fruits
+                        {fruit?.price_multiple !== null ? (
+                          <span className="text-secondaryTextColor text-lg font-bold block">
+                            10-60+ servings.
                           </span>
                         ) : (
                           <span className="text-secondaryTextColor text-lg font-bold">
-                            {fruit?.servings}
+                            {fruit?.servings_single}
                           </span>
                         )}
                       </h2>
@@ -201,9 +221,16 @@ const Cart = () => {
                       />
                     </div>
                     <div className="grid grid-cols-3 gap-5 max-w-[400px]">
-                      <p className="text-[26px] w-28 text-center ml-1">
-                        ${parseFloat(fruit.price)}
-                      </p>
+                      {fruit?.servings_multiple !== null ? (
+                        <p className="text-[26px] w-28 text-center ml-1">
+                          {/* ${parseFloat(fruit.price)} */}$
+                          {parseFloat(selectedServing.price)}
+                        </p>
+                      ) : (
+                        <p className="text-[26px] w-28 text-center ml-1">
+                          ${parseFloat(fruit.price)}
+                        </p>
+                      )}
                       <div>
                         <div className="flex items-center justify-between gap-2 border border-gray-300 p-2  rounded-xl w-32">
                           <button
@@ -226,10 +253,9 @@ const Cart = () => {
                         {fruit?.servings_multiple && (
                           <div className="mt-3 w-32 ">
                             <SelectItems
-                              data={servingsData}
-                              // singleValue={fruit?.servings_multiple}
-                              value={fruit?.servings_multiple}
-                              setServings={setServings}
+                              data={tempservingsData?.servings}
+                              value={selectedServing?.name}
+                              setServings={handleServingChange}
                               triggerClass="border border-gray-300 text-gray-500 py-2"
                               valueClass={"text-xs px-0"}
                             />
@@ -238,7 +264,7 @@ const Cart = () => {
                       </div>
                       <p className="text-[26px]  text-secondaryTextColor text-center">
                         $
-                        {parseFloat(fruit.price) *
+                        {parseFloat(selectedServing.price) *
                           parseFloat(fruit.quantity ? fruit.quantity : 1)}
                       </p>
                     </div>

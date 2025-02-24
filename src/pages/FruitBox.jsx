@@ -11,7 +11,8 @@ import DynamicBanner from "@/components/DynamicComponents/DynamicBanner";
 const FruitBox = () => {
   const { data, isLoading, isError } = useGetApi("products", true);
   const { setCartItems } = useContext(Context);
-
+  const servingsData = data?.find((data) => data?.price === null);
+  localStorage.setItem("servingsData", JSON.stringify(servingsData));
   // Load cart items from localStorage
   useEffect(() => {
     const storedCart = localStorage.getItem("cartItems");
