@@ -78,7 +78,7 @@ const FruitBoxCard = ({ data }) => {
             )}
           >
             <div>
-              <p className="text-white px-5 line-clamp-4">
+              <p className={cn("text-white px-5 line-clamp-6", data?.custom === 1 && "line-clamp-4")}>
                 {data?.description}
               </p>
             </div>

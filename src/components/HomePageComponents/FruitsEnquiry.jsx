@@ -7,8 +7,10 @@ import toast from "react-hot-toast";
 import Loader from "../ui/Shared/Loader";
 import { useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useState } from "react";
 
 const FruitsEnquiry = () => {
+  const [isChecked, setisChecked] = useState(false);
   const {
     register,
     handleSubmit,
@@ -33,7 +35,7 @@ const FruitsEnquiry = () => {
   }
 
   function onChange(value) {
-    console.log("Captcha value:", value);
+    setisChecked(true);
   }
 
   return (
@@ -50,7 +52,7 @@ const FruitsEnquiry = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="h-[769px] w-[960px] bg-secondaryTextColor text-white rounded-[40px] p-10"
           >
-            <div className="flex flex-col items-center gap-2 w-[90%] mx-auto">
+            <div className="flex flex-col items-start gap-2 w-[90%] mx-auto">
               <Title
                 className="text-[48px] md:text-[48px]"
                 style={{
@@ -157,14 +159,17 @@ const FruitsEnquiry = () => {
                   )}
                 </div>
               </div>
-              <div className="block">
+              <div className="flex flex-col items-start">
                 <ReCAPTCHA
-                  sitekey="6LeareAqAAAAANvL1jbOY7UankeAq6vjKNORXKi4"
+                  sitekey="6Lcp9-AqAAAAAPdcMgPDI2mprlWS8Jbif5IkqAYi"
                   onChange={onChange}
                 />
               </div>
-              <div className=" ">
-                <Button className="py-6 px-20 rounded-2xl" disabled={isLoading}>
+              <div className="flex items-center justify-center" disabled={isChecked === false}>
+                <Button
+                  disabled={isChecked === false || isLoading}
+                  className="py-6 px-20 rounded-2xl"
+                >
                   {isLoading ? (
                     <p className="flex items-center justify-center gap-2">
                       Submitting... <Loader size={20} />
