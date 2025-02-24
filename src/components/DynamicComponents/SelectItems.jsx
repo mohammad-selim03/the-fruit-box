@@ -22,7 +22,7 @@ const SelectItems = ({
   singleValue,
 }) => {
   const [availableItems, setAvailableItems] = useState(data || []);
-  const [selectedId, setSelectedId] = useState(null); 
+  const [selectedId, setSelectedId] = useState(null);
   useEffect(() => {
     const updateAvailableItems = () => {
       const cartItems = JSON.parse(localStorage.getItem("fruits")) || [];
@@ -58,7 +58,6 @@ const SelectItems = ({
   if (availableItems.length === 0) {
     return;
   }
- 
 
   return (
     <div>
@@ -139,5 +138,6 @@ SelectItems.propTypes = {
   value: PropTypes.string,
   setServings: PropTypes.func,
   setSelectedItem: PropTypes.func,
+  singleValue: PropTypes.func,
   onChange: PropTypes.func,
 };

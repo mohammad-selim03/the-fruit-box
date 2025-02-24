@@ -9,11 +9,7 @@ import { greenCardbg } from "@/assets";
 
 const FruitBoxCard = ({ data }) => {
   // Initialize state with first serving's data if available
-  const initialServing = data?.servings?.[0] || {
-    name: "10 Servings",
-    price: "10.00",
-  };
-  console.log("servings id", data?.servings);
+  const initialServing = data?.servings?.[0] || []; 
   const [selectedServing, setSelectedServing] = useState(initialServing);
   const { setCartItems } = useContext(Context);
 
@@ -78,7 +74,12 @@ const FruitBoxCard = ({ data }) => {
             )}
           >
             <div>
-              <p className={cn("text-white px-5 line-clamp-6", data?.custom === 1 && "line-clamp-4")}>
+              <p
+                className={cn(
+                  "text-white px-5 line-clamp-6",
+                  data?.custom === 1 && "line-clamp-4"
+                )}
+              >
                 {data?.description}
               </p>
             </div>
@@ -101,7 +102,9 @@ const FruitBoxCard = ({ data }) => {
                   {data?.servings_single}
                 </p>
               ) : (
-                <p className="group-hover:hidden text-lg -mt-4">10 - 100 Servings</p>
+                <p className="group-hover:hidden text-lg -mt-4">
+                  10 - 100 Servings
+                </p>
               )}
               {data?.price_multiple !== null && (
                 <div className="group-hover:absolute group-hover:top-24 group-hover:w-[80%] absolute top-24 w-[80%]">

@@ -242,7 +242,7 @@ const Cart = () => {
                     <div className="grid grid-cols-3 gap-5 max-w-[400px]">
                       {fruit?.price_multiple !== null ? (
                         <p className="text-[26px] w-28 text-center ml-1">
-                          ${parseFloat(selectedServing.price)}
+                          ${parseFloat(selectedServing.price || fruit?.price)}
                         </p>
                       ) : (
                         <p className="text-[26px] w-28 text-center ml-1">
@@ -268,24 +268,31 @@ const Cart = () => {
                             <FiPlus className="text-black/80 text-sm" />
                           </button>
                         </div>
-                        {fruit?.servings_multiple ||
-                          (fruit?.servings_single === null && (
-                            <div className="mt-3 w-32 ">
-                              <SelectItems
-                                data={tempservingsData?.servings}
-                                value={selectedServing?.name}
-                                setServings={handleServingChange}
-                                triggerClass="border border-gray-300 text-gray-500 py-2"
-                                valueClass={"text-xs px-0"}
-                              />
-                            </div>
-                          ))}
+                        {(fruit?.servings_multiple ||
+                          fruit?.servingg === "" ||
+                          fruit?.servings_single === null) && (
+                          <div className="mt-3 w-32 ">
+                            <SelectItems
+                              data={tempservingsData?.servings}
+                              value={
+                                selectedServing?.name ||
+                                fruit?.servings_multiple
+                              }
+                              setServings={
+                                handleServingChange || fruit?.servings_multiple
+                              }
+                              triggerClass="border border-gray-300 text-gray-500 py-2"
+                              valueClass={"text-xs px-0"}
+                              placeholder="# of selected serving"
+                            />
+                          </div>
+                        )}
                       </div>
                       {fruit?.servings_multiple ||
                       fruit?.servings_single === null ? (
                         <p className="text-[26px]  text-secondaryTextColor text-center">
                           $
-                          {parseFloat(selectedServing.price) *
+                          {parseFloat(selectedServing.price || fruit?.price ) *
                             parseFloat(fruit.quantity ? fruit.quantity : 1)}
                         </p>
                       ) : (
