@@ -103,7 +103,7 @@ const SelectItems = ({
                         className="w-[32px]"
                       />
                     )}
-                    {item?.value || value || item?.name}
+                    {item?.value || item?.name || value }
                   </p>
                 </SelectItem>
               );
