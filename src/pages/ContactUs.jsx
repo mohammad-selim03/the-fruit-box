@@ -86,7 +86,7 @@ const ContactUs = () => {
             <Contact />
           </div>
 
-          <div className="absolute -top-20 z-10">
+          <div className="absolute -top-0 z-10">
             <div>
               <img src={aboutbg} alt="" className="w-full h-full" />
               <img

@@ -3,27 +3,38 @@ import Button from "../DynamicComponents/Button";
 import { UsePostApi } from "@/hooks/API/usePostApi";
 import Loader from "../ui/Shared/Loader";
 import toast from "react-hot-toast";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Contact = () => {
+  const [isChecked, setisChecked] = useState(false);
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const { postData, isLoading, isError, isSuccess } = UsePostApi(
     "fruit-enquiry/store"
   );
-
+  function onChange(value) {
+    setisChecked(true);
+  }
   const onSubmit = (data) => {
     console.log(data);
     if (data) {
       postData(data);
     }
   };
-  if (isSuccess) {
-    toast.success("Data submitted successfully");
-  }
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Data submitted successfully");
+      reset();
+    }
+  }, [isSuccess]);
 
   return (
     <form
@@ -114,8 +125,17 @@ const Contact = () => {
           <p className="text-red-500 text-xs mt-1">{errors.comment.message}</p>
         )}
       </div>
-      <div className="mt-2.5 w-[70%] mx-auto">
-        <Button className="py-6 px-20 rounded-2xl w-full border-2 border-white shadow-black/20 shadow-md">
+      <div className="">
+        <ReCAPTCHA
+          sitekey="6Lcp9-AqAAAAAPdcMgPDI2mprlWS8Jbif5IkqAYi"
+          onChange={onChange}
+        />
+      </div>
+      <div className="w-[70%] mx-auto">
+        <Button
+          disabled={isChecked === false}
+          className="py-6 px-20 rounded-2xl w-full border-2 border-white shadow-black/20 shadow-md"
+        >
           {isLoading ? (
             <p className="flex items-center justify-center gap-2">
               Sumitting... <Loader size={20} />
