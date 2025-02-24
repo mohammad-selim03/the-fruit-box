@@ -165,7 +165,7 @@ const FruitsEnquiry = () => {
                   onChange={onChange}
                 />
               </div>
-              <div className="flex items-center justify-center" disabled={isChecked === false}>
+              <div className="flex items-center justify-center w-full" disabled={isChecked === false}>
                 <Button
                   disabled={isChecked === false || isLoading}
                   className="py-6 px-20 rounded-2xl"
