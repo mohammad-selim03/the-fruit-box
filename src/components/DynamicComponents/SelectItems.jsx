@@ -66,8 +66,8 @@ const SelectItems = ({
     <div>
       <Select
         className="text-black"
-        defaultValue={value || "none"}
-        value={value || "none"}
+        defaultValue={value || data?.value || "none"}
+        value={value || data?.value || "none"}
         onValueChange={onChange || setServings || setSelectedId}
       >
         <SelectTrigger

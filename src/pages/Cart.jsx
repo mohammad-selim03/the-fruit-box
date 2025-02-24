@@ -229,7 +229,7 @@ const Cart = () => {
                               // singleValue={fruit?.servings_multiple}
                               value={fruit?.servings_multiple}
                               setServings={setServings}
-                              triggerClass="border border-gray-300 text-red-400 py-2"
+                              triggerClass="border border-gray-300 text-gray-500 py-2"
                               valueClass={"text-xs px-0"}
                             />
                           </div>

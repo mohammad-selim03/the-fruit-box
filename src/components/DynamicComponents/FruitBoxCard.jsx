@@ -84,7 +84,12 @@ const FruitBoxCard = ({ data }) => {
             </div>
           </div>
           <img src={greenCardbg} alt="Background" className="h-[315.548px]" />
-          <div className="absolute right-0 px-7 top-[34%] -translate-y-1/2 w-full">
+          <div
+            className={cn(
+              "absolute right-0 px-7 top-[34%] -translate-y-1/2 w-full",
+              data?.price_multiple !== null && "top-[20%]"
+            )}
+          >
             <div className="flex flex-col gap-4">
               {data?.name && (
                 <h2 className="text-[26px] text-white group-hover:hidden capitalize">
@@ -92,18 +97,18 @@ const FruitBoxCard = ({ data }) => {
                 </h2>
               )}
               {data?.servings_single ? (
-                <p className="group-hover:hidden capitalize">
+                <p className="group-hover:hidden capitalize -mt-4">
                   {data?.servings_single}
                 </p>
               ) : (
-                <p className="group-hover:hidden">10 - 100 Servings</p>
+                <p className="group-hover:hidden text-lg -mt-4">10 - 100 Servings</p>
               )}
               {data?.price_multiple !== null && (
-                <div className="group-hover:absolute group-hover:-bottom-28 group-hover:w-[80%]">
+                <div className="group-hover:absolute group-hover:top-24 group-hover:w-[80%] absolute top-24 w-[80%]">
                   <SelectItems
                     data={data?.servings}
                     setServings={handleServingChange}
-                    triggerClass="py-6 px-2 text-lg text-left "
+                    triggerClass="py-6 px-2 text-lg text-left"
                     value={selectedServing.name}
                   />
                 </div>
@@ -114,7 +119,9 @@ const FruitBoxCard = ({ data }) => {
             <div
               onClick={handleAddToCart}
               className={cn(
-                "absolute -bottom-32 w-[80%] z-20 group-hover:-bottom-[168px] flex flex-col gap-8"
+                "absolute -bottom-32 w-[80%] z-20 group-hover:-bottom-[167px] flex flex-col gap-8",
+                data?.price_multiple !== null &&
+                  "-bottom-44 group-hover:-bottom-[215px]"
               )}
             >
               <Button className="border-2 rounded-2xl border-white w-full shadow-black/20 shadow-lg py-3">
