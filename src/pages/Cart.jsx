@@ -134,7 +134,7 @@ const Cart = () => {
       localStorage.setItem("fruits", JSON.stringify(updatedFruits));
     }
   }, [servings]);
-  
+
   useEffect(() => {
     if (selectedItem && Object.keys(selectedItem).length > 0) {
       const existingFruit = fruits.find(
@@ -280,11 +280,19 @@ const Cart = () => {
                           </div>
                         )}
                       </div>
-                      <p className="text-[26px]  text-secondaryTextColor text-center">
-                        $
-                        {parseFloat(selectedServing.price) *
-                          parseFloat(fruit.quantity ? fruit.quantity : 1)}
-                      </p>
+                      {fruit?.servings_multiple ? (
+                        <p className="text-[26px]  text-secondaryTextColor text-center">
+                          $
+                          {parseFloat(selectedServing.price) *
+                            parseFloat(fruit.quantity ? fruit.quantity : 1)}
+                        </p>
+                      ) : (
+                        <p className="text-[26px]  text-secondaryTextColor text-center">
+                          $
+                          {parseFloat(fruit.price) *
+                            parseFloat(fruit.quantity ? fruit.quantity : 1)}
+                        </p>
+                      )}
                     </div>
                   </div>
                 );
