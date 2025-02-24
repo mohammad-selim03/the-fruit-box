@@ -104,7 +104,7 @@ const FruitCard = ({ data }) => {
           <p className="text-[40px] text-secondaryTextColor w-28 text-center">
             {data?.price ? (
               <p>
-                ${parseFloat(data?.price) * parseFloat(data?.quantity || 1)}
+                ${parseFloat(data?.price) * parseFloat(quantity || 1)}
               </p>
             ) : (
               <p className="text-xs">Select servings to show price</p>
