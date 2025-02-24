@@ -123,12 +123,6 @@ const Cart = () => {
   }, [fruits]);
 
   useEffect(() => {
-    if (selectedItem && Object.keys(selectedItem).length > 0) {
-      const updatedFruits = [...fruits, selectedItem];
-      setFruits(updatedFruits);
-      localStorage.setItem("fruits", JSON.stringify(updatedFruits));
-    }
-
     if (servings) {
       const updatedFruits = fruits.map((fruit) =>
         fruit.servings_multiple !== null
@@ -139,7 +133,32 @@ const Cart = () => {
       setFruits(updatedFruits);
       localStorage.setItem("fruits", JSON.stringify(updatedFruits));
     }
-  }, [selectedItem, servings]);
+  }, [servings]);
+  
+  useEffect(() => {
+    if (selectedItem && Object.keys(selectedItem).length > 0) {
+      const existingFruit = fruits.find(
+        (fruit) => fruit.id === selectedItem.id
+      );
+
+      if (existingFruit) {
+        // If fruit already exists, just increase the quantity
+        const updatedFruits = fruits.map((fruit) =>
+          fruit.id === selectedItem.id
+            ? { ...fruit, quantity: fruit.quantity + 1 }
+            : fruit
+        );
+        setFruits(updatedFruits);
+        localStorage.setItem("fruits", JSON.stringify(updatedFruits));
+      } else {
+        // If fruit is new, initialize quantity to 1
+        const newFruit = { ...selectedItem, quantity: 1 };
+        const updatedFruits = [...fruits, newFruit];
+        setFruits(updatedFruits);
+        localStorage.setItem("fruits", JSON.stringify(updatedFruits));
+      }
+    }
+  }, [selectedItem]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -222,7 +241,7 @@ const Cart = () => {
                     </div>
                     <div className="grid grid-cols-3 gap-5 max-w-[400px]">
                       {fruit?.price_multiple !== null ? (
-                        <p className="text-[26px] w-28 text-center ml-1"> 
+                        <p className="text-[26px] w-28 text-center ml-1">
                           ${parseFloat(selectedServing.price)}
                         </p>
                       ) : (
