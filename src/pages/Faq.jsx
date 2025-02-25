@@ -32,7 +32,9 @@ const Faq = () => {
       />
       <Container className="max-w-[1120px]">
         {data?.length < 1 ? (
-          <p className="font-bold text-center mt-20 text-3xl">No Data Found.!</p>
+          <p className="font-bold text-center mt-20 text-3xl">
+            No Data Found.!
+          </p>
         ) : (
           <>
             {" "}
@@ -61,7 +63,7 @@ const Faq = () => {
                 </Accordion>
               </div>
             </div>
-            <div className="py-5 md:py-20 pt-20 md:pt-40 grid grid-cols-1 sm:grid-cols-3 items-start gap-10 px-5 xl:px-0">
+            <div className="py-5 md:py-20 pt-20 md:pt-40 grid grid-cols-1 sm:grid-cols-3 items-center md:items-start gap-10 px-5 xl:px-0">
               <div className="col-span-2">
                 <p className="text-primaryBoldColor">
                   View our fruit boxes now

@@ -23,7 +23,7 @@ const FruitBox = () => {
 
   return isLoading ? (
     <div className="flex items-center justify-center h-screen">
-      <Loader />
+      <Loader size={80}/>
     </div>
   ) : isError ? (
     <IsError />
@@ -35,7 +35,9 @@ const FruitBox = () => {
       />
       <Container>
         <div className="pb-10 text-center">
-          <h1 className="text-[64px] font-bold">Fruit Box Products</h1>
+          <h1 className="text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px] font-bold">
+            Fruit Box Products
+          </h1>
           <p className="uppercase text-secondaryTextColor font-bold">
             Just a few more details to deliciousness
           </p>
@@ -55,7 +57,7 @@ const FruitBox = () => {
             )}
           </div>
         </div>
-        <div className="py-5 w-[950px] mx-auto">
+        <div className="py-5 max-w-[950px] mx-auto">
           <div className="flex flex-col items-center justify-center">
             <img src={logo2} alt="" />
             <div className="flex flex-col items-center justify-center gap-3">
