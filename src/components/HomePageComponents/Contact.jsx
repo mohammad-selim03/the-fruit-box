@@ -39,9 +39,9 @@ const Contact = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-[20px]"
+      className="flex flex-col gap-3 md:gap-[20px] w-full"
     >
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5">
         <div className="w-full">
           <input
             type="text"
@@ -71,7 +71,7 @@ const Contact = () => {
           )}
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="w-full">
           <input
             type="text"

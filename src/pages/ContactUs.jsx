@@ -64,11 +64,11 @@ const ContactUs = () => {
           <img
             src={reminder}
             alt=""
-            className="absolute -top-28 left-16 max-w-[284px]"
+            className="absolute -top-0 sm:-top-12 -left-0 xl:-top-28 xl:left-16 w-40 md:w-[284px] max-w-[284px]"
           />
-          <div className="absolute flex flex-col gap-3 text-[#38302F] w-[792px] mx-[280px] ml-96 z-20">
+          <div className="absolute flex flex-col gap-3 text-[#38302F] max-w-[792px] mx-[280px] ml-0 px-5 xl:ml-96 z-20 mt-40 md:mt-48 xl:mt-0 w-full">
             <Title
-              className="capitalize font-bold text-center md:text-[35px] text-[35px]"
+              className="capitalize font-bold text-center text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px]]"
               style={{ stroke: "#38302F", webkitTextStroke: "2px #38302F" }}
             >
               OFFICE FRUIT{" "}
@@ -79,43 +79,59 @@ const ContactUs = () => {
                 ENQUIRY
               </span>
             </Title>
-            <p className="pb-10 text-center font-bold">
+            <p className="pb-3 lg:pb-10 text-center font-bold">
               Become the office hero! Energize your workplace with fresh fruit
               deliveries.
             </p>
-            <Contact />
+            <div className="w-full">
+              <Contact />
+            </div>
           </div>
 
-          <div className="absolute -top-0 z-10">
+          <div className="absolute top-[35%] lg:top-[25%] 2xl:-top-0 z-10">
             <div>
-              <img src={aboutbg} alt="" className="w-full h-full" />
+              <img
+                src={aboutbg}
+                alt=""
+                className="w-full h-[800px] md:h-full"
+              />
               <img
                 src={contactpageimg}
                 alt=""
-                className="absolute top-40 right-0"
+                className="absolute top-[30%] md:top-[10%] right-0 w-32 sm:w-[20%] max-w-[50%]"
               />
-
-              <div className="absolute top-[60%] left-1/2 -translate-x-1/2 flex items-start justify-between">
-                <div className="text-white w-[772px] text-left">
-                  <Title style={{stroke: "white", webkitTextStroke: "2px white"}}>
+              <div className="absolute top-[60%] left-1/2 -translate-x-1/2 flex flex-col lg:flex-row items-start justify-between w-[80%]">
+                <div className="text-white max-w-[772px] text-left w-full -mt-10 sm:mt-0">
+                  <Title
+                    className="text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px]"
+                    style={{ stroke: "white", webkitTextStroke: "2px white" }}
+                  >
                     CONNECT{" "}
-                    <span className="text-primaryLightColor"  style={{stroke: "#FFB500", webkitTextStroke: "2px #FFB500"}}>WITH US</span>
+                    <span
+                      className="text-primaryLightColor"
+                      style={{
+                        stroke: "#FFB500",
+                        webkitTextStroke: "2px #FFB500",
+                      }}
+                    >
+                      WITH US
+                    </span>
                   </Title>
                   <p className="font-thin text-primaryLightColor -mt-2">
                     Reliable Office Fruit Delivery.
                   </p>
                   <div className="font-thin mt-[32px] flex flex-col gap-3">
-                    <p className="grid grid-cols-2 gap-5">
+                    <p className="grid grid-cols-2 gap-5 text-xs sm:text-sm">
                       <span>The Fruit Box Ltd.</span>
                       <span>Office: 587.351.5720</span>
                       <span>#115, 11929 – 40th Street S.E.</span>
                       <span>mail: info @ thefruitbox.ca</span>
                     </p>
-                    <span>Calgary, Alberta </span>
-                    <span>T2Z 4M8 </span>
+                    <span className="text-xs sm:text-sm">Calgary, Alberta </span>
+                    <span className="text-xs sm:text-sm">T2Z 4M8 </span>
                   </div>
                 </div>
-                <div className="w-[560px]">
+                <div className="w-[350px] sm:w-[300px] md:w-[400px] h-[460px] md:h-[560px] lg:w-[560px] mt-2">
                   <div
                     id="map"
                     className="rounded-lg border border-gray-200 shadow-lg z-30"
@@ -125,7 +141,7 @@ const ContactUs = () => {
             </div>
           </div>
           <Container>
-            <div className="   pt-[1800px] grid grid-cols-3 items-start gap-10">
+            <div className="pt-[1900px] px-5 xl:px-0 sm:pt-[1800px] grid grid-cols-1 lg:grid-cols-3 items-start gap-10">
               <div className="col-span-2">
                 <p className="text-primaryBoldColor">
                   View our fruit boxes now
@@ -135,8 +151,8 @@ const ContactUs = () => {
                   <span className="text-secondaryTextColor">Delivered</span> to
                   your office
                 </Title>
-                <Link to={"/fruit-box"} className="py-5">
-                  <Button className="py-6 px-20 ">View Fruit Boxes</Button>
+                <Link to={"/fruit-box"} className="py-2 md:py-5">
+                  <Button className="py-2 xl:py-6 px-5 xl:px-20 ">View Fruit Boxes</Button>
                 </Link>
               </div>
               <div>
