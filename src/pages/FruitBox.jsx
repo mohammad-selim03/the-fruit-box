@@ -60,14 +60,14 @@ const FruitBox = () => {
           <div className="flex flex-col items-center justify-center">
             <img src={logo2} alt="" />
             <div className="flex flex-col items-center justify-center gap-3">
-              <h3 className="text-[40px] font-bold text-gray-600 text-center">
+              <h3 className="text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[40px] font-bold text-gray-600 text-center">
                 <span className="text-secondaryTextColor">
                   Guaranteed fresh.
                 </span>{" "}
                 no contracts.{" "}
                 <span className="text-secondaryTextColor">free delivery</span>
               </h3>
-              <p className="font-thin text-lg text-center">
+              <p className="font-thin text-sm md:text-lg text-center">
                 The Fruit Box is an amazing wellness program your staff will
                 really love. Energize your workplace with fresh fruit
                 deliveries!
