@@ -21,7 +21,7 @@ const FruitBoxCard = ({ data }) => {
       setSelectedServing(selected);
     }
   };
-
+console.log("selecte3d servings", selectedServing)
   const handleAddToCart = () => {
     setCartItems((prevItems) => {
       const existingItems = Array.isArray(prevItems) ? prevItems : [];

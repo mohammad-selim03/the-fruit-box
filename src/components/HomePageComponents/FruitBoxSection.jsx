@@ -7,7 +7,9 @@ import IsError from "../ui/Shared/IsError";
 
 const FruitBoxSection = () => {
   const { data: fruitsData, isLoading, isError } = useGetApi("products", true);
-console.log("fruits data: ", fruitsData)
+  console.log("fruits data: ", fruitsData);
+  const servingsData = fruitsData?.find((data) => data?.price === null);
+  localStorage.setItem("servingsData", JSON.stringify(servingsData));
   return isLoading ? (
     <div className="flex items-center justify-center h-80">
       {" "}

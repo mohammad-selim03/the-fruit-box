@@ -1,4 +1,3 @@
-import { daysData, frequencyData } from "@/assets/StaticData";
 import Button from "../DynamicComponents/Button";
 import Title from "../DynamicComponents/Title";
 import { DatePicker } from "./DatePicker";
@@ -6,7 +5,7 @@ import PropTypes from "prop-types";
 import { Controller } from "react-hook-form";
 import { formatDate } from "@/lib/DateFormate";
 import Loader from "../ui/Shared/Loader";
-import SelectItems2 from "../DynamicComponents/SelectItems2";
+import FrequencyDaySelector from "./FreequencyDaySelector";
 
 const Delivery = ({
   register,
@@ -15,6 +14,8 @@ const Delivery = ({
   control,
   placeOrder,
   isPosting,
+  watch,
+  setValue,
 }) => {
   return (
     <form onSubmit={handleSubmit(placeOrder)}>
@@ -52,7 +53,7 @@ const Delivery = ({
                 </p>
               )}
             </div>
-            <div className="grid grid-cols-2 gap-5">
+            {/* <div className="grid grid-cols-2 gap-5">
               <div>
                 <Controller
                   name="frequency"
@@ -99,8 +100,12 @@ const Delivery = ({
                   </p>
                 )}
               </div>
-            </div>
-
+            </div> */}
+            <FrequencyDaySelector
+              control={control}
+              watch={watch}
+              setValue={setValue}
+            />
             <textarea
               className="h-32 w-full border border-gray-300 outline-none p-3 rounded-2xl"
               placeholder="Type comments"

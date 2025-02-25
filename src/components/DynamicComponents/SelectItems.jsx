@@ -15,6 +15,7 @@ const SelectItems = ({
   placeholder,
   triggerClass,
   setServings,
+  servings,
   value,
   setSelectedItem,
   onChange,
@@ -59,7 +60,7 @@ const SelectItems = ({
     return;
   }
 
-  console.log("valuessss", value);
+ 
 
   return (
     <div>

@@ -13,8 +13,14 @@ import { cn } from "@/lib/utils";
 import { useGetApi } from "@/hooks/API/useGetApi";
 import { UsePostApi } from "@/hooks/API/usePostApi";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import Loader from "@/components/ui/Shared/Loader";
 
 const Cart = () => {
+  const { data: fruitsData, isLoading } = useGetApi("products", true);
+
+  const servingsData = fruitsData?.find((data) => data?.price === null);
+  localStorage.setItem("servingsData", JSON.stringify(servingsData));
+
   const [fruits, setFruits] = useState([]);
   const [fruitsObject, setFruitsObject] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
@@ -24,8 +30,6 @@ const Cart = () => {
   const [tempservingsData, setTempservingsData] = useState({});
   const initialServing = tempservingsData?.servings?.[0] || [];
   const [selectedServing, setSelectedServing] = useState(initialServing);
-
-  const { data: fruitsData } = useGetApi("products", true);
 
   const handleServingChange = (servingName) => {
     const selected = tempservingsData?.servings?.find(
@@ -40,6 +44,8 @@ const Cart = () => {
     register,
     handleSubmit,
     control,
+    watch,
+    setValue,
     onChange,
     formState: { errors },
   } = useForm();
@@ -98,29 +104,33 @@ const Cart = () => {
     }
   }, []);
 
-  console.log("servings  state", selectedServing);
+  useEffect(() => {
+    if (isLoading) {
+      return setTimeout(() => {
+        <h1 className="flex items-center justify-center h-96">
+          <Loader />
+        </h1>;
+      }, 1000);
+    }
+  }, []);
 
+  console.log("servings  state", selectedServing?.pivot?.serving_id);
   useEffect(() => {
     if (fruits.length > 0) {
-      // Transform array into a single object
       const fruitsObject = fruits.reduce((acc, fruit, index) => {
         acc[`items[${index}][product_id]`] = fruit.id;
         acc[`items[${index}][quantity]`] = fruit.quantity || 1;
         acc[`items[${index}][service_id]`] =
-          fruit?.servings_id?.pivot?.serving_id || null;
+          selectedServing?.pivot?.serving_id ||
+          fruit?.servings_id?.pivot?.serving_id ||
+          null;
         return acc;
       }, {});
+      console.log("Final Fruits Object Payload:", fruitsObject);
 
-      // console.log("Updated Fruits Object:", fruitsObject);
       setFruitsObject(fruitsObject);
-
-      const total = fruits.reduce(
-        (sum, fruit) => sum + (fruit?.quantity * fruit?.price || fruit?.price),
-        0
-      );
-      setTotalAmount(total);
     }
-  }, [fruits]);
+  }, [fruits, selectedServing]); // Add selectedServing to dependencies
 
   useEffect(() => {
     if (servings) {
@@ -190,7 +200,9 @@ const Cart = () => {
             {fruits?.length > 0 && (
               <div className="flex items-center justify-end text-xl font-bold gap-16 ml-10 max-w-6xl">
                 {Cartheader?.map((data) => (
-                  <p key={data} className="text-sm md:text-base">{data}</p>
+                  <p key={data} className="text-sm md:text-base">
+                    {data}
+                  </p>
                 ))}
               </div>
             )}
@@ -271,7 +283,7 @@ const Cart = () => {
                         {(fruit?.servings_multiple ||
                           fruit?.servingg === "" ||
                           fruit?.servings_single === null) && (
-                          <div className="mt-3 w-32 ">
+                          <div className="mt-3 w-32">
                             <SelectItems
                               data={tempservingsData?.servings}
                               value={
@@ -333,6 +345,8 @@ const Cart = () => {
                   isPostingError={isPostingError}
                   placeOrder={placeOrder}
                   onChange={onChange}
+                  watch={watch}
+                  setValue={setValue}
                 />
                 <SuccessModal
                   isModalOpen={isModalOpen}

@@ -31,7 +31,7 @@ const AddFruits = ({
     const selectedItem = data?.find(
       (item) => item?.id === selectedId || item?.name === selectedId
     );
-
+    console.log("selectedItem: " + selectedItem);
     setSelectedItem(selectedItem || null);
   }, [selectedId, data, setSelectedItem]);
 
@@ -61,13 +61,13 @@ const AddFruits = ({
   };
 
   if (availableItems.length === 0) {
-    return ;
+    return;
   }
 
   return (
     <div>
       <Select
-      className="text-black"
+        className="text-black"
         value={selectedItem || selectedId || ""}
         onValueChange={handleSelection}
       >
