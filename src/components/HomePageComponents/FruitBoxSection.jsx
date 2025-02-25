@@ -28,7 +28,7 @@ const FruitBoxSection = () => {
         <div className="flex flex-col items-center justify-center">
           <div className="pb-5 lg:pb-20 z-20 flex flex-col items-center justify-center">
             <Title
-              className="text-black"
+              className="text-black mb-5"
               style={{
                 textStroke: "2px black",
                 webkitTextStroke: "2px black",
