@@ -130,12 +130,12 @@ const FruitCard = ({ data }) => {
             </button>
           </div>
           {data?.price_multiple && (
-            <div className="mt-3">
+            <div className="mt-3 w-full">
               <SelectItems
                 data={data?.servings}
                 value={selectedServing?.name}
                 setServings={handleServingChange}
-                triggerClass="border border-gray-300 text-gray-500 max-w-[100px] px-0 rounded-xl"
+                triggerClass="border border-gray-300 text-gray-500 w-full sm:max-w-[100px] px-0 rounded-xl"
                 valueClass="text-[10px]"
               />
             </div>

@@ -59,9 +59,9 @@ const Navbar = () => {
   return (
     <div className="bg-white h-[120px] w-full px-5 lg:px-14 xl:px-[100px] flex items-center justify-between fixed top-0 z-[60] shadow-black/5 shadow-xl">
       <Link to={"/"}>
-        <img src={logo} alt="" />
+        <img src={logo} alt="" className="w-56 -mt-4" />
       </Link>
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-5 ">
         <div className="lg:hidden flex">
           <MobileNav totalQuantity={totalQuantity} navItems={navItems} />
         </div>

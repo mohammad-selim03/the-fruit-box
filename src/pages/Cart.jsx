@@ -177,11 +177,11 @@ const Cart = () => {
   return (
     <div className="min-h-[900px] pt-20">
       <Container>
-        <div className="pb-10">
-          <h1 className="text-[64px] font-bold text-center">
+        <div className="pb-10 mt-10">
+          <h1 className="text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px] font-bold text-center">
             Fruit box order form
           </h1>
-          <p className="text-center uppercase text-secondaryTextColor font-bold">
+          <p className="text-center text-xs sm:text-sm md:text-base uppercase text-secondaryTextColor font-bold">
             JUST A FEW MORE DETAILS TO DELICIOUSNESS
           </p>{" "}
         </div>
@@ -190,7 +190,7 @@ const Cart = () => {
             {fruits?.length > 0 && (
               <div className="flex items-center justify-end text-xl font-bold gap-16 ml-10 max-w-6xl">
                 {Cartheader?.map((data) => (
-                  <p key={data}>{data}</p>
+                  <p key={data} className="text-sm md:text-base">{data}</p>
                 ))}
               </div>
             )}
@@ -208,7 +208,7 @@ const Cart = () => {
                     >
                       <IoMdClose />
                     </button>
-                    <div className="w-[280px] ">
+                    <div className="w-[350px] md:w-[280px] ">
                       <img
                         src={fruit?.image}
                         alt={fruit?.name}
@@ -292,7 +292,7 @@ const Cart = () => {
                       fruit?.servings_single === null ? (
                         <p className="text-[26px]  text-secondaryTextColor text-center">
                           $
-                          {parseFloat(selectedServing.price || fruit?.price ) *
+                          {parseFloat(selectedServing.price || fruit?.price) *
                             parseFloat(fruit.quantity ? fruit.quantity : 1)}
                         </p>
                       ) : (
@@ -342,7 +342,7 @@ const Cart = () => {
             )}
           </div>
         </div>
-        <div className="py-10 w-[950px] mx-auto">
+        <div className="py-10 max-w-[950px] mx-auto">
           <div className="flex flex-col items-center justify-center">
             <img src={logo2} alt="" />
             <div className="flex flex-col items-center justify-center gap-3">
