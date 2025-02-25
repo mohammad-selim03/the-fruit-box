@@ -10,7 +10,7 @@ const About = () => {
     <div>
       <DynamicBanner title="ABOUT" semiTitle="We’re a proud Calgary company." />
       <div className="relative mt-10 md:mt-20">
-        <div className="px-5 lg:px-0 max-w-[948px] overflow-hidden  mx-auto lg:ml-20 2xl:ml-60 text-wrap z-30 relative ">
+        <div className="px-5 lg:px-0 max-w-[948px]  mx-auto lg:ml-20 2xl:ml-60 text-wrap z-30 relative ">
           <div className="flex flex-col gap-3 text-[#38302F] w-full ">
             <Title className="capitalize text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px]">
               Passionate about fresh fr
@@ -55,28 +55,34 @@ const About = () => {
             <img
               src={aboutpagefruits}
               alt=""
-              className="absolute top-[30%] -mt-16 lg:mt-40  xl:top-10 min-[1590px]:top-[20%] max-[1450px]:top-[20%] right-0 w-20  md:w-60 xl:w-[450px] 4xl:w-[600px]"
+              className="absolute top-[30%] md:top-[10%] -mt-16 lg:mt-40  xl:top-10 min-[1590px]:top-[20%] max-[1450px]:top-[20%] right-0 w-20  md:w-60 xl:w-[450px] 4xl:w-[600px]"
             />
-            <div className="absolute top-[55%] left-5 sm:top-[60%] lg:left-[15%] max-w-[500px]">
-              <img src={van} alt="" className="w-20" />
-              <div className="text-white mt-0 md:mt-5 max-w-[150px] sm:max-w-[350px]  xl:max-w-[80%]">
-                <h2 className="text-[10px] sm:text-lg xl:text-[40px] ">
+            <div className="absolute top-[55%] left-5 lg:top-[60%] lg:left-[15%] max-w-[550px]">
+              <img src={van} alt="" className="w-20 md:w-40 lg:w-52 xl:w-80" />
+              <div className="text-white mt-0 md:mt-5 max-w-[150px] sm:max-w-[350px]  xl:max-w-[100%]">
+                <h2 className="text-[10px] sm:text-lg xl:text-[40px] w-full">
                   Are you looking to{" "}
                   <span className="text-primaryLightColor">switch?</span>
                 </h2>
-                <p className="font-thin text-[7px] sm:text-sm lg:text-base">
+                <p className="font-thin text-[7px] sm:text-sm lg:text-base xl:mt-5">
                   Try us for just 2 deliveries and discover why we’re Calgary’s
                   premier office fruit supplier!
                 </p>
               </div>
             </div>
-            <div className="absolute top-1/2 md:top-[60%] right-5  lg:-right-[80%] overflow-hidden">
-              <div className="text-white max-w-[150px] sm:max-w-[350px] xl:max-w-[50%] text-right ">
+            <div className="absolute top-1/2 md:top-[60%] right-5  lg:right-20 overflow-hidden">
+              <div className="text-white max-w-[150px] sm:max-w-[350px] xl:max-w-[100%] text-right mt-5">
                 <h2 className="text-[10px]  sm:text-lg xl:text-[40px]">
                   Companies are making the{" "}
                   <span className="text-primaryLightColor">switch.</span>
                 </h2>
-                <p className="font-thin text-[7px] sm:text-sm lg:text-base line-clamp-5 md:line-clamp-none flex items-center justify-end 2xl:w-[400px]">
+                <p className="font-thin text-[7px] sm:text-sm lg:text-base line-clamp-3  flex lg:hidden items-center justify-end 2xl:w-[800px] xl:mt-5">
+                  Corporate customers are switching to The Fruit Box. In 2014
+                  alone, more than a third of our new customers have switched to
+                  us from a competitive service. While the reasons vary from
+                  poor quality to unreliable service to poor customer support.
+                </p>
+                <p className="font-thin text-[7px] sm:text-sm lg:text-base line-clamp-3 hidden lg:flex items-center justify-end 2xl:w-[800px] xl:mt-5  ">
                   Corporate customers are switching to The Fruit Box. In 2014
                   alone, more than a third of our new customers have switched to
                   us from a competitive service. While the reasons vary from
@@ -92,7 +98,7 @@ const About = () => {
           </div>
         </div>
         <Container>
-          <div className="py-20 pt-[600px] md:pt-[800px] lg:pt-[1200px] grid grid-cols-1 lg:grid-cols-3 items-start gap-10 px-5 lg:px-0">
+          <div className="py-0 pt-[600px] md:pt-[800px] lg:pt-[1500px] grid grid-cols-1 lg:grid-cols-3 items-start gap-10 px-5 lg:px-0">
             <div className="col-span-2 ">
               <p className="text-primaryBoldColor">View our fruit boxes now</p>
               <Title className="capitalize  leading-noe">
