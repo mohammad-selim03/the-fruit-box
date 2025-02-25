@@ -59,7 +59,7 @@ const FruitBoxCard = ({ data }) => {
         {/* Left Image Section */}
         <div
           className={cn(
-            "w-[325.678px] h-[315.548px] flex items-center justify-center overflow-hidden bg-white border border-r-0 border-secondaryTextColor group-hover:border-primaryBoldColor rounded-l-[30px]",
+            "w-[325.678px] h-[200px] lg:h-[315.548px] flex items-center justify-center overflow-hidden bg-white border border-r-0 border-secondaryTextColor group-hover:border-primaryBoldColor rounded-l-[30px]",
             !data?.name && "border-SecondaryBg"
           )}
         >
@@ -84,25 +84,25 @@ const FruitBoxCard = ({ data }) => {
               </p>
             </div>
           </div>
-          <img src={greenCardbg} alt="Background" className="h-[315.548px]" />
+          <img src={greenCardbg} alt="Background" className="h-[200px] lg:h-[315.548px]" />
           <div
             className={cn(
-              "absolute right-0 px-7 top-[34%] -translate-y-1/2 w-full",
+              "absolute right-0 px-7 top-[20%] lg:top-[34%] -translate-y-1/2 w-full",
               data?.price_multiple !== null && "top-[20%]"
             )}
           >
             <div className="flex flex-col gap-4">
               {data?.name && (
-                <h2 className="text-[26px] text-white group-hover:hidden capitalize">
+                <h2 className="md:text-xl lg:text-[26px] text-white group-hover:hidden capitalize">
                   {data?.name}
                 </h2>
               )}
               {data?.servings_single ? (
-                <p className="group-hover:hidden capitalize -mt-4">
+                <p className="group-hover:hidden capitalize -mt-4 text-sm">
                   {data?.servings_single}
                 </p>
               ) : (
-                <p className="group-hover:hidden text-lg -mt-4">
+                <p className="group-hover:hidden -mt-4 text-sm">
                   10 - 100 Servings
                 </p>
               )}
@@ -127,7 +127,7 @@ const FruitBoxCard = ({ data }) => {
                   "-bottom-44 group-hover:-bottom-[215px]"
               )}
             >
-              <Button className="border-2 rounded-2xl border-white w-full shadow-black/20 shadow-lg py-3">
+              <Button className="border-2 lg:rounded-2xl border-white w-full shadow-black/20 shadow-lg py-3 text-sm md:text-base">
                 Order now $
                 {data?.price_multiple
                   ? parseFloat(selectedServing?.price).toFixed(2)

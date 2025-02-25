@@ -61,29 +61,30 @@ const Offer = () => {
   ];
 
   return (
-    <Container>
+    <Container className="max-w-[1379px] px-4 md:px-8">
       <div className="mt-32 flex flex-col items-center">
         <Title
           style={{ textStroke: "2px black", webkitTextStroke: "2px black" }}
+          className="text-[24px] md:text-[32px] lg:text-[40px]"
         >
           WHAT WE OFFER
         </Title>
-        <p className="text-center text-2xl text-secondaryTextColor">
+        <p className="text-center text-lg md:text-xl lg:text-2xl text-secondaryTextColor">
           AWESOMENESS IN EVERYTHING WE DO.
         </p>
       </div>
-      <div className="mt-20 grid grid-cols-4 gap-5">
+      <div className="mt-8 md:mt-14 lg:mt-20 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {offerData.map((data) => (
           <div
             key={data.title}
-            className="flex flex-col items-center w-[317px] h-[306px] gap-2 border border-[#A2A2A2] rounded-2xl p-4 cursor-pointer hover:bg-secondaryTextColor/80 group transition-all duration-300 hover:border-secondaryTextColor hover:text-white"
+            className="flex flex-col items-center justify-center h-[306px] gap-2 border border-[#A2A2A2] rounded-2xl p-4 cursor-pointer hover:bg-secondaryTextColor/80 group transition-all duration-300 hover:border-secondaryTextColor hover:text-white"
           >
             <div>{data.image}</div>
             <div className="flex flex-col gap-3">
-              <h3 className="text-center text-primaryBoldColor group-hover:text-white text-2xl">
+              <h3 className="text-center text-primaryBoldColor group-hover:text-white transition-all duration-300 md:text-lg lg:text-xl font-extrabold">
                 {data.title}
               </h3>
-              <p className="font-thin text-center text-lg">{data.description}</p>
+              <p className="font-thin text-center md:text-lg ">{data.description}</p>
             </div>
           </div>
         ))}

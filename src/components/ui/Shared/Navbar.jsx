@@ -78,7 +78,7 @@ const Navbar = () => {
               <p className="text-left ml-10">Cart / {totalQuantity || 0}</p>
             </div>
           </Link>
-          <div className="hidden lg:flex items-center gap-[50px] mt-2">
+          <div className="hidden lg:flex items-center gap-8 xl:gap-[50px] mt-2">
             {navItems?.map((data, idx) => {
               return (
                 <Link
