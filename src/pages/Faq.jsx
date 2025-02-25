@@ -36,7 +36,7 @@ const Faq = () => {
         ) : (
           <>
             {" "}
-            <div className="border-4 w-[961.084px] h-full mx-auto border-secondaryTextColor rounded-[50px] p-3">
+            <div className="border-4 max-w-[961.084px] h-full mx-auto border-secondaryTextColor rounded-[50px] p-3 mt-5 sm:mt-10">
               <div className="w-[full] h-[full] bg-white mx-auto rounded-[34px] px-5 py-10">
                 <Accordion type="single" collapsible className="w-full ">
                   {data?.map((data, idx) => {
@@ -49,7 +49,7 @@ const Faq = () => {
                           idx == faqData?.length - 1 && "border-none"
                         )}
                       >
-                        <AccordionTrigger className="hover:no-underline text-[#474747] ">
+                        <AccordionTrigger className="hover:no-underline text-[#474747] text-left">
                           {data?.question}
                         </AccordionTrigger>
                         <AccordionContent className="text-[#474747]">
@@ -61,7 +61,7 @@ const Faq = () => {
                 </Accordion>
               </div>
             </div>
-            <div className="py-20 pt-40 grid grid-cols-3 items-start gap-10">
+            <div className="py-5 md:py-20 pt-20 md:pt-40 grid grid-cols-1 sm:grid-cols-3 items-start gap-10 px-5 xl:px-0">
               <div className="col-span-2">
                 <p className="text-primaryBoldColor">
                   View our fruit boxes now
