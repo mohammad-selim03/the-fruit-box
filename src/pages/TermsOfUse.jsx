@@ -13,12 +13,12 @@ const TermsOfUse = () => {
         semiTitle="We’re a proud Calgary company."
       />
       <Container>
-        <div className="py-20">
-          <Title className="font-extrabold text-left">
+        <div className="py-10 xl:py-20 px-5 xl:px-0">
+          <Title className="font-extrabold text-left text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px]">
             TERMS AND CONDITIONS OF USE
           </Title>
           <div className="flex flex-col gap-[26px]">
-            <p className="text-left text-lg text-gray-600 pt-[30px]">
+            <p className="text-left text-sm lg:text-lg text-gray-600 pt-[30px]">
               1. Scope These Standard Terms and Conditions of Sale ("Terms")
               shall govern the sale by The Fruit Box Ltd. (“The Fruit Box”) of
               all goods and/or services (collectively, the “Services”) as well
