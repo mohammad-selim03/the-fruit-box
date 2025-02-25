@@ -39,17 +39,17 @@ const FrequencyDaySelector = ({
   // Reset days when frequency changes
   useEffect(() => {
     if (frequency === "daily") {
-      setValue("day_of_week", "Monday to Friday");
+      setValue("days_of_week", ["Monday to Friday"]);
     } else if (frequency === "one_time") {
-      setValue("day_of_week", []);
+      setValue("days_of_week", []);
     } else {
-      setValue("day_of_week", []);
+      setValue("days_of_week", []);
     }
   }, [frequency, setValue]);
 
-  // Handle single day selection
+  // Handle single day selection - Fix: Ensure we set an array for days_of_week
   const handleSingleDayChange = (day) => {
-    setValue("day_of_week", [day]);
+    setValue("days_of_week", [day]);
   };
 
   // Helper function to get day label
@@ -188,7 +188,7 @@ const FrequencyDaySelector = ({
               rules={{
                 required: "Day of Week is required",
                 validate: (value) => {
-                  if (value.length !== 1) {
+                  if (!value || value.length !== 1) {
                     return `Please select exactly 1 day`;
                   }
                   return true;
@@ -201,12 +201,12 @@ const FrequencyDaySelector = ({
                   </label>
                   <Select
                     onValueChange={handleSingleDayChange}
-                    value={field.value?.[0] || ""}
+                    value={Array.isArray(field.value) ? field.value[0] || "" : ""}
                   >
                     <SelectTrigger className="h-12 text-sm rounded-xl border border-gray-300">
                       <SelectValue placeholder="Select a Day" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-white rounded-xl ps-3">
                       {dayOptions.map((day) => (
                         <SelectItem key={day.value} value={day.value}>
                           {day.label}
@@ -226,7 +226,7 @@ const FrequencyDaySelector = ({
         </div>
       )}
 
-      {/* {frequency === "other" && (
+      {frequency === "other" && (
         <div className="col-span-1 md:col-span-2">
           <Controller
             name="custom_frequency"
@@ -254,7 +254,7 @@ const FrequencyDaySelector = ({
             )}
           />
         </div>
-      )} */}
+      )}
     </div>
   );
 };

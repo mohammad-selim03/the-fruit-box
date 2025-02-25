@@ -70,13 +70,13 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <div className="absolute top-1/2 md:top-[60%] right-5  lg:-right-[80%]">
+            <div className="absolute top-1/2 md:top-[60%] right-5  lg:-right-[80%] overflow-hidden">
               <div className="text-white max-w-[150px] sm:max-w-[350px] xl:max-w-[50%] text-right ">
                 <h2 className="text-[10px]  sm:text-lg xl:text-[40px]">
                   Companies are making the{" "}
                   <span className="text-primaryLightColor">switch.</span>
                 </h2>
-                <p className="font-thin text-[7px] sm:text-sm lg:text-base line-clamp-2 md:line-clamp-none flex items-center justify-end border-4 2xl:w-[400px]">
+                <p className="font-thin text-[7px] sm:text-sm lg:text-base line-clamp-5 md:line-clamp-none flex items-center justify-end 2xl:w-[400px]">
                   Corporate customers are switching to The Fruit Box. In 2014
                   alone, more than a third of our new customers have switched to
                   us from a competitive service. While the reasons vary from
@@ -101,7 +101,9 @@ const About = () => {
                 your office
               </Title>
               <Link to={"/fruit-box"} className="py-5 ">
-                <Button className="py-3 lg:py-6 px-8 lg:px-20 ">View Fruit Boxes</Button>
+                <Button className="py-3 lg:py-6 px-8 lg:px-20 ">
+                  View Fruit Boxes
+                </Button>
               </Link>
             </div>
             <div>
