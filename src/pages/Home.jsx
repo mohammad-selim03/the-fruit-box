@@ -6,12 +6,12 @@ import HowToOrder from "@/components/HomePageComponents/HowToOrder";
 import Offer from "@/components/HomePageComponents/Offer";
 import WhySection from "@/components/HomePageComponents/WhySection";
 import Loader from "@/components/ui/Shared/Loader";
-import { useGetApi } from "@/hooks/API/useGetApi";
+import { useGetApi } from "@/hooks/API/useGetApi"; 
 
 const Home = () => {
   const { data, isLoading } = useGetApi("system-setting", true);
-  if(data){
-    localStorage.setItem("system-setting",JSON.stringify(data));
+  if (data) {
+    localStorage.setItem("system-setting", JSON.stringify(data));
   }
   return isLoading ? (
     <div className="flex items-center justify-center h-screen">

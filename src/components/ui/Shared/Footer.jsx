@@ -1,4 +1,4 @@
-import { cloud, footerbg, footerbg1, footerlogo } from "@/assets";
+import { cloud, footerbg1, footerlogo } from "@/assets";
 import Button from "@/components/DynamicComponents/Button";
 import Container from "@/components/DynamicComponents/Container";
 import { Link } from "react-router";
@@ -91,7 +91,7 @@ const Footer = () => {
                 <span className="font-semibold text-sm text-white">
                   Office:
                 </span>{" "}
-                Unit 115 11929 - 40th Street S.E. Calgary, Alberta T2Z 4M8
+                {data?.address}
               </p>
               <p className="text-xs text-primaryTextColor">
                 <span className="font-semibold text-sm text-white">
@@ -110,7 +110,7 @@ const Footer = () => {
           <div className="flex items-center xl:justify-center gap-2 py-5 text-white border-t border-white/30 ">
             <img src={footerlogo} alt="" className="w-8" />
             <p className="mt-3 text-sm xl:text-center w-2/3 lg:w-fit">
-              {data?.system_name} {data?.copyright_text }
+              {data?.system_name} {data?.copyright_text}
             </p>
           </div>
         </div>
