@@ -62,14 +62,14 @@ const Offer = () => {
 
   return (
     <Container className="max-w-[1379px] px-4 md:px-8">
-      <div className="mt-32 flex flex-col items-center">
+      <div className="mt-16 md:mt-24 lg:mt-32 flex flex-col items-center">
         <Title
           style={{ textStroke: "2px black", webkitTextStroke: "2px black" }}
-          className="text-[24px] md:text-[32px] lg:text-[40px]"
+          className="text-[28px] md:text-[36px] lg:text-[44px] xl:text-[64px]"
         >
           WHAT WE OFFER
         </Title>
-        <p className="text-center text-lg md:text-xl lg:text-2xl text-secondaryTextColor">
+        <p className="text-center sm:text-lg md:text-xl lg:text-2xl text-secondaryTextColor">
           AWESOMENESS IN EVERYTHING WE DO.
         </p>
       </div>

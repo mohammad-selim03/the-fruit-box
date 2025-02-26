@@ -28,7 +28,7 @@ const FruitBoxSection = () => {
         <div className="flex flex-col items-center justify-center">
           <div className="pb-5 lg:pb-20 z-20 flex flex-col items-center justify-center">
             <Title
-              className="text-black mb-5"
+              className="text-black text-[28px] md:text-[36px] lg:text-[44px] xl:text-[64px]"
               style={{
                 textStroke: "2px black",
                 webkitTextStroke: "2px black",
@@ -36,7 +36,7 @@ const FruitBoxSection = () => {
             >
               OUR FRUIT BOXES
             </Title>
-            <p className="text-secondaryTextColor text-xs md:text-base text-center">
+            <p className="text-center sm:text-lg md:text-xl lg:text-2xl text-secondaryTextColor">
               PACKED WITH FRESH FRUIT SUCH AS APPLES, ORANGES, BANANAS, AND
               SEASONALS.
             </p>

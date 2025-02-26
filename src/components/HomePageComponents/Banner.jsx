@@ -23,7 +23,7 @@ const Banner = () => {
           </figure>
 
           <div className="relative max-w-[1347px] px-4 md:px-8 mx-auto pt-20 md:pt-32 pb-14 md:pb-20 lg:pt-[180px] lg:pb-[120px]">
-            <div className="relative">
+            <div className="relative w-fit mx-auto md:mx-0">
               <img
                 src={orderPhoto}
                 alt=""
@@ -31,16 +31,16 @@ const Banner = () => {
               />
               <div className="flex flex-col gap-1 sm:gap-3 relative z-10 p-8 lg:p-[54px] w-fit">
                 <h2
-                  className="text-[28px] md:text-[44px] lg:text-[64px] font-bold text-white leading-[112%]"
+                  className="text-[28px] md:text-[36px] lg:text-[44px] xl:text-[64px] font-bold text-white leading-[112%] text-center md:text-left"
                   style={{ stroke: "white", webkitTextStroke: "2px white" }}
                 >
                   OFFICE FRUIT <br /> DELIVERY
                 </h2>
-                <p className="text-white text-sm md:text-[16px] lg:text-2xl">
+                <p className="text-white text-sm md:text-[16px] lg:text-2xl text-center md:text-left">
                   It’s good for you and <br className="md:hidden" /> staff love
                   it too.
                 </p>
-                <Link to={"/fruit-box"} className="w-fit">
+                <Link to={"/fruit-box"} className="w-fit mx-auto md:mx-0">
                   <Button className="py-2 md:py-3.5 lg:py-5 px-5 md:px-8  lg:px-10 rounded-3xl shadow-black/20 shadow-md border-2 border-white text-xs md:text-base">
                     Order a Fruit Box
                   </Button>
