@@ -19,12 +19,12 @@ const Delivery = ({
 }) => {
   return (
     <form onSubmit={handleSubmit(placeOrder)}>
-      <div className="grid grid-cols-2 gap-10 px-[40px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 px-2 lg:px-[40px]">
         <div>
-          <Title className="md:text-[40px] capitalize text-secondaryTextColor">
+          <Title className="text-xl md:text-[40px] capitalize text-secondaryTextColor">
             Delivery options
           </Title>
-          <p className="text-[#798090]">
+          <p className="text-[#798090] text-xs md:text-base mt-1 md:mt-5">
             Tell us when you would like fruit delivered and how often. Feel free
             to add a comment.
           </p>
@@ -53,54 +53,7 @@ const Delivery = ({
                 </p>
               )}
             </div>
-            {/* <div className="grid grid-cols-2 gap-5">
-              <div>
-                <Controller
-                  name="frequency"
-                  control={control}
-                  defaultValue={""}
-                  rules={{ required: "Frequency is required" }}
-                  render={({ field }) => (
-                    <SelectItems2
-                      {...field}
-                      triggerClass="border border-gray-300 h-12 text-sm"
-                      DeliveryProps={"DeliveryProps"}
-                      data={frequencyData}
-                      placeholder="Select Frequency"
-                      onChange={(value) => field.onChange(value)}
-                    />
-                  )}
-                />
-                {errors.frequency && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {errors.frequency.message}
-                  </p>
-                )}
-              </div>
-              <div>
-                <Controller
-                  name="day_of_week"
-                  control={control}
-                  defaultValue={""}
-                  rules={{ required: "Days of Week is required" }}
-                  render={({ field }) => (
-                    <SelectItems2
-                      {...field}
-                      triggerClass="border border-gray-300 h-12 text-sm"
-                      DeliveryProps={"DeliveryProps"}
-                      data={daysData}
-                      placeholder="Select Day Of Week"
-                      onChange={(value) => field.onChange(value)}
-                    />
-                  )}
-                />
-                {errors.day && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {errors.day.message}
-                  </p>
-                )}
-              </div>
-            </div> */}
+
             <FrequencyDaySelector
               control={control}
               watch={watch}
@@ -119,14 +72,14 @@ const Delivery = ({
           </div>
         </div>
         <div>
-          <Title className="md:text-[40px] capitalize text-nowrap text-secondaryTextColor">
+          <Title className=" text-xl md:text-[40px] capitalize text-nowrap text-secondaryTextColor">
             Delivery Location
           </Title>
-          <p className="text-[#798090]">
+          <p className="text-[#798090] text-sm md:text-base mt-1 md:mt-5">
             Tell us who you are and where you want us to deliver.
           </p>
-          <div className="mt-[40px] flex flex-col gap-[26px]">
-            <div className="grid grid-cols-2 gap-5">
+          <div className="mt-3 md:mt-[40px] flex flex-col gap-3 md:gap-[26px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5">
               <div>
                 {" "}
                 <input
@@ -185,7 +138,7 @@ const Delivery = ({
                 {errors.address.message}
               </p>
             )}
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
                 <input
                   type="email"
@@ -243,6 +196,8 @@ export default Delivery;
 Delivery.propTypes = {
   register: PropTypes.func,
   handleSubmit: PropTypes.func,
+  watch: PropTypes.func,
+  setValue: PropTypes.func,
   errors: PropTypes.object,
   control: PropTypes.object,
   placeOrder: PropTypes.func,
