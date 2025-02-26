@@ -66,7 +66,7 @@ const ContactUs = () => {
             alt=""
             className="absolute -top-0 sm:-top-12 -left-0 xl:-top-28 xl:left-16 w-40 md:w-[284px] max-w-[284px]"
           />
-          <div className="absolute flex flex-col gap-3 text-[#38302F] max-w-[792px] mx-[280px] ml-0 px-5 xl:ml-96 z-20 mt-40 md:mt-48 xl:mt-0 w-full">
+          <div className="absolute flex flex-col gap-3 text-[#38302F] max-w-[792px] mx-[280px]   ml-0 px-5 xl:ml-96 z-20 mt-40 md:mt-48 xl:mt-0 w-full">
             <Title
               className="capitalize font-bold text-center text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px]]"
               style={{ stroke: "#38302F", webkitTextStroke: "2px #38302F" }}
@@ -88,7 +88,7 @@ const ContactUs = () => {
             </div>
           </div>
 
-          <div className="absolute top-[35%] lg:top-[25%] 2xl:-top-0 z-10">
+          <div className="absolute top-[35%] md:top-[38%] lg:top-[32%] 2xl:top-20 z-10">
             <div>
               <img
                 src={aboutbg}
@@ -100,7 +100,7 @@ const ContactUs = () => {
                 alt=""
                 className="absolute top-[30%] md:top-[10%] right-0 w-32 sm:w-[20%] max-w-[50%]"
               />
-              <div className="absolute top-[60%] left-1/2 -translate-x-1/2 flex flex-col lg:flex-row items-start justify-between w-[80%]">
+              <div className="absolute top-[68%] sm:top-[65%] left-1/2 -translate-x-1/2 flex flex-col lg:flex-row items-start justify-between w-[80%] -mt-20 pt-3">
                 <div className="text-white max-w-[772px] text-left w-full -mt-10 sm:mt-0">
                   <Title
                     className="text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px]"
@@ -127,7 +127,9 @@ const ContactUs = () => {
                       <span>#115, 11929 – 40th Street S.E.</span>
                       <span>mail: info @ thefruitbox.ca</span>
                     </p>
-                    <span className="text-xs sm:text-sm">Calgary, Alberta </span>
+                    <span className="text-xs sm:text-sm">
+                      Calgary, Alberta{" "}
+                    </span>
                     <span className="text-xs sm:text-sm">T2Z 4M8 </span>
                   </div>
                 </div>
@@ -141,7 +143,7 @@ const ContactUs = () => {
             </div>
           </div>
           <Container>
-            <div className="pt-[2000px] md:pt-[1900px] px-5 xl:px-0 grid grid-cols-1 lg:grid-cols-3 items-start gap-10">
+            <div className="pt-[2000px]   lg:pt-[1600px] min-[1090px]:pt-[1800px] xl:pt-[1800px] min-[1400px]:pt-[2200px] 2xl:pt-[1800px] px-5 xl:px-0 grid grid-cols-1 lg:grid-cols-3 items-start gap-10">
               <div className="col-span-2">
                 <p className="text-primaryBoldColor">
                   View our fruit boxes now
@@ -152,7 +154,9 @@ const ContactUs = () => {
                   your office
                 </Title>
                 <Link to={"/fruit-box"} className="py-2 md:py-5">
-                  <Button className="py-2 xl:py-6 px-5 xl:px-20 ">View Fruit Boxes</Button>
+                  <Button className="py-2 xl:py-6 px-5 xl:px-20 ">
+                    View Fruit Boxes
+                  </Button>
                 </Link>
               </div>
               <div>
