@@ -106,8 +106,8 @@ const Cart = () => {
         acc[`items[${index}][quantity]`] = fruit.quantity || 1;
         acc[`items[${index}][service_id]`] =
           fruit?.servings_id?.pivot?.serving_id ||
-          fruit?.servings[0]?.pivot?.serving_id;
-        null;
+          fruit?.servings?.[0]?.pivot?.serving_id ||
+          null;
         return acc;
       }, {});
       console.log("Final Fruits Object Payload:", fruitsObject);
@@ -169,7 +169,7 @@ const Cart = () => {
   return (
     <div className="min-h-[900px] pt-20">
       <Helmet>
-        <title>Cart</title> 
+        <title>Cart</title>
       </Helmet>
       <Container>
         <div className="pb-10 mt-10">
@@ -231,8 +231,7 @@ const Cart = () => {
                         {fruit.name} {"   "}
                         {fruit?.price_multiple !== null ? (
                           <span className="text-secondaryTextColor font-bold block">
-                            {fruit?.servings_multiple ||
-                              fruit?.servings[0]?.name}
+                            {fruit?.servings_multiple}
                           </span>
                         ) : (
                           <span className="text-secondaryTextColor font-bold">
