@@ -6,11 +6,14 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 import PropTypes from "prop-types";
 import { HiMenuAlt1 } from "react-icons/hi";
+import { useLocation } from "react-router";
 import { Link } from "react-router";
 
 const MobileNav = ({ totalQuantity, navItems }) => {
+  const location = useLocation()
   return (
     <div>
       <Sheet>
@@ -36,7 +39,7 @@ const MobileNav = ({ totalQuantity, navItems }) => {
             {navItems?.map((data, idx) => {
               return (
                 <SheetClose asChild key={`index - ${idx}`}>
-                  <Link to={data?.path} className="text-xl text-center">
+                  <Link to={data?.path} className={cn("text-xl text-center", location?.pathname === data?.path && "text-secondaryTextColor")}>
                     {data?.title}
                   </Link>
                 </SheetClose>
