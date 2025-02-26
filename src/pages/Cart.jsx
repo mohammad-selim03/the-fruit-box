@@ -229,7 +229,7 @@ const Cart = () => {
                         )}
                       />
                     </div>
-                    <div className="max-w-[382px]  flex flex-col gap-5">
+                    <div className="w-[420px] border-4 flex flex-col gap-5">
                       <h2 className="text-2xl font-bold text-[#798090] capitalize">
                         {fruit.name} {"   "}
                         {fruit?.price_multiple !== null ? (
