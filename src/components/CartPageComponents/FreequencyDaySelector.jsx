@@ -128,7 +128,7 @@ const FrequencyDaySelector = ({
           rules={{ required: "Frequency is required" }}
           render={({ field }) => (
             <div className="flex flex-col space-y-2">
-              <label className="text-sm font-medium">Select Frequency</label>
+              {/* <label className="text-sm font-medium">Select Frequency</label> */}
               <Select
                 onValueChange={field.onChange}
                 defaultValue={field.value}
@@ -159,9 +159,9 @@ const FrequencyDaySelector = ({
         <div>
           {frequency === "daily" ? (
             <div className="flex flex-col space-y-2">
-              <label className="text-sm font-medium">
+              {/* <label className="text-sm font-medium">
                 Select Day(s) of Week
-              </label>
+              </label> */}
               <div className="border border-gray-300 h-12 rounded-xl px-3 flex items-center text-sm bg-gray-100 cursor-not-allowed">
                 Monday to Friday
               </div>
@@ -196,9 +196,9 @@ const FrequencyDaySelector = ({
               }}
               render={({ field }) => (
                 <div className="flex flex-col space-y-2">
-                  <label className="text-sm font-medium">
+                  {/* <label className="text-sm font-medium">
                     Select Day of Week
-                  </label>
+                  </label> */}
                   <Select
                     onValueChange={handleSingleDayChange}
                     value={Array.isArray(field.value) ? field.value[0] || "" : ""}
