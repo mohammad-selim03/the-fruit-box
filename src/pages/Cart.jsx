@@ -208,14 +208,17 @@ const Cart = () => {
                     >
                       <IoMdClose />
                     </button>
-                    <div className="w-[20%] flex items-center justify-center
-                     md:w-[280px] ">
+                    <div
+                      className="w-[20%] flex items-center justify-center
+                     md:w-[280px] "
+                    >
                       <img
                         src={fruit?.image}
                         alt={fruit?.name}
                         className={cn(
                           "w-[50%] lg:w-[200px]",
-                          fruit?.name === "SMALL Fruit Box" && "w-[40%] lg:w-2/3"
+                          fruit?.name === "SMALL Fruit Box" &&
+                            "w-[40%] lg:w-2/3"
                         )}
                       />
                     </div>
@@ -291,6 +294,26 @@ const Cart = () => {
                   />
                 </div>
               </>
+            )}
+            {fruits.length > 0 && (
+              <div className="pt-16 pb-5">
+                <Delivery
+                  register={register}
+                  handleSubmit={handleSubmit}
+                  errors={errors}
+                  control={control}
+                  isPosting={isPosting}
+                  isPostingError={isPostingError}
+                  placeOrder={placeOrder}
+                  onChange={onChange}
+                  watch={watch}
+                  setValue={setValue}
+                />
+                <SuccessModal
+                  isModalOpen={isModalOpen}
+                  setIsModalOpen={setIsModalOpen}
+                />
+              </div>
             )}
           </div>
         </div>
