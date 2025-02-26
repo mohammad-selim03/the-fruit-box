@@ -50,10 +50,10 @@ const FrequencyDaySelector = ({
     setValue("day_of_week", day);
   };
 
-  const getDayLabel = (value) => {
-    const day = dayOptions.find((d) => d.value === value);
-    return day ? day.label : "";
-  };
+  // const getDayLabel = (value) => {
+  //   const day = dayOptions.find((d) => d.value === value);
+  //   return day ? day.label : "";
+  // };
 
   const handleTwiceWeeklySelection = (day) => {
     let selectedDays = daysOfWeek ? daysOfWeek.split(", ") : [];

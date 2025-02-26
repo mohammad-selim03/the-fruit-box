@@ -18,28 +18,13 @@ import Loader from "@/components/ui/Shared/Loader";
 const Cart = () => {
   const { data: fruitsData, isLoading } = useGetApi("products", true);
 
-
   const servingsData = fruitsData?.find((data) => data?.price === null);
   localStorage.setItem("servingsData", JSON.stringify(servingsData));
- 
+
   const [fruits, setFruits] = useState([]);
   const [fruitsObject, setFruitsObject] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [totalAmount, setTotalAmount] = useState("");
-  const [servings, setServings] = useState("");
-  const [tempservingsData, setTempservingsData] = useState({});
-  const initialServing = tempservingsData?.servings?.[0] || [];
-  const [selectedServing, setSelectedServing] = useState(initialServing);
-
-  const handleServingChange = (servingName) => {
-    const selected = tempservingsData?.servings?.find(
-      (serving) => serving.name === servingName
-    );
-    if (selected) {
-      setSelectedServing(selected);
-    }
-  };
 
   const {
     register,
@@ -101,7 +86,6 @@ const Cart = () => {
     if (data) {
       const parsedFruits = JSON.parse(data);
       console.log("parsed data", parsedFruits);
-      setTempservingsData(parsedFruits);
     }
   }, []);
 
@@ -113,42 +97,48 @@ const Cart = () => {
     }
   }, []);
 
-  console.log("servings  state", selectedServing?.pivot?.serving_id);
   useEffect(() => {
     if (fruits.length > 0) {
       const fruitsObject = fruits.reduce((acc, fruit, index) => {
         acc[`items[${index}][product_id]`] = fruit.id;
         acc[`items[${index}][quantity]`] = fruit.quantity || 1;
         acc[`items[${index}][service_id]`] =
-          selectedServing?.pivot?.serving_id ||
-          fruit?.servings_id?.pivot?.serving_id ||
-          null;
+          fruit?.servings_id?.pivot?.serving_id || fruit?.servings[0]?.pivot?.serving_id;
+        null;
         return acc;
       }, {});
       console.log("Final Fruits Object Payload:", fruitsObject);
 
       setFruitsObject(fruitsObject);
     }
-  }, [fruits, selectedServing]); // Add selectedServing to dependencies
-
-  useEffect(() => {
-    if (servings) {
-      const updatedFruits = fruits.map((fruit) =>
-        fruit.servings_multiple !== null
-          ? { ...fruit, servings_multiple: servings }
-          : fruit
-      );
-
-      setFruits(updatedFruits);
-      localStorage.setItem("fruits", JSON.stringify(updatedFruits));
-    }
-  }, [servings]);
+  }, [fruits]); // Add selectedServing to dependencies
 
   useEffect(() => {
     if (selectedItem && Object.keys(selectedItem).length > 0) {
       const existingFruit = fruits.find(
         (fruit) => fruit.id === selectedItem.id
       );
+
+      // Create a modified fruit object with only the first serving
+      let newFruit = { ...selectedItem, quantity: 1 };
+
+      // If the fruit has servings, only keep the first serving (index 0)
+      if (
+        newFruit.servings &&
+        Array.isArray(newFruit.servings) &&
+        newFruit.servings.length > 0
+      ) {
+        // Extract only the first serving
+        const firstServing = newFruit.servings[0];
+
+        // Replace the entire servings array with just the first serving
+        newFruit.servings = [firstServing];
+
+        // Update the price based on the selected serving if needed
+        if (!newFruit.price) {
+          newFruit.price = firstServing.price;
+        }
+      }
 
       if (existingFruit) {
         // If fruit already exists, just increase the quantity
@@ -160,8 +150,7 @@ const Cart = () => {
         setFruits(updatedFruits);
         localStorage.setItem("fruits", JSON.stringify(updatedFruits));
       } else {
-        // If fruit is new, initialize quantity to 1
-        const newFruit = { ...selectedItem, quantity: 1 };
+        // If fruit is new, add the modified fruit with only the first serving
         const updatedFruits = [...fruits, newFruit];
         setFruits(updatedFruits);
         localStorage.setItem("fruits", JSON.stringify(updatedFruits));
@@ -254,7 +243,7 @@ const Cart = () => {
                       <div className="grid grid-cols-3 gap-3 xl:gap-5  text-gray-600  w-full">
                         {fruit?.price_multiple !== null ? (
                           <p className="text-[26px] max-w-28 text-center">
-                            ${parseFloat(selectedServing.price || fruit?.price)}
+                            ${parseFloat(fruit.price || fruit?.price)}
                           </p>
                         ) : (
                           <p className="text-[26px] max-w-28 text-center">
@@ -305,7 +294,7 @@ const Cart = () => {
                         fruit?.servings_single === null ? (
                           <p className="text-[26px] text-secondaryTextColor text-center ml-6">
                             $
-                            {parseFloat(selectedServing.price || fruit?.price) *
+                            {parseFloat(fruit?.price || fruit?.price) *
                               parseFloat(fruit.quantity ? fruit.quantity : 1)}
                           </p>
                         ) : (
