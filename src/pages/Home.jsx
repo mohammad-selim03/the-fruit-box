@@ -6,7 +6,8 @@ import HowToOrder from "@/components/HomePageComponents/HowToOrder";
 import Offer from "@/components/HomePageComponents/Offer";
 import WhySection from "@/components/HomePageComponents/WhySection";
 import Loader from "@/components/ui/Shared/Loader";
-import { useGetApi } from "@/hooks/API/useGetApi"; 
+import { useGetApi } from "@/hooks/API/useGetApi";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const { data, isLoading } = useGetApi("system-setting", true);
@@ -19,6 +20,9 @@ const Home = () => {
     </div>
   ) : (
     <div>
+      <Helmet>
+        <title>The Fruit Box</title> 
+      </Helmet>
       <Banner />
       <FruitBoxSection />
       <WhySection />

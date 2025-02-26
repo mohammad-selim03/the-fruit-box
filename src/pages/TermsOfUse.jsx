@@ -1,4 +1,4 @@
-import { contactfruits, logo2 } from "@/assets";
+import { contactfruits } from "@/assets";
 import Button from "@/components/DynamicComponents/Button";
 import Container from "@/components/DynamicComponents/Container";
 import DynamicBanner from "@/components/DynamicComponents/DynamicBanner";

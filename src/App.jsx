@@ -10,7 +10,7 @@ function App() {
       setData(parsedData);
 
       // Set document title
-      document.title = parsedData.title || "The Fruit Box Ltd";
+      document.title = parsedData.title || "The Fruit Box Ltddd";
 
       // Set favicon
       const favicon = document.querySelector("link[rel='icon']");
