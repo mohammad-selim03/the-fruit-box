@@ -6,12 +6,15 @@ import { Context } from "@/context/Context";
 import PropTypes from "prop-types";
 import toast from "react-hot-toast";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import { useNavigate } from "react-router";
 
 const FruitCard = ({ data }) => {
   const initialServing = data?.servings?.[0] || [];
   const [selectedServing, setSelectedServing] = useState(initialServing);
   const [quantity, setQuantity] = useState(1);
+
   const { setCartItems } = useContext(Context);
+  const navigate = useNavigate()
 
   const handleServingChange = (servingName) => {
     const selected = data?.servings?.find(
@@ -58,6 +61,7 @@ const FruitCard = ({ data }) => {
     setCartItems(updatedCart);
 
     toast.success("Product added to the cart");
+    navigate("/cart")
   };
 
   return (
