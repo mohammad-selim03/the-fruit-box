@@ -18,7 +18,7 @@ const Layout = () => {
       <Navbar />
       <div
         className={cn(
-          "bg-[#F0EEE8] pb-96 pt-10",
+          "bg-[#F0EEE8] pb-60 md:pb-80 lg:pb-96 pt-10",
           location.pathname === "/cart" && "bg-[#F0EEE8]",
           location.pathname === "/" && "bg-transparent"
         )}

@@ -106,9 +106,9 @@ const Footer = () => {
           </div>
         </div>
         <div className="pt-10">
-          <div className="flex items-center justify-center gap-2 py-5 text-white border-t border-white/30 ">
+          <div className="flex items-center xl:justify-center gap-2 py-5 text-white border-t border-white/30 ">
             <img src={footerlogo} alt="" className="w-8" />
-            <p className="mt-3 text-sm text-center">
+            <p className="mt-3 text-sm xl:text-center w-2/3 lg:w-fit">
               The Fruit Box Ltd. Copyright 2021. All Rights Reserved. Powered by
               the Awesomeness of Fresh Fruit.
             </p>

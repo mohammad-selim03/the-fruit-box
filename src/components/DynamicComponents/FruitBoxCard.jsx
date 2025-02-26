@@ -6,12 +6,15 @@ import toast from "react-hot-toast";
 import { useContext, useState } from "react";
 import { Context } from "@/context/Context";
 import { greenCardbg } from "@/assets";
+import { useNavigate } from "react-router";
 
 const FruitBoxCard = ({ data }) => {
   // Initialize state with first serving's data if available
-  const initialServing = data?.servings?.[0] || []; 
+  const initialServing = data?.servings?.[0] || [];
   const [selectedServing, setSelectedServing] = useState(initialServing);
+
   const { setCartItems } = useContext(Context);
+  const navigate = useNavigate();
 
   const handleServingChange = (servingName) => {
     const selected = data?.servings?.find(
@@ -21,7 +24,7 @@ const FruitBoxCard = ({ data }) => {
       setSelectedServing(selected);
     }
   };
-console.log("selecte3d servings", selectedServing)
+  console.log("selecte3d servings", selectedServing);
   const handleAddToCart = () => {
     setCartItems((prevItems) => {
       const existingItems = Array.isArray(prevItems) ? prevItems : [];
@@ -45,10 +48,12 @@ console.log("selecte3d servings", selectedServing)
 
         const updatedCart = [...existingItems, sanitizedData];
         localStorage.setItem("fruits", JSON.stringify(updatedCart));
+        navigate("/cart");
         return updatedCart;
       } else {
         toast.error("Product has already been added to the cart");
       }
+     
       return existingItems;
     });
   };
@@ -84,7 +89,11 @@ console.log("selecte3d servings", selectedServing)
               </p>
             </div>
           </div>
-          <img src={greenCardbg} alt="Background" className="h-[200px] lg:h-[315.548px]" />
+          <img
+            src={greenCardbg}
+            alt="Background"
+            className="h-[200px] lg:h-[315.548px]"
+          />
           <div
             className={cn(
               "absolute right-0 px-7 top-[20%] lg:top-[34%] -translate-y-1/2 w-full",
