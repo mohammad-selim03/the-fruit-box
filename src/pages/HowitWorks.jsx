@@ -10,7 +10,7 @@ const HowitWorks = () => {
   return (
     <div>
       <Helmet>
-        <title>How it works</title> 
+        <title>How it works</title>
       </Helmet>
       <DynamicBanner
         title="HOW IT WORKS"
@@ -19,22 +19,18 @@ const HowitWorks = () => {
 "
       />
       <div className="relative mt-10 md:mt-20">
-        <div className="px-5 lg:px-0 max-w-[948px]  mx-auto lg:ml-20 2xl:ml-60 text-wrap z-30 relative ">
+        <div className="px-5 lg:px-0 max-w-[1020px]  mx-auto lg:ml-20 2xl:ml-60 text-wrap z-30 relative ">
           <div className="flex flex-col gap-3 text-[#38302F] w-full ">
             <Title className="capitalize text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px]">
-              Fresh fruit in the office is awesome.
+              Passionate about fresh fr
             </Title>
-            <p>
-              3 standard sizes + custom sizes to perfectly match your office! A
-              good start is to order enough fruit based on the usual office
-              consumption of 2 servings per employee per week. So, if you have a
-              staff of about 15 order a medium box (30 servings) to start. Part
-              of our ongoing service is to monitor consumption to ensure the
-              quantity and mix is perfect for your office. We’ll help you get it
-              just right! Unlike other companies we don’t have contracts so you
-              can change, suspend, or even cancel anytime.
+            <p className="text-sm lg:text-base">
+              At The Fruit Box, we’re dedicated to providing a fresh healthy
+              choice for employees in Calgary and surrounding areas. We saw a
+              growing need for healthier snack choices for office workers. Many
+              employees snack at work- sometimes healthy but often not.
             </p>
-            <p>
+            <p className="text-sm lg:text-base">
               During a dinner party, a friend mentioned he was bringing a piece
               of fresh fruit to the office as his way to snack healthy at work.
               That simple idea struck a chord. We thought about how a business
@@ -48,12 +44,12 @@ const HowitWorks = () => {
             <Title className="capitalize  text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px]">
               We’re growing… and focused!
             </Title>
-            <p>
+            <p className="text-sm lg:text-base">
               Our business continues to grow – thanks to our amazing customers!
               Our customers range from 5 to 500+ staff. The secret? Exceptional
               quality, service, and dedication to Corporate customers.
             </p>
-            <p>
+            <p className="text-sm lg:text-base">
               Our sole focus is Corporate customers. While other companies try
               to be home delivery grocery stores, we believe Corporate customers
               deserve to be treated better than an afterthought. Everything we
@@ -68,7 +64,7 @@ const HowitWorks = () => {
             <img
               src={aboutpagefruits}
               alt=""
-              className="absolute top-[30%] md:top-[10%] -mt-0 lg:mt-40  xl:top-10 min-[1590px]:top-[20%] max-[1450px]:top-[20%] right-0 w-20 md:w-60 xl:w-[450px] 4xl:w-[600px]"
+              className="absolute top-[30%] md:top-[10%] -mt-0 lg:mt-40  xl:top-10 min-[1590px]:top-[20%] max-[1450px]:top-[20%] right-0 w-20  md:w-60 xl:w-[450px] 4xl:w-[600px]"
             />
             <div className="absolute top-[55%] left-5 lg:top-[60%] lg:left-[15%] max-w-[550px]">
               <img src={van} alt="" className="w-20 md:w-40 lg:w-52 xl:w-80" />

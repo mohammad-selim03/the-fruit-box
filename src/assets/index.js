@@ -16,6 +16,7 @@ import boxStyle from "@/assets/home/boxStyle.png";
 import aboutFruits from "@/assets/home/aboutFruits.png";
 import howOrder from "@/assets/home/howOrder.png";
 import howOrderText from "@/assets/home/howOrderText.png";
+import howOrderText2 from "@/assets/home/howOrderText2.png";
 import banana from "@/assets/home/banana.png";
 import enquiryfruits from "@/assets/home/enquiryfruits.png";
 import reminder from "@/assets/home/reminder.png";
@@ -66,6 +67,7 @@ export {
   aboutFruits,
   howOrder,
   howOrderText,
+  howOrderText2,
   banana,
   enquiryfruits,
   reminder,

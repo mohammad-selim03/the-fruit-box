@@ -1,4 +1,4 @@
-import { banana, howOrder, malta, howOrderText } from "@/assets";
+import { banana, howOrder, malta, howOrderText, howOrderText2 } from "@/assets";
 import Button from "../DynamicComponents/Button";
 import { Link } from "react-router";
 import { CustomDate } from "./CustomDate";
