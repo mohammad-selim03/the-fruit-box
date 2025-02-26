@@ -175,7 +175,7 @@ const FrequencyDaySelector = ({
 
       <div className="col-span-1 md:col-span-2">
         <Controller
-          name="custom_frequency"
+          name="comment"
           control={control}
           rules={{
             required: frequency === "other" ? "Please provide details" : false,
@@ -184,7 +184,7 @@ const FrequencyDaySelector = ({
             <div className="flex flex-col space-y-2">
               <textarea
                 {...field}
-                id="comments"
+                id="comment"
                 className="border border-gray-300 h-24 text-sm rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder={
                   frequency === "other"
@@ -192,9 +192,9 @@ const FrequencyDaySelector = ({
                     : "Comments"
                 }
               />
-              {errors?.comments && (
+              {errors?.comment && (
                 <p className="text-red-500 text-xs mt-1">
-                  {errors.comments.message}
+                  {errors.comment.message}
                 </p>
               )}
             </div>

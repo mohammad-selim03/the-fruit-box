@@ -16,7 +16,7 @@ const AboutSection = () => {
             ABOUT THE <br className="hidden md:block lg:hidden" /> FRUIT BOX
           </Title>
           <p className="sm:text-lg md:text-xl lg:text-2xl text-secondaryTextColor text-center md:text-left">
-            Fresh fruit in the Office. Get energized.
+            WE’RE A PROUD CALGARY COMPANY.
           </p>
           <p className="text-[13px] md:text-sm text-[#F16A0B] text-center md:text-left">
             Trusted by some of Calgary’s best companies.
