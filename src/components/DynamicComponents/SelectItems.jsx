@@ -84,7 +84,7 @@ const SelectItems = ({
             {singleValue ? (
               <SelectItem
                 value={singleValue}
-                className="text-xl border-b text-gray-600 cursor-pointer"
+                className="text-xl border-b text-gray-400 cursor-pointer"
               >
                 <p
                   onClick={() => {
@@ -102,7 +102,7 @@ const SelectItems = ({
                   <SelectItem
                     key={idx}
                     value={item?.value || item?.name || "undefined"}
-                    className="text-xl border-b text-gray-600 cursor-pointer"
+                    className="text-xl border-b text-gray-400 cursor-pointer"
                   >
                     <p
                       onClick={() => {
