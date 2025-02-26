@@ -197,7 +197,7 @@ const Cart = () => {
         <div className="border-4 border-primaryBoldColor rounded-3xl p-4 ">
           <div className="bg-white px-5 rounded-3xl py-5 pt-10 w-full">
             {fruits?.length > 0 && (
-              <div className="flex items-center justify-end text-xl font-bold gap-12 ml-10 max-w-6xl ">
+              <div className="flex items-center justify-end text-xl font-bold gap-8 ml-10 max-w-6xl ">
                 {Cartheader?.map((data) => (
                   <p key={data} className="text-sm md:text-2xl text-gray-600">
                     {data}
@@ -211,7 +211,7 @@ const Cart = () => {
                 return (
                   <div
                     key={fruit.id}
-                    className="flex items-center gap-12 w-full border-b py-5"
+                    className="flex items-center gap-5 xl:gap-12 w-full border-b py-5"
                   >
                     <button
                       onClick={() => deleteProduct(fruit?.id)}
@@ -229,7 +229,7 @@ const Cart = () => {
                         )}
                       />
                     </div>
-                    <div className="w-[420px] border-4 flex flex-col gap-5">
+                    <div className="w-[420px] flex flex-col gap-5">
                       <h2 className="text-2xl font-bold text-[#798090] capitalize">
                         {fruit.name} {"   "}
                         {fruit?.price_multiple !== null ? (
@@ -251,18 +251,18 @@ const Cart = () => {
                       />
                     </div>
                     <div className="max-w-[350px]">
-                      <div className="grid grid-cols-3 gap-5  text-gray-600   w-full">
+                      <div className="grid grid-cols-3 gap-3 xl:gap-5  text-gray-600  w-full">
                         {fruit?.price_multiple !== null ? (
-                          <p className="text-[26px] max-w-28 text-center ml-1 ">
+                          <p className="text-[26px] max-w-28 text-center">
                             ${parseFloat(selectedServing.price || fruit?.price)}
                           </p>
                         ) : (
-                          <p className="text-[26px] max-w-28 text-center ml-1">
+                          <p className="text-[26px] max-w-28 text-center">
                             ${parseFloat(fruit?.price)}
                           </p>
                         )}
                         <div className="">
-                          <div className="flex items-center justify-between gap-2 border border-gray-300 p-2 rounded-xl w-32">
+                          <div className="flex items-center justify-between gap-2 border border-gray-300 p-2 rounded-xl w-32 ">
                             <button
                               className="rounded bg-primaryLightColor text-black text-xl px-2 py-2"
                               onClick={() => handleDecrement(fruit?.id)}
@@ -280,7 +280,7 @@ const Cart = () => {
                               <FiPlus className="text-black/80 text-sm" />
                             </button>
                           </div>
-                          {(fruit?.servings_multiple ||
+                          {/* {(fruit?.servings_multiple ||
                             fruit?.servingg === "" ||
                             fruit?.servings_single === null) && (
                             <div className="mt-3 w-32">
@@ -299,17 +299,17 @@ const Cart = () => {
                                 placeholder="# of selected serving"
                               />
                             </div>
-                          )}
+                          )} */}
                         </div>
                         {fruit?.servings_multiple ||
                         fruit?.servings_single === null ? (
-                          <p className="text-[26px]  text-secondaryTextColor text-center">
+                          <p className="text-[26px] text-secondaryTextColor text-center ml-6">
                             $
                             {parseFloat(selectedServing.price || fruit?.price) *
                               parseFloat(fruit.quantity ? fruit.quantity : 1)}
                           </p>
                         ) : (
-                          <p className="text-[26px]  text-secondaryTextColor text-center">
+                          <p className="text-[26px] text-secondaryTextColor text-center ml-6">
                             $
                             {parseFloat(fruit.price) *
                               parseFloat(fruit.quantity ? fruit.quantity : 1)}
