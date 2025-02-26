@@ -10,7 +10,7 @@ const About = () => {
     <div>
       <DynamicBanner title="ABOUT" semiTitle="We’re a proud Calgary company." />
       <div className="relative mt-10 md:mt-20">
-        <div className="px-5 lg:px-0 max-w-[948px]  mx-auto lg:ml-20 2xl:ml-60 text-wrap z-30 relative ">
+        <div className="px-5 lg:px-0 max-w-[1020px]  mx-auto lg:ml-20 2xl:ml-60 text-wrap z-30 relative ">
           <div className="flex flex-col gap-3 text-[#38302F] w-full ">
             <Title className="capitalize text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px]">
               Passionate about fresh fr

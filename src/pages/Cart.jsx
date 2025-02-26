@@ -227,7 +227,8 @@ const Cart = () => {
                         {fruit.name} {"   "}
                         {fruit?.price_multiple !== null ? (
                           <span className="text-secondaryTextColor font-bold block">
-                            10-60+ servings.
+                            {fruit?.servings_multiple ||
+                              fruit?.servings[0]?.name}
                           </span>
                         ) : (
                           <span className="text-secondaryTextColor font-bold">

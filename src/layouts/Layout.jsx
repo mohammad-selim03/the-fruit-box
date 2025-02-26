@@ -12,12 +12,11 @@ const Layout = () => {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  // const { data: fruitsData, isLoading, isError } = useGetApi("products", true);
-  // console.log("fruits data: ", fruitsData);
-  // const servingsData = fruitsData?.find((data) => data?.price === null);
-  // localStorage.setItem("servingsData", JSON.stringify(servingsData));
+  const { data: fruitsData, isLoading } = useGetApi("products", true);
+  console.log("fruits data: ", fruitsData);
+  const servingsData = fruitsData?.find((data) => data?.price === null);
+  localStorage.setItem("servingsData", JSON.stringify(servingsData));
   const location = useLocation();
-  const isLoading = false;
   return isLoading ? (
     <div className="flex items-center justify-center h-screen">
       <Loader size={100} />
