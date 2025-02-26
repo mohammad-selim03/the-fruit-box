@@ -18,9 +18,10 @@ import Loader from "@/components/ui/Shared/Loader";
 const Cart = () => {
   const { data: fruitsData, isLoading } = useGetApi("products", true);
 
+
   const servingsData = fruitsData?.find((data) => data?.price === null);
   localStorage.setItem("servingsData", JSON.stringify(servingsData));
-
+ 
   const [fruits, setFruits] = useState([]);
   const [fruitsObject, setFruitsObject] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
@@ -106,11 +107,9 @@ const Cart = () => {
 
   useEffect(() => {
     if (isLoading) {
-      return setTimeout(() => {
-        <h1 className="flex items-center justify-center h-96">
-          <Loader />
-        </h1>;
-      }, 1000);
+      <h1 className="flex items-center justify-center h-96">
+        <Loader />
+      </h1>;
     }
   }, []);
 

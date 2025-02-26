@@ -176,7 +176,7 @@ const Delivery = ({
       <div className="py-10 flex items-center justify-center">
         <Button
           type="submit"
-          className="text-primaryLightColor bg-transparent border border-primaryLightColor hover:bg-primaryLightColor hover:text-white transition-all duration-300 uppercase px-16 shadow-black/10 shadow-xl"
+          className="text-primaryLightColor py-4 md:py-2 bg-transparent border border-primaryLightColor hover:bg-primaryLightColor hover:text-white transition-all duration-300 uppercase px-16 shadow-black/10 shadow-xl"
         >
           {isPosting ? (
             <p className="flex items-center justify-center gap-2">
