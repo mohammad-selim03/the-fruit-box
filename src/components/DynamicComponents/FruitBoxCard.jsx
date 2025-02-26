@@ -5,7 +5,6 @@ import SelectItems from "./SelectItems";
 import toast from "react-hot-toast";
 import { useContext, useState } from "react";
 import { Context } from "@/context/Context";
-import { greenCardbg } from "@/assets";
 import { useNavigate } from "react-router";
 
 const FruitBoxCard = ({ data }) => {
@@ -53,70 +52,77 @@ const FruitBoxCard = ({ data }) => {
       } else {
         toast.error("Product has already been added to the cart");
       }
-     
+
       return existingItems;
     });
   };
 
   return (
-    <div className="relative z-20">
-      <div className="flex items-center relative group cursor-pointer">
+    <div className="relative z-20 w-full">
+      <div className="flex flex-col lg:flex-row relative group w-full lg:aspect-[650/325] rounded-l-[30px] border border-[#75AC46] hover:border-primaryBoldColor rounded-[30px] overflow-hidden">
         {/* Left Image Section */}
         <div
           className={cn(
-            "w-[325.678px] h-[200px] lg:h-[315.548px] flex items-center justify-center overflow-hidden bg-white border border-r-0 border-secondaryTextColor group-hover:border-primaryBoldColor rounded-l-[30px]",
-            !data?.name && "border-SecondaryBg"
+            "flex-1 flex items-center justify-center bg-white min-h-[250px] lg:h-full"
           )}
         >
-          <img src={data?.image} alt={data?.name || "Fruit"} />
+          <img
+            src={data?.image}
+            alt={data?.name || "Fruit"}
+            className="w-[75%]"
+          />
         </div>
 
         {/* Right Content Section */}
-        <div className="relative z-20 rounded-r-[25px] overflow-hidden">
+        <div className="relative z-20 flex-1">
+          <div className="w-full h-full min-h-[220px] bg-[#75AC46]"></div>
+
           <div
             className={cn(
-              "bg-primaryBoldColor absolute top-0 left-0 translate-y-80 group-hover:translate-y-0 transition-all duration-200 rounded-r-[25px] w-full h-full flex flex-col items-center justify-between py-10"
+              "bg-primaryBoldColor absolute top-0 left-0 translate-y-96 group-hover:translate-y-0 transition-all duration-200 w-full h-full p-4",
+               
             )}
           >
             <div>
               <p
                 className={cn(
-                  "text-white px-5 line-clamp-6",
-                  data?.custom === 1 && "line-clamp-4"
+                  "text-white line-clamp-5",
+                  data?.custom === 1 && "line-clamp-3 sm:line-clamp-4"
                 )}
               >
                 {data?.description}
               </p>
             </div>
           </div>
-          <img
-            src={greenCardbg}
-            alt="Background"
-            className="h-[200px] lg:h-[315.548px]"
-          />
+
           <div
             className={cn(
-              "absolute right-0 px-7 top-[20%] lg:top-[34%] -translate-y-1/2 w-full",
-              data?.price_multiple !== null && "top-[20%]"
+              "absolute top-14 lg:top-1/3 left-4 right-4 -translate-y-1/2",
+              data?.custom === 1 && "top-20 lg:top-[80px] xl:top-40 "
             )}
           >
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
               {data?.name && (
-                <h2 className="md:text-xl lg:text-[26px] text-white group-hover:hidden capitalize">
+                <h2 className="md:text-lg lg:text-[18px] xl:text-[26px] text-white group-hover:hidden capitalize">
                   {data?.name}
                 </h2>
               )}
               {data?.servings_single ? (
-                <p className="group-hover:hidden capitalize -mt-4 text-sm">
+                <p className="group-hover:invisible capitalize text-sm">
                   {data?.servings_single}
                 </p>
               ) : (
-                <p className="group-hover:hidden -mt-4 text-sm">
-                  10 - 85 Servings
+                <p className="group-hover:invisible text-sm">
+                  10 - 100 Servings
                 </p>
               )}
               {data?.price_multiple !== null && (
-                <div className="group-hover:absolute group-hover:top-24 group-hover:w-[80%] absolute top-24 w-[80%]">
+                <div
+                  className={cn(
+                    "mt-5",
+                    data?.custom === 1 && "group-hover:mt-12"
+                  )}
+                >
                   <SelectItems
                     data={data?.servings}
                     setServings={handleServingChange}
@@ -126,12 +132,13 @@ const FruitBoxCard = ({ data }) => {
                 </div>
               )}
             </div>
+          </div>
 
-            {/* Add to Cart Button with Dynamic Price */}
+          <div className="absolute bottom-4 left-4  right-4">
             <div
               onClick={handleAddToCart}
               className={cn(
-                "absolute -bottom-32 w-[80%] z-20 group-hover:-bottom-[167px] flex flex-col gap-8",
+                "mx-auto z-20 group-hover:-bottom-[167px] flex flex-col gap-8",
                 data?.price_multiple !== null &&
                   "-bottom-44 group-hover:-bottom-[215px]"
               )}

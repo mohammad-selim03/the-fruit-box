@@ -23,7 +23,7 @@ const HowToOrder = () => {
     updateScale(); // Initial scale set
     window.addEventListener("resize", updateScale); // Adjust on resize
     return () => window.removeEventListener("resize", updateScale);
-  }, []);
+  }, [customScale]);
 
   return (
     <div className="relative">
@@ -69,7 +69,7 @@ const HowToOrder = () => {
         className="absolute bottom-0 -left-5 w-0 md:w-[280px] lg:w-[380px] xl:w-[550px]"
       />
 
-      <img src={malta} alt="" className="absolute top-0 right-0 w-0 md:w-[200px] lg:w-[250px] xl:w-[410px] " />
+      <img src={malta} alt="" className="absolute top-0 right-0 w-0 md:w-[200px] lg:w-[250px] xl:w-[380px] " />
     </div>
   );
 };
