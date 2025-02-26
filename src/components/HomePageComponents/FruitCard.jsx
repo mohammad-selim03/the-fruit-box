@@ -53,7 +53,10 @@ const FruitCard = ({ data }) => {
         data?.price !== null ? data?.price : parseFloat(selectedServing?.price),
       quantity,
       servings_multiple: data?.price_multiple ? selectedServing.name : null,
-      servings_id: data?.price_multiple && selectedServing,
+      servings: data?.servings_single || "", 
+      servings_id:
+        data?.price_multiple ||
+        (data?.servings_single !== null && selectedServing),
     };
 
     // // If the original data has a servings array, handle it properly

@@ -229,13 +229,13 @@ const Cart = () => {
                     <div className="w-[420px] flex flex-col gap-5">
                       <h2 className="text-base md:text-lg lg:text-2xl font-bold text-[#798090] capitalize">
                         {fruit.name} {"   "}
-                        {fruit?.price_multiple !== null ? (
+                        {fruit?.servings_multiple == null ? (
                           <span className="text-secondaryTextColor font-bold block">
-                            {fruit?.servings_multiple}
+                            {fruit?.servings || fruit?.servings_single}
                           </span>
                         ) : (
                           <span className="text-secondaryTextColor font-bold">
-                            {fruit?.servings_single}
+                            {fruit?.servings_multiple}
                           </span>
                         )}
                       </h2>
