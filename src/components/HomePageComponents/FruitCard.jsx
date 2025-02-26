@@ -14,7 +14,7 @@ const FruitCard = ({ data }) => {
   const [quantity, setQuantity] = useState(1);
 
   const { setCartItems } = useContext(Context);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleServingChange = (servingName) => {
     const selected = data?.servings?.find(
@@ -43,7 +43,8 @@ const FruitCard = ({ data }) => {
       return;
     }
 
-    const newItem = {
+    // Create initial new item
+    let newItem = {
       id: data?.id,
       name: data?.name,
       description: data?.description || "",
@@ -55,13 +56,36 @@ const FruitCard = ({ data }) => {
       servings_id: data?.price_multiple && selectedServing,
     };
 
+    // // If the original data has a servings array, handle it properly
+    // if (
+    //   data?.servings &&
+    //   Array.isArray(data.servings) &&
+    //   data.servings.length > 0
+    // ) {
+    //   // Extract only the first serving
+    //   const firstServing = data.servings[0];
+
+    //   // Add the servings array with just the first serving
+    //   newItem.servings = [firstServing];
+
+    //   // If no price is set and we have a serving with price, use it
+    //   if ((!newItem.price || newItem.price === null) && firstServing.price) {
+    //     newItem.price = parseFloat(firstServing.price);
+    //   }
+    // } else {
+    //   // If there was a servings property, maintain it but ensure it's only including the necessary data
+    //   if (data?.servings) {
+    //     newItem.servings = data.servings;
+    //   }
+    // }
+
     const updatedCart = [...storedCart, newItem];
 
     localStorage.setItem("fruits", JSON.stringify(updatedCart));
     setCartItems(updatedCart);
 
     toast.success("Product added to the cart");
-    navigate("/cart")
+    navigate("/cart");
   };
 
   return (

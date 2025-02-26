@@ -59,7 +59,7 @@ const Delivery = ({
               watch={watch}
               setValue={setValue}
             />
-            <textarea
+            {/* <textarea
               className="h-32 w-full border border-gray-300 outline-none p-3 rounded-2xl"
               placeholder="Type comments"
               {...register("comment", { required: "Comments is required" })}
@@ -68,7 +68,7 @@ const Delivery = ({
               <p className="text-red-500 text-xs -mt-5">
                 {errors.comments.message}
               </p>
-            )}
+            )} */}
           </div>
         </div>
         <div>

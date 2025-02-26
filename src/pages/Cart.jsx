@@ -14,6 +14,7 @@ import { useGetApi } from "@/hooks/API/useGetApi";
 import { UsePostApi } from "@/hooks/API/usePostApi";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import Loader from "@/components/ui/Shared/Loader";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const Cart = () => {
   const { data: fruitsData, isLoading } = useGetApi("products", true);
@@ -103,7 +104,8 @@ const Cart = () => {
         acc[`items[${index}][product_id]`] = fruit.id;
         acc[`items[${index}][quantity]`] = fruit.quantity || 1;
         acc[`items[${index}][service_id]`] =
-          fruit?.servings_id?.pivot?.serving_id || fruit?.servings[0]?.pivot?.serving_id;
+          fruit?.servings_id?.pivot?.serving_id ||
+          fruit?.servings[0]?.pivot?.serving_id;
         null;
         return acc;
       }, {});
@@ -111,7 +113,7 @@ const Cart = () => {
 
       setFruitsObject(fruitsObject);
     }
-  }, [fruits]); // Add selectedServing to dependencies
+  }, [fruits]);
 
   useEffect(() => {
     if (selectedItem && Object.keys(selectedItem).length > 0) {
@@ -119,29 +121,22 @@ const Cart = () => {
         (fruit) => fruit.id === selectedItem.id
       );
 
-      // Create a modified fruit object with only the first serving
       let newFruit = { ...selectedItem, quantity: 1 };
 
-      // If the fruit has servings, only keep the first serving (index 0)
       if (
         newFruit.servings &&
         Array.isArray(newFruit.servings) &&
         newFruit.servings.length > 0
       ) {
-        // Extract only the first serving
         const firstServing = newFruit.servings[0];
-
-        // Replace the entire servings array with just the first serving
         newFruit.servings = [firstServing];
 
-        // Update the price based on the selected serving if needed
         if (!newFruit.price) {
           newFruit.price = firstServing.price;
         }
       }
 
       if (existingFruit) {
-        // If fruit already exists, just increase the quantity
         const updatedFruits = fruits.map((fruit) =>
           fruit.id === selectedItem.id
             ? { ...fruit, quantity: fruit.quantity + 1 }
@@ -150,7 +145,6 @@ const Cart = () => {
         setFruits(updatedFruits);
         localStorage.setItem("fruits", JSON.stringify(updatedFruits));
       } else {
-        // If fruit is new, add the modified fruit with only the first serving
         const updatedFruits = [...fruits, newFruit];
         setFruits(updatedFruits);
         localStorage.setItem("fruits", JSON.stringify(updatedFruits));
@@ -161,7 +155,6 @@ const Cart = () => {
   useEffect(() => {
     if (isSuccess) {
       setIsModalOpen(true);
-      // toast.success("Order submitted successfully");
       localStorage.removeItem("fruits");
     }
   }, [isSuccess]);
@@ -183,43 +176,51 @@ const Cart = () => {
             JUST A FEW MORE DETAILS TO DELICIOUSNESS
           </p>{" "}
         </div>
-        <div className="border-4 border-primaryBoldColor rounded-3xl p-4 ">
+
+        <div className="border-4 border-primaryBoldColor rounded-3xl p-4">
           <div className="bg-white px-5 rounded-3xl py-5 pt-10 w-full">
             {fruits?.length > 0 && (
-              <div className="flex items-center justify-end text-xl font-bold gap-8 ml-10 max-w-6xl ">
-                {Cartheader?.map((data) => (
-                  <p key={data} className="text-sm md:text-2xl text-gray-600">
-                    {data}
-                  </p>
-                ))}
-              </div>
+              <ScrollArea className="w-full overflow-x-auto">
+                <div className="flex items-center justify-end px-10 sm:px-20 md:px-0 text-xl font-bold gap-20 lg:gap-14 lg:ml-10 min-w-max">
+                  {Cartheader?.map((data) => (
+                    <p
+                      key={data}
+                      className="text-sm md:text-base lg:text-2xl text-gray-600"
+                    >
+                      {data}
+                    </p>
+                  ))}
+                </div>
+                <ScrollBar orientation="horizontal" />
+              </ScrollArea>
             )}
+
             {fruits.length > 0 ? (
-              fruits.map((fruit) => {
-                console.log(fruit?.servings_multiple);
-                return (
+              <ScrollArea className="w-full overflow-x-auto">
+                {fruits.map((fruit) => (
                   <div
                     key={fruit.id}
-                    className="flex items-center gap-5 xl:gap-12 w-full border-b py-5"
+                    className="flex items-center gap-5 xl:gap-12 w-full border-b border-gray-200 py-5 min-w-max"
                   >
                     <button
                       onClick={() => deleteProduct(fruit?.id)}
-                      className="p-2 rounded-full bg-[#A5A5A5] text-white text-xl"
+                      className="p-2 rounded-full bg-[#A5A5A5] text-white text-xs lg:text-xl"
                     >
                       <IoMdClose />
                     </button>
-                    <div className="w-[350px] md:w-[280px] ">
+                    <div className="w-[20%] flex items-center justify-center
+                     md:w-[280px] ">
                       <img
                         src={fruit?.image}
                         alt={fruit?.name}
                         className={cn(
-                          "w-[200px]",
-                          fruit?.name === "SMALL Fruit Box" && "w-2/3"
+                          "w-[50%] lg:w-[200px]",
+                          fruit?.name === "SMALL Fruit Box" && "w-[40%] lg:w-2/3"
                         )}
                       />
                     </div>
                     <div className="w-[420px] flex flex-col gap-5">
-                      <h2 className="text-2xl font-bold text-[#798090] capitalize">
+                      <h2 className="text-base md:text-lg lg:text-2xl font-bold text-[#798090] capitalize">
                         {fruit.name} {"   "}
                         {fruit?.price_multiple !== null ? (
                           <span className="text-secondaryTextColor font-bold block">
@@ -233,82 +234,48 @@ const Cart = () => {
                       </h2>
                       <AddFruits
                         placeholder="Add another size"
-                        triggerClass="border border-gray-300 w-60 placeholder:text-red-400 py-3 h-14"
+                        triggerClass="border border-gray-300 text-sm w-44 lg:w-60 placeholder:text-red-400 py-2 h-10 lg:py-3 lg:h-14"
                         data={fruitsData}
                         selectedItem={selectedItem}
                         setSelectedItem={setSelectedItem}
                       />
                     </div>
                     <div className="max-w-[350px]">
-                      <div className="grid grid-cols-3 gap-3 xl:gap-5  text-gray-600  w-full">
-                        {fruit?.price_multiple !== null ? (
-                          <p className="text-[26px] max-w-28 text-center">
-                            ${parseFloat(fruit.price || fruit?.price)}
-                          </p>
-                        ) : (
-                          <p className="text-[26px] max-w-28 text-center">
-                            ${parseFloat(fruit?.price)}
-                          </p>
-                        )}
-                        <div className="">
-                          <div className="flex items-center justify-between gap-2 border border-gray-300 p-2 rounded-xl w-32 ">
+                      <div className="grid grid-cols-3 gap-3 items-center xl:gap-5 text-gray-600 w-full">
+                        <p className="text-xl lg:text-[26px] max-w-28 text-center">
+                          ${parseFloat(fruit.price)}
+                        </p>
+                        <div>
+                          <div className="flex items-center justify-between gap-2 border border-gray-300 p-2 rounded-xl w-24 lg:w-32">
                             <button
-                              className="rounded bg-primaryLightColor text-black text-xl px-2 py-2"
+                              className="rounded bg-primaryLightColor text-black text-sm md:text-base lg:text-xl px-2 py-2"
                               onClick={() => handleDecrement(fruit?.id)}
                             >
-                              <FiMinus className="text-black/80 text-sm" />
+                              <FiMinus className="text-black/80 text-[8px] lg:text-sm" />
                             </button>
-                            <span className="w-5 flex items-center justify-center ">
+                            <span className="w-5 flex items-center justify-center text-sm lg:text-base">
                               {fruit?.quantity < 10 && "0"}
                               {fruit?.quantity ? fruit?.quantity : 1}
                             </span>
                             <button
-                              className="rounded bg-primaryLightColor text-black text-xl px-2 py-2"
+                              className="rounded bg-primaryLightColor text-black text-sm md:text-base lg:text-xl px-2 py-2"
                               onClick={() => handleIncrement(fruit?.id)}
                             >
-                              <FiPlus className="text-black/80 text-sm" />
+                              <FiPlus className="text-black/80 text-[8px] lg:text-sm" />
                             </button>
                           </div>
-                          {/* {(fruit?.servings_multiple ||
-                            fruit?.servingg === "" ||
-                            fruit?.servings_single === null) && (
-                            <div className="mt-3 w-32">
-                              <SelectItems
-                                data={tempservingsData?.servings}
-                                value={
-                                  selectedServing?.name ||
-                                  fruit?.servings_multiple
-                                }
-                                setServings={
-                                  handleServingChange ||
-                                  fruit?.servings_multiple
-                                }
-                                triggerClass="border border-gray-300 text-gray-500 py-2"
-                                valueClass={"text-xs px-0"}
-                                placeholder="# of selected serving"
-                              />
-                            </div>
-                          )} */}
                         </div>
-                        {fruit?.servings_multiple ||
-                        fruit?.servings_single === null ? (
-                          <p className="text-[26px] text-secondaryTextColor text-center ml-6">
-                            $
-                            {parseFloat(fruit?.price || fruit?.price) *
-                              parseFloat(fruit.quantity ? fruit.quantity : 1)}
-                          </p>
-                        ) : (
-                          <p className="text-[26px] text-secondaryTextColor text-center ml-6">
-                            $
-                            {parseFloat(fruit.price) *
-                              parseFloat(fruit.quantity ? fruit.quantity : 1)}
-                          </p>
-                        )}
+                        <p className="text-xl lg:text-[26px] text-secondaryTextColor text-center ml-6">
+                          $
+                          {parseFloat(fruit?.price) *
+                            parseFloat(fruit.quantity ? fruit.quantity : 1)}
+                        </p>
                       </div>
                     </div>
                   </div>
-                );
-              })
+                ))}
+                <ScrollBar orientation="horizontal" />
+              </ScrollArea>
             ) : (
               <>
                 <p className="flex items-center justify-center text-4xl font-extrabold h-60">
@@ -325,40 +292,21 @@ const Cart = () => {
                 </div>
               </>
             )}
-            {fruits.length > 0 && (
-              <div className="pt-16 pb-5">
-                <Delivery
-                  register={register}
-                  handleSubmit={handleSubmit}
-                  errors={errors}
-                  control={control}
-                  isPosting={isPosting}
-                  isPostingError={isPostingError}
-                  placeOrder={placeOrder}
-                  onChange={onChange}
-                  watch={watch}
-                  setValue={setValue}
-                />
-                <SuccessModal
-                  isModalOpen={isModalOpen}
-                  setIsModalOpen={setIsModalOpen}
-                />
-              </div>
-            )}
           </div>
         </div>
+
         <div className="py-10 max-w-[950px] mx-auto">
           <div className="flex flex-col items-center justify-center">
             <img src={logo2} alt="" />
             <div className="flex flex-col items-center justify-center gap-3">
-              <h3 className="text-[40px] font-bold text-gray-600 text-center">
+              <h3 className="text-[28px] sm:text-[28px] lg:text-[40px]text-[40px] font-bold text-gray-600 text-center">
                 <span className="text-secondaryTextColor">
                   Guaranteed fresh.
                 </span>{" "}
                 no contracts.{" "}
                 <span className="text-secondaryTextColor">free delivery</span>
               </h3>
-              <p className="font-thin text-lg text-center">
+              <p className="font-thin text-sm lg:text-lg text-center text-black/60">
                 The Fruit Box is an amazing wellness program your staff will
                 really love. Energize your workplace with fresh fruit
                 deliveries!
