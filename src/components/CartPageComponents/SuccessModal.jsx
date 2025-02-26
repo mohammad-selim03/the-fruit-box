@@ -18,27 +18,27 @@ export function SuccessModal({ isModalOpen, setIsModalOpen }) {
 
   return (
     <Dialog open={isModalOpen} className="rounded-xl">
-      <DialogContent className="sm:max-w-[922px] h-[681px] bg-transparent p-5 rounded-2xl border-none">
+      <DialogContent className="sm:max-w-[922px] max-h-[681px] bg-transparent p-5 rounded-2xl border-none mt-5">
         <div className="w-full h-full border-4 border-secondaryTextColor p-5   rounded-[50px] text-white">
           <div className="flex flex-col h-full items-center justify-center bg-secondaryTextColor p-10  rounded-3xl text-white">
             <div className="flex flex-col items-center">
               <img src={fruitboxmodallogo} alt="" />
 
-              <div className="flex flex-col items-center gap-[26px] mt-[26px]">
-                <p className="text-[40px]">Thank You for your order!</p>
-                <p className="text-[20px] text-center">
-                  We’re excited to add your office to our growing <br /> Fruit Box
+              <div className="flex flex-col items-center gap-[16px] md:gap-[26px] mt-[26px]">
+                <p className="text-xl md:text-[40px] ">Thank You for your order!</p>
+                <p className="text-[14px] md:text-[20px] text-center">
+                  We’re excited to add your office to our growing   Fruit Box
                   Family
                 </p>
-                <p className="text-[20px] text-center">
-                  Your order details have been sent to the email <br /> provide{" "}
+                <p className="text-[14px] md:text-[20px] text-center">
+                  Your order details have been sent to the email   provide{" "}
                 </p>
-                <p className="text-[20px] text-center">
-                  We’ll contact you shortly to confirm everything <br /> and arrange
+                <p className="text-[14px] md:text-[20px] text-center">
+                  We’ll contact you shortly to confirm everything  and arrange
                   payment option.
                 </p>
                 <Link onClick={() => handleNavigate()}>
-                  <Button className="py-5 text-xl tracking-wider font-medium px-16 shadow-black/20 shadow-md">RETURN TO MAIN</Button>
+                  <Button className="py-3 md:py-5 text-base md:text-xl tracking-wider font-medium px-5 lg:px-16 shadow-black/20 shadow-md">RETURN TO MAIN</Button>
                 </Link>
               </div>
             </div>
