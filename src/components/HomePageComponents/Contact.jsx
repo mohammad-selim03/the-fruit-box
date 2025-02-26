@@ -134,7 +134,7 @@ const Contact = () => {
       <div className="w-[70%] mx-auto">
         <Button
           disabled={isChecked === false}
-          className="py-6 px-20 rounded-2xl w-full border-2 border-white shadow-black/20 shadow-md"
+          className="py-4 md:py-6 px-10 md:px-20 rounded-2xl w-full border-2 border-white shadow-black/20 shadow-md"
         >
           {isLoading ? (
             <p className="flex items-center justify-center gap-2">

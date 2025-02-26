@@ -79,7 +79,7 @@ const ContactUs = () => {
                 ENQUIRY
               </span>
             </Title>
-            <p className="pb-3 lg:pb-10 text-center font-bold">
+            <p className="pb-3 lg:pb-10 text-center font-bold text-sm md:text-base">
               Become the office hero! Energize your workplace with fresh fruit
               deliveries.
             </p>
@@ -141,12 +141,12 @@ const ContactUs = () => {
             </div>
           </div>
           <Container>
-            <div className="pt-[1900px] px-5 xl:px-0 sm:pt-[1800px] grid grid-cols-1 lg:grid-cols-3 items-start gap-10">
+            <div className="pt-[2000px] md:pt-[1900px] px-5 xl:px-0 grid grid-cols-1 lg:grid-cols-3 items-start gap-10">
               <div className="col-span-2">
                 <p className="text-primaryBoldColor">
                   View our fruit boxes now
                 </p>
-                <Title className="capitalize  leading-noe">
+                <Title className="capitalize text-[28px] md:text-[44px] lg:text-[64px] leading-noe">
                   Assorted fresh fruit boxes{" "}
                   <span className="text-secondaryTextColor">Delivered</span> to
                   your office

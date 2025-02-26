@@ -32,7 +32,7 @@ const About = () => {
             </p>
           </div>
           <div className="flex flex-col gap-3 text-[#38302F] ">
-            <Title className="capitalize text-nowrap text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px]">
+            <Title className="capitalize  text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px]">
               We’re growing… and focused!
             </Title>
             <p className="text-sm lg:text-base">
@@ -55,7 +55,7 @@ const About = () => {
             <img
               src={aboutpagefruits}
               alt=""
-              className="absolute top-[30%] md:top-[10%] -mt-16 lg:mt-40  xl:top-10 min-[1590px]:top-[20%] max-[1450px]:top-[20%] right-0 w-20  md:w-60 xl:w-[450px] 4xl:w-[600px]"
+              className="absolute top-[30%] md:top-[10%] -mt-0 lg:mt-40  xl:top-10 min-[1590px]:top-[20%] max-[1450px]:top-[20%] right-0 w-20  md:w-60 xl:w-[450px] 4xl:w-[600px]"
             />
             <div className="absolute top-[55%] left-5 lg:top-[60%] lg:left-[15%] max-w-[550px]">
               <img src={van} alt="" className="w-20 md:w-40 lg:w-52 xl:w-80" />
@@ -70,19 +70,19 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <div className="absolute top-1/2 md:top-[60%] right-5  lg:right-20 overflow-hidden">
-              <div className="text-white max-w-[150px] sm:max-w-[350px] xl:max-w-[100%] text-right mt-5">
-                <h2 className="text-[10px]  sm:text-lg xl:text-[40px]">
+            <div className="absolute top-1/2 md:top-[60%] right-5  lg:right-20 overflow-hidden max-w-[150px] sm:max-w-[350px] xl:max-w-[50%] ">
+              <div className="text-white max-w-[150px] sm:max-w-[350px]  xl:max-w-[100%] text-right mt-5 ">
+                <h2 className="text-[10px]  sm:text-xl xl:text-[40px] ">
                   Companies are making the{" "}
                   <span className="text-primaryLightColor">switch.</span>
                 </h2>
-                <p className="font-thin text-[7px] sm:text-sm lg:text-base line-clamp-3  flex lg:hidden items-center justify-end 2xl:w-[800px] xl:mt-5">
+                <p className="font-thin text-[7px] sm:text-sm lg:text-base line-clamp-3  flex xl:hidden items-center justify-end  2xl:w-[800px] xl:mt-5">
                   Corporate customers are switching to The Fruit Box. In 2014
                   alone, more than a third of our new customers have switched to
                   us from a competitive service. While the reasons vary from
                   poor quality to unreliable service to poor customer support.
                 </p>
-                <p className="font-thin text-[7px] sm:text-sm lg:text-base line-clamp-3 hidden lg:flex items-center justify-end 2xl:w-[800px] xl:mt-5  ">
+                <p className="font-thin text-[7px] sm:text-sm lg:text-base line-clamp-3 hidden xl:flex items-center justify-end 2xl:w-[800px] xl:mt-5  ">
                   Corporate customers are switching to The Fruit Box. In 2014
                   alone, more than a third of our new customers have switched to
                   us from a competitive service. While the reasons vary from
@@ -98,10 +98,10 @@ const About = () => {
           </div>
         </div>
         <Container>
-          <div className="py-0 pt-[600px] md:pt-[800px] lg:pt-[1500px] grid grid-cols-1 lg:grid-cols-3 items-start gap-10 px-5 lg:px-0">
+          <div className="py-0 pt-[450px] min-[450px]:pt-[550px] min-[530px]:pt-[650px] min-[590px]:pt-[750px] sm:pt-[650px] md:pt-[800px] lg:pt-[1000px] min-[1400px]:pt-[1200px] min-[1680px]:pt-[1500px] grid grid-cols-1 lg:grid-cols-3 items-start gap-10 px-5 xl:px-0">
             <div className="col-span-2 ">
               <p className="text-primaryBoldColor">View our fruit boxes now</p>
-              <Title className="capitalize  leading-noe">
+              <Title className="capitalize text-[28px] md:text-[44px] lg:text-[64px]">
                 Assorted fresh fruit boxes{" "}
                 <span className="text-secondaryTextColor">Delivered</span> to
                 your office

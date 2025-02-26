@@ -12,7 +12,7 @@ const DynamicBanner = ({ title, semiTitle }) => {
           alt=""
         />
         <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[60%] md:w-[40%]">
-          <img src={commonsection} alt="" className="w-full h-[180px] sm:h-full" />
+          <img src={commonsection} alt="" className="w-full h-[180px] sm:h-[250px] md:h-[200px] lg:h-full" />
           <div className="absolute bottom-[35%] sm:bottom-[40%] left-1/2 -translate-x-1/2 text-center w-full">
             <h1 className="text-primaryLightColor text-base xl:text-2xl font-bold uppercase">
               {title}
