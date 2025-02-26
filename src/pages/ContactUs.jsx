@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 const ContactUs = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
   useEffect(() => {
@@ -55,6 +56,10 @@ const ContactUs = () => {
 
   return (
     <div>
+      <Helmet >
+        <title>Contact us</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <div>
         <DynamicBanner
           title="CONTACT US"

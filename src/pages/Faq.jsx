@@ -14,6 +14,7 @@ import IsError from "@/components/ui/Shared/IsError";
 import Loader from "@/components/ui/Shared/Loader";
 import { useGetApi } from "@/hooks/API/useGetApi";
 import { cn } from "@/lib/utils";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router";
 const Faq = () => {
   const { data, isLoading, isError } = useGetApi("faqs", true);
@@ -26,6 +27,9 @@ const Faq = () => {
     <IsError />
   ) : (
     <div>
+      <Helmet>
+        <title>FAQ</title> 
+      </Helmet>
       <DynamicBanner
         title="FAQ"
         semiTitle="Fresh fruit delivered to your office."
