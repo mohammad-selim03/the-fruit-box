@@ -1,13 +1,18 @@
-import { contactfruits, logo2 } from "@/assets";
+import { contactfruits } from "@/assets";
 import Button from "@/components/DynamicComponents/Button";
 import Container from "@/components/DynamicComponents/Container";
 import DynamicBanner from "@/components/DynamicComponents/DynamicBanner";
 import Title from "@/components/DynamicComponents/Title";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router";
 
 const TermsOfUse = () => {
   return (
     <div>
+      <Helmet>
+        <title>Terms And Conditions</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <DynamicBanner
         title="Terms And Conditions"
         semiTitle="We’re a proud Calgary company."

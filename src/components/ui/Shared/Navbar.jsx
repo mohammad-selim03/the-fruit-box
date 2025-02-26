@@ -10,6 +10,8 @@ const Navbar = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const location = useLocation();
 
+  const data = JSON.parse(localStorage.getItem("system-setting"));
+
   useEffect(() => {
     const loadCartItems = () => {
       const fruitsData = localStorage.getItem("fruits");
@@ -25,10 +27,9 @@ const Navbar = () => {
         }
       }
 
-      // Ensure parsedData is an array before reducing
       if (Array.isArray(parsedData)) {
         const total = parsedData.reduce(
-          (sum, item) => sum + (item.quantity || 1), // Default quantity to 1 if missing
+          (sum, item) => sum + (item.quantity || 1),
           0
         );
         setTotalQuantity(total);
@@ -59,7 +60,7 @@ const Navbar = () => {
   return (
     <div className="bg-white h-[120px] w-full px-5 lg:px-14 xl:px-[100px] flex items-center justify-between fixed top-0 z-[60] shadow-black/5 shadow-xl">
       <Link to={"/"}>
-        <img src={logo} alt="" className="w-56 -mt-4" />
+        <img src={data?.logo || logo || null} alt="logo" className="w-56 -mt-4" />
       </Link>
       <div className="flex items-center gap-5 ">
         <div className="lg:hidden flex">

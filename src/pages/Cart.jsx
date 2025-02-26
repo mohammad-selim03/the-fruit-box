@@ -15,6 +15,7 @@ import { UsePostApi } from "@/hooks/API/usePostApi";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import Loader from "@/components/ui/Shared/Loader";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { Helmet } from "react-helmet-async";
 
 const Cart = () => {
   const { data: fruitsData, isLoading } = useGetApi("products", true);
@@ -167,6 +168,9 @@ const Cart = () => {
 
   return (
     <div className="min-h-[900px] pt-20">
+      <Helmet>
+        <title>Cart</title> 
+      </Helmet>
       <Container>
         <div className="pb-10 mt-10">
           <h1 className="text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px] font-bold text-center">

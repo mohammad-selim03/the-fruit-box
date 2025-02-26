@@ -7,6 +7,7 @@ import Loader from "@/components/ui/Shared/Loader";
 import IsError from "@/components/ui/Shared/IsError";
 import FruitCard from "@/components/HomePageComponents/FruitCard";
 import DynamicBanner from "@/components/DynamicComponents/DynamicBanner";
+import { Helmet } from "react-helmet-async";
 
 const FruitBox = () => {
   const { data, isLoading, isError } = useGetApi("products", true);
@@ -28,6 +29,9 @@ const FruitBox = () => {
     <IsError />
   ) : (
     <div className="min-h-[900px] pt-20">
+      <Helmet>
+        <title>Fruit Boxes </title> 
+      </Helmet>
       <DynamicBanner
         title="ORDER"
         semiTitle="Fresh fruit delivered to your office."
