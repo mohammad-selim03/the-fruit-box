@@ -4,6 +4,7 @@ import Container from "@/components/DynamicComponents/Container";
 import { Link } from "react-router";
 
 const Footer = () => {
+  const data = JSON.parse(localStorage.getItem("system-setting"));
   return (
     <div className="relative">
       {/* bg-[#F68F2A] */}
@@ -96,11 +97,11 @@ const Footer = () => {
                 <span className="font-semibold text-sm text-white">
                   Call us:
                 </span>{" "}
-                587.351.5720
+                {data?.number}
               </p>
               <p className="text-xs text-primaryTextColor">
                 <span className="font-semibold text-sm text-white">Email:</span>{" "}
-                info@thefruitbox.com
+                {data?.email}
               </p>
             </div>
           </div>
@@ -109,18 +110,13 @@ const Footer = () => {
           <div className="flex items-center xl:justify-center gap-2 py-5 text-white border-t border-white/30 ">
             <img src={footerlogo} alt="" className="w-8" />
             <p className="mt-3 text-sm xl:text-center w-2/3 lg:w-fit">
-              The Fruit Box Ltd. Copyright 2021. All Rights Reserved. Powered by
-              the Awesomeness of Fresh Fruit.
+              {data?.system_name} {data?.copyright_text }
             </p>
           </div>
         </div>
       </Container>
       <div className="absolute bottom-0 right-0 w-[120px] md:w-[170px] xl:w-[200px]">
-        <img
-          src={cloud}
-          alt=""
-          className="w-full"
-        />
+        <img src={cloud} alt="" className="w-full" />
       </div>
     </div>
   );

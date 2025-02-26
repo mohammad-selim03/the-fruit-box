@@ -91,7 +91,7 @@ const FruitCard = ({ data }) => {
   return (
     <div
       key={data?.id}
-      className="flex items-center justify-between gap-2 lg:gap-12 w-full border-b py-5"
+      className="flex items-center justify-between gap-2 lg:gap-12 w-full border-b border-gray-300 py-5"
     >
       <div className="w-[400px] sm:w-[200px]">
         <img
@@ -112,7 +112,7 @@ const FruitCard = ({ data }) => {
             </span>
           ) : (
             <span className="text-secondaryTextColor text-sm sm:text-lg lg:text-2xl font-bold">
-              10-100 Servings
+              10-85 Servings
             </span>
           )}
         </h2>

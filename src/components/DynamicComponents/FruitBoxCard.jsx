@@ -112,7 +112,7 @@ const FruitBoxCard = ({ data }) => {
                 </p>
               ) : (
                 <p className="group-hover:hidden -mt-4 text-sm">
-                  10 - 100 Servings
+                  10 - 85 Servings
                 </p>
               )}
               {data?.price_multiple !== null && (
