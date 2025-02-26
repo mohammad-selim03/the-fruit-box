@@ -3,11 +3,16 @@ import Button from "@/components/DynamicComponents/Button";
 import Container from "@/components/DynamicComponents/Container";
 import DynamicBanner from "@/components/DynamicComponents/DynamicBanner";
 import Title from "@/components/DynamicComponents/Title";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router";
 
 const About = () => {
   return (
     <div>
+      <Helmet>
+        <title>About us</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <DynamicBanner title="ABOUT" semiTitle="We’re a proud Calgary company." />
       <div className="relative mt-10 md:mt-20">
         <div className="px-5 lg:px-0 max-w-[1020px]  mx-auto lg:ml-20 2xl:ml-60 text-wrap z-30 relative ">

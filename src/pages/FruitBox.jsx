@@ -30,8 +30,7 @@ const FruitBox = () => {
   ) : (
     <div className="min-h-[900px] pt-20">
       <Helmet>
-        <title>Fruit Boxes </title>
-        <link rel="canonical" href="https://www.tacobell.com/" />
+        <title>Fruit Boxes </title> 
       </Helmet>
       <DynamicBanner
         title="ORDER"

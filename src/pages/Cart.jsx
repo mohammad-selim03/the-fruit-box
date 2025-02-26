@@ -169,8 +169,7 @@ const Cart = () => {
   return (
     <div className="min-h-[900px] pt-20">
       <Helmet>
-        <title>Cart</title>
-        <link rel="canonical" href="https://www.tacobell.com/" />
+        <title>Cart</title> 
       </Helmet>
       <Container>
         <div className="pb-10 mt-10">
