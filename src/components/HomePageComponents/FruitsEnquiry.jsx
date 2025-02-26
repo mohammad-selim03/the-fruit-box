@@ -50,8 +50,8 @@ const FruitsEnquiry = () => {
         </figure>
         <div className="pt-[130px] md:pt-[200px] lg:pt-[270px] pb-[70px] md:pb-[100px] lg:pb-[150px]">
           <div className="relative w-fit mx-auto">
-            <div className="z-20 absolute top-0 right-0 lg:left-0 -translate-y-1/2 translate-x-10 xl:-translate-x-1/2 w-0 sm:w-[250px] lg:w-[280px]">
-              <img src={reminder} alt="" className="w-full" />
+            <div className="z-20 absolute top-0 -right-5 lg:-left-8 xl:left-0 -translate-y-1/2 translate-x-10 xl:-translate-x-1/2 w-0 sm:w-[250px] lg:w-[280px]">
+              <img src={reminder} alt="" className="w-[60%] md:w-[75%] xl:w-full" />
             </div>
             <div className="px-4 md:px-8">
               <div className="bg-secondaryTextColor p-2 sm:p-3 lg:p-5 rounded-[50px] relative w-fit mx-auto">
