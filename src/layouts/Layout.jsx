@@ -31,15 +31,15 @@ const Layout = () => {
           location.pathname === "/cart" && "-mt-[300px]"
         )}
       >
-        {/* <Footer /> */}
+        <Footer />
       </div>
       <Toaster />
       <div
-        className="fixed bottom-10 right-10 cursor-pointer z-30"
+        className="fixed bottom-4 right-4 md:bottom-8 md:right-8 cursor-pointer z-30"
         onClick={handleScrollToTop}
       >
-        <p className="p-3 border border-black hover:bg-primaryBoldColor hover:text-white transition-all duration-300 hover:border-primaryBoldColor rounded-full bg-transparent">
-          <IoIosArrowUp size={25} />
+        <p className="p-2 md:p-3 border border-black hover:bg-primaryBoldColor hover:text-white transition-all duration-300 hover:border-white rounded-full bg-transparent">
+          <IoIosArrowUp className="text-lg md:text-2xl" />
         </p>
       </div>
     </div>

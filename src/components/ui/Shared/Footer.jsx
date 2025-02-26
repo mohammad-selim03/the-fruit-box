@@ -1,16 +1,23 @@
 import { cloud, footerbg, footerbg1, footerlogo } from "@/assets";
 import Button from "@/components/DynamicComponents/Button";
+import Container from "@/components/DynamicComponents/Container";
 import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <div className="relative mt-20  h-full">
+    <div className="relative">
       {/* bg-[#F68F2A] */}
-      <img src={footerbg1} alt="" className="w-full h-full lg:h-[700px]  " />
+      <figure className="absolute top-0 left-0 w-full h-full">
+        <img
+          src={footerbg1}
+          alt=""
+          className="w-full h-full object-cover object-top"
+        />
+      </figure>
       {/* <img src={footerbg1} alt="" className="w-full h-full" /> */}
 
-      <div className="absolute top-[40%] left-1/2 w-full -translate-x-1/2 px-[200px]">
-        <div className="flex flex-wrap items-start gap-[30px] text-white">
+      <Container className="max-w-[1379px] px-4 md:px-8 relative pt-[300px] xl:pt-[340px]">
+        <div className="flex justify-between flex-wrap lg:flex-nowrap items-start gap-y-10 gap-4 xl:gap-[28px] text-white">
           <div className="w-[401px]">
             <p className="text-xl uppercase pb-8">
               WHY HAVE FRUIT IN THE OFFICE?
@@ -31,8 +38,7 @@ const Footer = () => {
             </div>
           </div>
           <div className=" ">
-            <p className="text-xl uppercase pb-5">ABOUT COMPANY</p>
-
+            <p className="text-xl uppercase pb-2 md:pb-4">ABOUT COMPANY</p>
             <div className="flex flex-col gap-3 mt-3">
               <p className="text-sm text-primaryTextColor cursor-pointer hover:underline">
                 How to order fruit for the office
@@ -49,7 +55,7 @@ const Footer = () => {
             </div>
           </div>
           <div className=" ">
-            <p className="text-xl uppercase pb-5">CUSTOMER SERVICE </p>
+            <p className="text-xl uppercase pb-2 md:pb-4">CUSTOMER SERVICE </p>
             <div className="flex flex-col gap-3 mt-3">
               <Link
                 to={"/contact-us"}
@@ -77,8 +83,8 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="w-[383px] h-fit bg-[#E07B1A] py-6 px-5 rounded-xl -mt-6">
-            <p className="text-xl uppercase pb-5">CONNECT WITH US</p>
+          <div className="w-[370px] h-fit bg-[#E07B1A] py-6 px-5 rounded-xl lg:-translate-y-6">
+            <p className="text-xl uppercase pb-2 md:pb-4">CONNECT WITH US</p>
             <div className="flex flex-col gap-3 mt-3">
               <p className="text-xs text-[#FFD600]">
                 <span className="font-semibold text-sm text-white">
@@ -100,16 +106,22 @@ const Footer = () => {
           </div>
         </div>
         <div className="pt-10">
-          <div className="flex items-start justify-center gap-1 py-5 text-white border-t border-white/30 ">
+          <div className="flex items-center justify-center gap-2 py-5 text-white border-t border-white/30 ">
             <img src={footerlogo} alt="" className="w-8" />
-            <p className="mt-3 text-sm">
+            <p className="mt-3 text-sm text-center">
               The Fruit Box Ltd. Copyright 2021. All Rights Reserved. Powered by
               the Awesomeness of Fresh Fruit.
             </p>
           </div>
         </div>
+      </Container>
+      <div className="absolute bottom-0 right-0 w-[120px] md:w-[170px] xl:w-[200px]">
+        <img
+          src={cloud}
+          alt=""
+          className="w-full"
+        />
       </div>
-      <img src={cloud} alt="" className="absolute bottom-0 right-0" />
     </div>
   );
 };
