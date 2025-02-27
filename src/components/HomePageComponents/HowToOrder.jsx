@@ -23,7 +23,7 @@ const HowToOrder = () => {
     updateScale(); // Initial scale set
     window.addEventListener("resize", updateScale); // Adjust on resize
     return () => window.removeEventListener("resize", updateScale);
-  }, [customScale]);
+  }, []);
 
   return (
     <div className="relative">
@@ -44,6 +44,7 @@ const HowToOrder = () => {
             <img
               ref={imgRef}
               src={howOrderText}
+              onLoad={() => setCustomScale(imgRef.current.clientWidth / 848)}
               alt=""
               className="relative w-full max-w-[848px] mx-auto"
             />
@@ -54,7 +55,10 @@ const HowToOrder = () => {
               <CustomDate />
             </div>
           </div>
-          <Link to={"/fruit-box"} className="w-fit block pt-2 md:pt-4 mx-auto md:-translate-x-7">
+          <Link
+            to={"/fruit-box"}
+            className="w-fit block pt-2 md:pt-4 mx-auto md:-translate-x-7"
+          >
             <Button className="px-6 md:px-10 rounded-3xl py-2 md:py-5 border-2 border-white shadow-black/20 shadow-md text-center block mx-auto">
               Order a Fruit Box
             </Button>
@@ -69,7 +73,11 @@ const HowToOrder = () => {
         className="absolute bottom-0 -left-5 w-0 md:w-[280px] lg:w-[380px] xl:w-[550px]"
       />
 
-      <img src={malta} alt="" className="absolute top-0 right-0 w-0 md:w-[200px] lg:w-[250px] xl:w-[380px] " />
+      <img
+        src={malta}
+        alt=""
+        className="absolute top-0 right-0 w-0 md:w-[200px] lg:w-[250px] xl:w-[380px] "
+      />
     </div>
   );
 };

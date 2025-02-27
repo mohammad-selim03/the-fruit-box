@@ -11,7 +11,7 @@ export function CustomDate() {
   return (
     <div className="bg-white rounded-3xl min-w-fit p-4  h-full scale-[90%]">
       <div className="mt-1.5 ml-2.5">
-        <Calendar2 mode="single" initialFocus />
+        <Calendar2 mode="single" />
       </div>
     </div>
   );
