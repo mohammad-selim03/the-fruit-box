@@ -67,7 +67,6 @@ const SelectItems = ({
   if (availableItems.length === 0) {
     return;
   }
-  console.log("valueeee", value);
   return (
     <div>
       <Select

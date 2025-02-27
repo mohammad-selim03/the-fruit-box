@@ -1,29 +1,16 @@
 import { addressData } from "@/assets/StaticData";
-import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-const AddressAutoSuggest = ({ register, errors, setValue, watch }) => {
+const AddressAutoSuggest = ({ setValue }) => {
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-
- 
-  const addressValue = watch("address");
-
- 
-  useEffect(() => {
-    if (addressValue !== undefined && addressValue !== input) {
-      setInput(addressValue);
-    }
-  }, [addressValue]);
+  const [address, setAddress] = useState("");
 
   const handleInputChange = (e) => {
     const value = e.target.value;
     setInput(value);
-    
-    // Update form value in real-time as user types
-    setValue("address", value, { shouldValidate: true });
 
-    if (value.trim().length > 0) {
+    if (value.length > 0) {
       const filteredSuggestions = addressData.filter(
         (item) =>
           item["Site street address"]
@@ -36,37 +23,27 @@ const AddressAutoSuggest = ({ register, errors, setValue, watch }) => {
     } else {
       setSuggestions([]);
     }
+    setValue("address", input);
   };
+  console.log("suggesitons", suggestions);
+  console.log("input", input);
 
   const handleSelect = (selectedAddress) => {
     setInput(selectedAddress);
-    setValue("address", selectedAddress, { shouldValidate: true }); // Set value and trigger validation
     setSuggestions([]);
-  };
-
-  // Modified blur handler to keep manually typed text
-  const handleBlur = () => {
-    // Don't clear the input when blurring, just close the suggestions
-    setTimeout(() => {
-      setSuggestions([]);
-    }, 200); // Small timeout to allow click events on suggestions to fire first
+    setValue("address", selectedAddress);
   };
 
   return (
     <div className="relative w-full">
       <input
+        type="text"
+        placeholder="Start typing a street address, city, or territory..."
         value={input}
         onChange={handleInputChange}
-        onBlur={handleBlur}
-        placeholder="Street Address"
-        className="px-5 py-3 rounded-2xl border border-gray-300 w-full outline-none"
-        {...register("address", {
-          required: "Street Address is required",
-        })}
+        className="w-full p-2 border border-gray-300 rounded-xl"
       />
-      {errors.address && (
-        <p className="text-red-500 text-xs mt-1">{errors.address.message}</p>
-      )}
+
       {suggestions.length > 0 && (
         <div className="suggestions-box mt-1 border border-gray-300 rounded-xl absolute w-full z-10 bg-white max-h-60 overflow-y-auto">
           {suggestions.map((suggestion, index) => (
@@ -92,10 +69,3 @@ const AddressAutoSuggest = ({ register, errors, setValue, watch }) => {
 };
 
 export default AddressAutoSuggest;
-
-AddressAutoSuggest.propTypes = {
-  register: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  setValue: PropTypes.func.isRequired,
-  watch: PropTypes.func.isRequired,
-};

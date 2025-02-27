@@ -31,8 +31,8 @@ const Cart = () => {
   const initialServing = tempservingsData?.servings?.[0] || [];
   const [selectedServing, setSelectedServing] = useState(initialServing);
 
-  console.log("selecteed servings", selectedServing);
-  console.log("id", selectedServing?.pivot?.serving_id);
+  // console.log("selecteed servings", selectedServing);
+  // console.log("id", selectedServing?.pivot?.serving_id);
 
   const handleServingChange = (servingName) => {
     const selected = tempservingsData?.servings?.find(
@@ -102,7 +102,7 @@ const Cart = () => {
     const data = localStorage.getItem("servingsData");
     if (data) {
       const parsedFruits = JSON.parse(data);
-      console.log("parsed data", parsedFruits);
+      // console.log("parsed data", parsedFruits);
       setTempservingsData(parsedFruits);
     }
   }, []);
