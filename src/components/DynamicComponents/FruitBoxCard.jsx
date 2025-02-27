@@ -23,7 +23,7 @@ const FruitBoxCard = ({ data }) => {
       setSelectedServing(selected);
     }
   };
-  console.log("selecte3d servings", selectedServing?.length);
+  
   const handleAddToCart = () => {
     setCartItems((prevItems) => {
       const existingItems = Array.isArray(prevItems) ? prevItems : [];

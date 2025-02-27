@@ -133,6 +133,7 @@ const Delivery = ({
               errors={errors}
               register={register}
               setValue={setValue}
+              watch={watch}
             />
             {/* <input
               type="text"
