@@ -24,8 +24,8 @@ const AddressAutoSuggest = ({ setValue }) => {
     }
   };
   setValue("address", input);
-  console.log("suggesitons", suggestions);
-  console.log("input", input);
+  // console.log("suggesitons", suggestions);
+  // console.log("input", input);
 
   const handleSelect = (selectedAddress) => {
     setInput(selectedAddress);
