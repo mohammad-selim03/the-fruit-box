@@ -25,12 +25,27 @@ function App() {
     }
   }, []);
 
+// Add to your _app.js or main layout
+useEffect(() => {
+  document.body.classList.add('prevent-scroll');
+  
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+    document.body.classList.remove('prevent-scroll');
+  }, 100);
+}, []);
+
+
   return (
     <div className="app-container">
       <header>
         {data ? (
           <>
-            <img src={data.image} alt={`${data.title} logo`} className="site-logo" />
+            <img
+              src={data.image}
+              alt={`${data.title} logo`}
+              className="site-logo"
+            />
             <h1>{data.title}</h1>
           </>
         ) : (

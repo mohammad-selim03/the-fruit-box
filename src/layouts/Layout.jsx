@@ -1,6 +1,6 @@
 import Footer from "@/components/ui/Shared/Footer";
 import Navbar from "@/components/ui/Shared/Navbar";
-import { Outlet, ScrollRestoration } from "react-router";
+import { Outlet } from "react-router";
 import { IoIosArrowUp } from "react-icons/io";
 import { Toaster } from "react-hot-toast";
 import { useLocation } from "react-router";
@@ -19,7 +19,7 @@ const Layout = () => {
   const location = useLocation();
   return (
     <div className="font-Comfort font-semibold relative ">
-      <ScrollRestoration />
+      {/* <ScrollToTop /> */}
       <Navbar />
       <div
         className={cn(
