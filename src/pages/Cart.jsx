@@ -231,7 +231,7 @@ const Cart = () => {
                         {fruit.name} {"   "}
                         {fruit?.servings_multiple == null ? (
                           <span className="text-secondaryTextColor font-bold block">
-                            {fruit?.servings || fruit?.servings_single}
+                            {fruit?.servings?.[0]?.name || fruit?.servings_single}
                           </span>
                         ) : (
                           <span className="text-secondaryTextColor font-bold">

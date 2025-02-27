@@ -16,7 +16,7 @@ createRoot(document.getElementById("root")).render(
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router}>
           <ReactQueryDevtools initialIsOpen={false} />
-          <App />
+          {/* <App /> */}
         </RouterProvider>
       </QueryClientProvider>
     </HelmetProvider>

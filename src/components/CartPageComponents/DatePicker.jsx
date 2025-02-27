@@ -18,7 +18,7 @@ export function DatePicker({ setSelectedDate }) {
   const handleSelect = (selectedDate) => {
     setSelectedDate(selectedDate);
     setDate(selectedDate);
-    setOpenModal(false); // Close the popover when a date is selected
+    setOpenModal(false);
   };
 
   return (
@@ -58,7 +58,7 @@ export function DatePicker({ setSelectedDate }) {
           selected={date}
           onSelect={handleSelect}
           initialFocus
-          disabled={(date) => date <= new Date()}
+          disabled={(date) => date <= new Date() || date.getDay() === 0 || date.getDay() === 6}
         />
       </PopoverContent>
     </Popover>
