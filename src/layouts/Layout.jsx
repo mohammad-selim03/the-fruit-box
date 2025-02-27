@@ -4,24 +4,20 @@ import { Outlet, ScrollRestoration } from "react-router";
 import { IoIosArrowUp } from "react-icons/io";
 import { Toaster } from "react-hot-toast";
 import { useLocation } from "react-router";
-import { cn } from "@/lib/utils";
-import { useGetApi } from "@/hooks/API/useGetApi";
-import Loader from "@/components/ui/Shared/Loader";
+import { cn } from "@/lib/utils"; 
 
 const Layout = () => {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  const { data: fruitsData, isLoading } = useGetApi("products", true);
-  console.log("fruits data: ", fruitsData);
-  const servingsData = fruitsData?.find((data) => data?.price === null);
-  localStorage.setItem("servingsData", JSON.stringify(servingsData));
+  
+  // const { data: fruitsData, isLoading } = useGetApi("products", true);
+  // console.log("fruits data: ", fruitsData);
+  // const servingsData = fruitsData?.find((data) => data?.price === null);
+  // localStorage.setItem("servingsData", JSON.stringify(servingsData));
+
   const location = useLocation();
-  return isLoading ? (
-    <div className="flex items-center justify-center h-screen">
-      <Loader size={100} />
-    </div>
-  ) : (
+  return (
     <div className="font-Comfort font-semibold relative ">
       <ScrollRestoration />
       <Navbar />
