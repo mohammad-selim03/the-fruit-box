@@ -4,7 +4,6 @@ import { useState } from "react";
 const AddressAutoSuggest = ({ setValue }) => {
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [address, setAddress] = useState("");
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -23,8 +22,8 @@ const AddressAutoSuggest = ({ setValue }) => {
     } else {
       setSuggestions([]);
     }
-    setValue("address", input);
   };
+  setValue("address", input);
   console.log("suggesitons", suggestions);
   console.log("input", input);
 
