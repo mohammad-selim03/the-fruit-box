@@ -122,7 +122,7 @@ const FruitBoxCard = ({ data }) => {
                   className={cn(
                     "mt-5",
                     data?.custom === 1 &&
-                      "group-hover:mt-12 lg:group-hover:mt-5 xl:group-hover:mt-40"
+                      "group-hover:mt-12 lg:group-hover:-mt-5 xl:group-hover:mt-20"
                   )}
                 >
                   <SelectItems
