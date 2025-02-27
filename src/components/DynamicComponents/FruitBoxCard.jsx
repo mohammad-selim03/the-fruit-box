@@ -23,7 +23,7 @@ const FruitBoxCard = ({ data }) => {
       setSelectedServing(selected);
     }
   };
-  
+
   const handleAddToCart = () => {
     setCartItems((prevItems) => {
       const existingItems = Array.isArray(prevItems) ? prevItems : [];
@@ -40,9 +40,10 @@ const FruitBoxCard = ({ data }) => {
             ? parseFloat(selectedServing.price)
             : parseInt(data?.price),
           quantity: data?.quantity || 1,
-          servings: data?.servings_single || "",
           servings_multiple: data?.price_multiple ? selectedServing.name : null,
-          servings_id: data?.price_multiple && selectedServing,
+          servings: data?.price_multiple
+            ? selectedServing
+            : data?.servings_single,
         };
 
         const updatedCart = [...existingItems, sanitizedData];
@@ -154,7 +155,7 @@ const FruitBoxCard = ({ data }) => {
                       {selectedServing?.length !== 0 ? (
                         <div className="flex items-center justify-center gap-2">
                           <p>Order now $</p>
-                        {  parseFloat(selectedServing?.price).toFixed(2)}
+                          {parseFloat(selectedServing?.price).toFixed(2)}
                         </div>
                       ) : (
                         "Select serving to show price"

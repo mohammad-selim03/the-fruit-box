@@ -133,10 +133,10 @@ const Cart = () => {
         acc[`items[${index}][product_id]`] = fruit.id;
         acc[`items[${index}][quantity]`] = fruit.quantity || 1;
         acc[`items[${index}][service_id]`] =
-          selectedServing?.pivot?.serving_id ||
-          fruit?.servings?.[0]?.pivot?.serving_id ||
-          fruit?.servings_id?.pivot?.serving_id ||
-          null;
+          fruit?.price_multiple !== null
+            ? selectedServing?.pivot?.serving_id ||
+              fruit?.servings?.pivot?.serving_id  
+            : null;
         return acc;
       }, {});
       // console.log("Final Fruits Object Payload:", fruitsObject);
@@ -144,6 +144,8 @@ const Cart = () => {
       setFruitsObject(fruitsObject);
     }
   }, [fruits]);
+
+  console.log("selected servngs", selectedServing);
 
   useEffect(() => {
     if (selectedItem && Object.keys(selectedItem).length > 0) {
