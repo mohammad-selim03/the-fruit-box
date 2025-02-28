@@ -9,6 +9,7 @@ import {
 import { cn } from "@/lib/utils";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 const AddFruits = ({
   data,
@@ -19,6 +20,8 @@ const AddFruits = ({
 }) => {
   const [availableItems, setAvailableItems] = useState(data || []);
   const [selectedId, setSelectedId] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!setSelectedItem || typeof setSelectedItem !== "function") return;
@@ -31,9 +34,13 @@ const AddFruits = ({
     const selectedItem = data?.find(
       (item) => item?.id === selectedId || item?.name === selectedId
     );
-    console.log("selectedItem: " + selectedItem);
+    console.log("selectedItem: ", selectedItem);
     setSelectedItem(selectedItem || null);
-    window.location.reload()
+    window.location.reload();
+    if (selectedItem?.price_multiple !== null) {
+      navigate(location.pathname, { replace: true, state: null });
+    }
+    // Reset previous page state
   }, [selectedId, data, setSelectedItem]);
 
   useEffect(() => {
@@ -64,7 +71,7 @@ const AddFruits = ({
   if (availableItems.length === 0) {
     return null;
   }
- 
+
   return (
     <div>
       <Select

@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { useContext, useState } from "react";
 import { Context } from "@/context/Context";
 import { useNavigate } from "react-router";
+import { useLocation } from "react-router";
 
 const FruitBoxCard = ({ data }) => {
   // Initialize state with first serving's data if available
@@ -14,6 +15,7 @@ const FruitBoxCard = ({ data }) => {
 
   const { setCartItems } = useContext(Context);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleServingChange = (servingName) => {
     const selected = data?.servings?.find(
@@ -48,7 +50,8 @@ const FruitBoxCard = ({ data }) => {
 
         const updatedCart = [...existingItems, sanitizedData];
         localStorage.setItem("fruits", JSON.stringify(updatedCart));
-        navigate("/cart");
+        // navigate("/cart");
+        navigate("/cart", { state: { from: location.pathname } });
         return updatedCart;
       } else {
         toast.error("Product has already been added to the cart");

@@ -16,6 +16,8 @@ import Loader from "@/components/ui/Shared/Loader";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Helmet } from "react-helmet-async";
 import SelectItems from "@/components/DynamicComponents/SelectItems";
+import { useLocation } from "react-router";
+import { useNavigate } from "react-router";
 
 const Cart = () => {
   const { data: fruitsData, isLoading } = useGetApi("products", true);
@@ -33,6 +35,9 @@ const Cart = () => {
 
   // console.log("selecteed servings", selectedServing);
   // console.log("id", selectedServing?.pivot?.serving_id);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleServingChange = (servingName) => {
     const selected = tempservingsData?.servings?.find(
@@ -75,11 +80,27 @@ const Cart = () => {
     localStorage.setItem("fruits", JSON.stringify(updatedFruits));
   };
 
+  let previousPage = location.state?.from || "Direct Access";
+  console.log("User navigated from:", previousPage);
+
   const deleteProduct = (id) => {
     const updatedFruits = fruits.filter((fruit) => fruit.id !== id);
     setFruits(updatedFruits);
     localStorage.setItem("fruits", JSON.stringify(updatedFruits));
     toast.success("Fruit deleted successfully");
+    console.log("update product", updatedFruits);
+    const prod = fruits?.find(
+      (pr) =>
+        // pr.servings_multiple !== undefined ||
+        // pr.price_multiple !== "" ||
+        pr?.custom == 1
+    );
+    console.log("update prod", prod);
+    if (prod) {
+      navigate(location.pathname, { replace: true, state: null });
+    }
+
+    // Reset previous page state
   };
   const {
     postData,
@@ -113,7 +134,22 @@ const Cart = () => {
     const modifiedFruits = parsedFruits.map((fruit) => ({
       ...fruit,
       price_multiple: fruit?.price_multiple,
-      servings: selectedServing,
+      servings: fruit?.servings ? fruit?.servings : selectedServing,
+    }));
+
+    localStorage.setItem("fruits", JSON.stringify(modifiedFruits));
+  }, []);
+
+  useEffect(() => {
+    const parsedFruits = JSON.parse(localStorage.getItem("fruits")) || [];
+
+    const modifiedFruits = parsedFruits.map((fruit) => ({
+      ...fruit,
+      price_multiple: fruit?.price_multiple,
+      servings:
+        previousPage === "/" || previousPage === "/fruit-box"
+          ? fruit?.servings
+          : selectedServing, // Only update if `servings` is empty
     }));
 
     localStorage.setItem("fruits", JSON.stringify(modifiedFruits));
@@ -133,10 +169,11 @@ const Cart = () => {
         acc[`items[${index}][product_id]`] = fruit.id;
         acc[`items[${index}][quantity]`] = fruit.quantity || 1;
         acc[`items[${index}][service_id]`] =
-          fruit?.price_multiple !== null
-            ? selectedServing?.pivot?.serving_id ||
-              fruit?.servings?.pivot?.serving_id  
-            : null;
+          fruit?.price_multiple === null
+            ? null
+            : selectedServing?.pivot?.serving_id ||
+              fruit?.servings?.pivot?.serving_id;
+
         return acc;
       }, {});
       // console.log("Final Fruits Object Payload:", fruitsObject);
@@ -261,14 +298,14 @@ const Cart = () => {
                     <div className="  flex flex-col gap-5">
                       <h2 className="text-base md:text-lg lg:text-2xl font-bold text-[#798090] capitalize">
                         {fruit.name} {"   "}
-                        {fruit?.servings_multiple === null ? (
+                        {fruit?.servings_multiple === null ||
+                        fruit?.price_multiple === null ? (
                           <span className="text-secondaryTextColor font-bold block">
-                            {fruit?.servings?.[0]?.name ||
-                              fruit?.servings_single}
+                            {fruit?.servings_single || fruit?.servings_single}
                           </span>
                         ) : (
                           <span className="text-secondaryTextColor font-bold">
-                            {fruit?.servings_multiple}
+                            {selectedServing?.name || fruit?.servings_multiple}
                           </span>
                         )}
                       </h2>
@@ -312,26 +349,28 @@ const Cart = () => {
                               <FiPlus className="text-black/80 text-[8px] lg:text-sm" />
                             </button>
                           </div>
-                          {(fruit?.servings_multiple ||
-                            fruit?.price_multiple ||
-                            fruit?.servings_single === null) && (
-                            <div className="mt-3 w-32">
-                              <SelectItems
-                                data={tempservingsData?.servings}
-                                value={
-                                  selectedServing?.name ||
-                                  fruit?.servings_multiple
-                                }
-                                setServings={
-                                  handleServingChange ||
-                                  fruit?.servings_multiple
-                                }
-                                triggerClass="border border-gray-300 text-gray-500 py-2"
-                                valueClass={"text-xs px-0"}
-                                placeholder="# of serving"
-                              />
-                            </div>
-                          )}
+                          {previousPage === "/" || previousPage === "/fruit-box"
+                            ? null
+                            : (fruit?.servings_multiple ||
+                                fruit?.price_multiple ||
+                                fruit?.servings_single === null) && (
+                                <div className="mt-3 w-32">
+                                  <SelectItems
+                                    data={tempservingsData?.servings}
+                                    value={
+                                      fruit?.servings?.name ||
+                                      selectedServing?.name
+                                    }
+                                    setServings={
+                                      handleServingChange ||
+                                      fruit?.servings_multiple
+                                    }
+                                    triggerClass="border border-gray-300 text-gray-500 py-2"
+                                    valueClass={"text-xs px-0"}
+                                    placeholder="# of serving"
+                                  />
+                                </div>
+                              )}
                         </div>
 
                         {/* <p className="text-xl lg:text-[26px] text-secondaryTextColor text-center ml-6">

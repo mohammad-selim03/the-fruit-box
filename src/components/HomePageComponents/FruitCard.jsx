@@ -53,7 +53,7 @@ const FruitCard = ({ data }) => {
         data?.price !== null ? data?.price : parseFloat(selectedServing?.price),
       quantity,
       servings_multiple: data?.price_multiple ? selectedServing.name : null,
-      servings: data?.servings_single || "", 
+      servings: data?.servings_single || "",
       servings_id:
         data?.price_multiple ||
         (data?.servings_single !== null && selectedServing),
@@ -88,7 +88,7 @@ const FruitCard = ({ data }) => {
     setCartItems(updatedCart);
 
     toast.success("Product added to the cart");
-    navigate("/cart");
+    navigate("/cart", { state: { from: location.pathname } });
   };
 
   return (

@@ -67,13 +67,15 @@ const SelectItems = ({
   if (availableItems.length === 0) {
     return;
   }
+
+  console.log("data", value);
   return (
     <div>
       <Select
         className="text-black"
         // defaultValue={value || data?.value || data?.name || ""}
         // value={value || data?.value || data?.name || ""}
-        value={selectedId || ""}
+        value={selectedId || value || ""}
         onValueChange={handleValueChange}
       >
         <SelectTrigger
@@ -83,10 +85,7 @@ const SelectItems = ({
             triggerClass
           )}
         >
-          <SelectValue
-            placeholder={placeholder}
-            className="text-xs"
-          />
+          <SelectValue placeholder={placeholder} className="text-xs" />
         </SelectTrigger>
         <SelectContent className="bg-white rounded-2xl text-left">
           <SelectGroup>
