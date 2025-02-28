@@ -45,6 +45,7 @@ const Cart = () => {
     );
     if (selected) {
       setSelectedServing(selected);
+      window.location.reload();
     }
   };
 
