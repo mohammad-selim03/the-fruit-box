@@ -291,13 +291,13 @@ const Cart = () => {
                         className={cn(
                           "w-[100%] lg:w-[200px]",
                           fruit?.name === "SMALL Fruit Box" &&
-                            "w-[40%] lg:w-2/3"
+                            "w-[60%] sm:w-[60%] lg:w-2/3"
                         )}
                       />
                     </div>
-                    <div className="flex items-center justify-between w-full">
-                      <div className=" flex flex-col gap-5">
-                        <h2 className="text-xs sm:text-base md:text-lg lg:text-2xl font-bold text-[#798090] capitalize">
+                    <div className="flex items-center justify-between w-full  ">
+                      <div className="flex gap-5  w-40 md:w-60 lg:w-80 xl:w-[60%]">
+                        <h2 className="text-xs flex flex-wrap items-start gap-0 md:gap-2 sm:text-base md:text-lg lg:text-2xl font-bold text-[#798090] capitalize">
                           {fruit.name} {"   "}
                           {fruit?.servings_multiple === null ||
                           fruit?.price_multiple === null ? (
@@ -319,21 +319,21 @@ const Cart = () => {
                           setSelectedItem={setSelectedItem}
                         />
                       </div>
-                      <div className="max-w-[350px] ml-5">
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center xl:gap-5 text-gray-600 w-full">
+                      <div className="max-w-[350px] ml-5 ">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center justify-end  xl:gap-5 text-gray-600 w-full">
                           {/* <p className="text-xl lg:text-[26px] max-w-28 text-center">
                           ${parseFloat(fruit.price)}
                         </p> */}
                           <div className="">
                             {fruit?.price_multiple !== null ? (
-                              <p className="sm:text-lg md:text-[26px] w-28 text-left sm:text-center ml-5 sm:ml-1">
+                              <p className="sm:text-lg md:text-[22px] lg:text-[26px] w-28 text-left sm:text-center ml-5 sm:ml-1">
                                 $
                                 {parseFloat(
                                   selectedServing.price || fruit?.price
                                 )}
                               </p>
                             ) : (
-                              <p className="sm:text-lg md:text-[26px] w-28 text-left sm:text-center ml-5 sm:ml-1">
+                              <p className="sm:text-lg md:text-[22px] lg:text-[26px] w-28 text-left sm:text-center ml-5 sm:ml-1">
                                 ${parseFloat(fruit?.price)}
                               </p>
                             )}
@@ -389,7 +389,7 @@ const Cart = () => {
                           <div className=" sm:ml-10 ">
                             {fruit?.servings_multiple ||
                             fruit?.servings_single === null ? (
-                              <p className="sm:text-lg md:text-[26px]  w-28 text-left sm:text-center text-secondaryTextColor  ml-5 sm:-ml-5 ">
+                              <p className="sm:text-lg md:text-[22px] lg:text-[26px]  w-28 text-left sm:text-center text-secondaryTextColor  ml-5 sm:-ml-5 md:-ml-8 ">
                                 $
                                 {parseFloat(
                                   selectedServing.price || fruit?.price
@@ -399,7 +399,7 @@ const Cart = () => {
                                   )}
                               </p>
                             ) : (
-                              <p className="sm:text-lg md:text-[26px] w-28 text-left sm:text-center text-secondaryTextColor  ml-5 sm:-ml-5">
+                              <p className="sm:text-lg md:text-[22px] lg:text-[26px] w-28 text-left sm:text-center text-secondaryTextColor  ml-5 sm:-ml-5 md:-ml-8">
                                 $
                                 {parseFloat(fruit.price) *
                                   parseFloat(
