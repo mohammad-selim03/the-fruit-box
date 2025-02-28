@@ -249,11 +249,11 @@ const Cart = () => {
           </p>{" "}
         </div>
 
-        <div className="border-4 border-primaryBoldColor rounded-3xl p-4">
-          <div className="bg-white px-5 rounded-3xl py-5 pt-10 w-full">
+        <div className="border-4 border-primaryBoldColor rounded-3xl p-2 sm:p-4">
+          <div className="bg-white px-2 sm:px-5 rounded-3xl py-5 pt-10 w-full">
             {fruits?.length > 0 && (
               <ScrollArea className="w-full overflow-x-auto">
-                <div className="flex items-center justify-end px-0 sm:px-0 md:px-0 text-xl font-bold gap-8 sm:gap-14 md:gap-14 lg:gap-14 lg:ml-10 min-w-max">
+                <div className="flex items-center justify-end px-0 sm:px-0 md:px-0 text-xl font-bold gap-5 min-[440px]:gap-6 sm:gap-14 md:gap-14 lg:gap-14 lg:ml-10 min-w-max">
                   {Cartheader?.map((data) => (
                     <p
                       key={data}
@@ -273,16 +273,16 @@ const Cart = () => {
                 {fruits?.map((fruit) => (
                   <div
                     key={fruit.id}
-                    className="flex items-center gap-5 xl:gap-12 w-full border-b border-gray-200 py-5  "
+                    className="flex items-center gap-3 sm:gap-5 xl:gap-12 w-full border-b border-gray-200 py-5  "
                   >
                     <button
                       onClick={() => deleteProduct(fruit?.id)}
-                      className="p-2 rounded-full bg-[#A5A5A5] text-white text-xs lg:text-xl"
+                      className="p-1 sm:p-2 rounded-full bg-[#A5A5A5] text-white text-xs lg:text-xl"
                     >
                       <IoMdClose />
                     </button>
                     <div
-                      className="w-[20%] flex items-center justify-center
+                      className="w-[30%] flex items-center justify-center
                      md:w-[280px] "
                     >
                       <img
@@ -389,7 +389,7 @@ const Cart = () => {
                           <div className=" sm:ml-10 ">
                             {fruit?.servings_multiple ||
                             fruit?.servings_single === null ? (
-                              <p className="sm:text-lg md:text-[26px]  w-28 text-left sm:text-center text-secondaryTextColor  ml-5 sm:ml-1 ">
+                              <p className="sm:text-lg md:text-[26px]  w-28 text-left sm:text-center text-secondaryTextColor  ml-5 sm:-ml-5 ">
                                 $
                                 {parseFloat(
                                   selectedServing.price || fruit?.price
@@ -399,7 +399,7 @@ const Cart = () => {
                                   )}
                               </p>
                             ) : (
-                              <p className="sm:text-lg md:text-[26px] w-28 text-left sm:text-center text-secondaryTextColor  ml-5 sm:ml-1">
+                              <p className="sm:text-lg md:text-[26px] w-28 text-left sm:text-center text-secondaryTextColor  ml-5 sm:-ml-5">
                                 $
                                 {parseFloat(fruit.price) *
                                   parseFloat(
