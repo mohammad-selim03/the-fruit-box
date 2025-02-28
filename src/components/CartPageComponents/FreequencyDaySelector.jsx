@@ -121,7 +121,7 @@ const FrequencyDaySelector = ({
                 Select 2 Days of Week
               </label>
               <div className="border border-gray-300 rounded-xl p-3">
-                <div className="text-sm text-gray-500 mb-2">
+                <div className="text-sm text-gray-500 mb-2 capitalize">
                   Selected: {daysOfWeek || "None"}
                 </div>
                 <div className="flex flex-wrap gap-2">
