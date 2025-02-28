@@ -149,7 +149,10 @@ const FruitBoxCard = ({ data }) => {
                   "-bottom-44 group-hover:-bottom-[215px]"
               )}
             >
-              <Button className="border-2 lg:rounded-2xl border-white w-full shadow-black/20 shadow-lg py-3 text-sm md:text-base">
+              <Button
+                disabled={selectedServing?.length === 0}
+                className="border-2 lg:rounded-2xl border-white w-full shadow-black/20 shadow-lg py-3 text-sm md:text-base"
+              >
                 <div>
                   {" "}
                   {data?.price_multiple === null && "Order now $"}
