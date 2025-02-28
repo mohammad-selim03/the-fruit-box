@@ -196,7 +196,7 @@ const FrequencyDaySelector = ({
           <textarea
             // {...field}
             id="comment"
-            className="border border-gray-300 h-24 text-sm rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 h-32 text-sm rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             {...register("comment", { required: "This field is required" })}
             placeholder={
               frequency === "other"
