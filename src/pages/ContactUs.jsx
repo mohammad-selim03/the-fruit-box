@@ -106,12 +106,12 @@ const ContactUs = () => {
               <img
                 src={contactpageimg}
                 alt=""
-                className="absolute top-[30%] md:top-[10%] right-0 w-32 sm:w-[20%] max-w-[50%]"
+                className="absolute top-[15%] md:top-[10%] right-0 w-32 sm:w-[20%] max-w-[50%]"
               />
-              <div className="absolute top-[68%] sm:top-[65%] left-1/2 -translate-x-1/2 flex flex-col lg:flex-row items-start justify-between w-[80%] -mt-20 pt-3">
+              <div className="absolute top-[68%] sm:top-[65%] left-1/2 -translate-x-1/2 flex items-start justify-between w-[95%] sm:w-[80%] -mt-20 pt-3">
                 <div className="text-white max-w-[772px] text-left w-full -mt-10 sm:mt-0">
                   <Title
-                    className="text-[24px] sm:text-[32px] lg:text-[50px] xl:text-[64px]"
+                    className="text-sm sm:text-[24px]  md:text-[30px] lg:text-[50px] xl:text-[64px] tracking-wide md:tracking-normal"
                     style={{ stroke: "white", webkitTextStroke: "2px white" }}
                   >
                     CONNECT{" "}
@@ -125,11 +125,11 @@ const ContactUs = () => {
                       WITH US
                     </span>
                   </Title>
-                  <p className="font-thin text-primaryLightColor -mt-2">
+                  <p className="font-thin text-primaryLightColor text-xs md:text-base md:mt-10">
                     Reliable Office Fruit Delivery.
                   </p>
-                  <div className="font-thin mt-[32px] flex flex-col gap-3">
-                    <p className="grid grid-cols-2 gap-5 text-xs sm:text-sm">
+                  <div className="font-thin mt-[10px] flex flex-col gap-1 md:gap-3">
+                    <p className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5 text-xs sm:text-sm">
                       <span>The Fruit Box Ltd.</span>
                       <span>Office: 587.351.5720</span>
                       <span>#115, 11929 – 40th Street S.E.</span>
@@ -141,15 +141,12 @@ const ContactUs = () => {
                     <span className="text-xs sm:text-sm">T2Z 4M8 </span>
                   </div>
                 </div>
-                <div className="w-[350px] sm:w-[300px] md:w-[400px] h-[460px] md:h-[560px] lg:w-[560px] mt-2">
-                  {/* <div
-                    id="map"
-                    className="rounded-lg border border-gray-200 shadow-lg z-30"
-                  ></div> */}
+                <div className="w-[400px] h-[700px] md:h-[560px] lg:w-[560px] mt-2 overflow-hidden rounded-md">
                   <div>
                     <div
                       style={{
                         width: "100%",
+                        height: "100%",
                         overflow: "hidden",
                         position: "relative",
                       }}
@@ -161,7 +158,8 @@ const ContactUs = () => {
                           paddingBottom: "56.25%", // 16:9 aspect ratio (height/width * 100)
                           height: 0,
                           overflow: "hidden",
-                          borderRadius: "20px"
+                          border: "3px solid black",
+                          borderRadius: "15px",
                         }}
                       >
                         <iframe
@@ -172,6 +170,7 @@ const ContactUs = () => {
                             left: 0,
                             width: "100%",
                             height: "100%",
+                            minHeight: "150px",
                             border: 0,
                           }}
                           allowFullScreen
