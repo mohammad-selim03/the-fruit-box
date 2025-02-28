@@ -253,7 +253,7 @@ const Cart = () => {
           <div className="bg-white px-2 sm:px-5 rounded-3xl py-5 pt-10 w-full">
             {fruits?.length > 0 && (
               <ScrollArea className="w-full overflow-x-auto">
-                <div className="flex items-center justify-end px-0 sm:px-0 md:px-0 text-xl font-bold gap-5 min-[440px]:gap-6 sm:gap-14 md:gap-14 lg:gap-14 lg:ml-10 min-w-max">
+                <div className="flex items-center justify-end px-0 sm:px-0 md:px-0 text-xl font-bold gap-2 min-[550px]:gap-5 min-[440px]:gap-6 sm:gap-14 md:gap-14 lg:gap-14 lg:ml-10 min-w-max">
                   {Cartheader?.map((data) => (
                     <p
                       key={data}
