@@ -244,7 +244,7 @@ const Cart = () => {
       // toast.error("Failed to submit order", error?.response?.data?.message);
       toast.error(
         error?.response?.data?.message
-          ? "Failed to submit order, Please Select servings"
+          ? "Failed to submit order, Please select serving of custom fruit"
           : "Somehting went wrong, please try again"
       );
     }
