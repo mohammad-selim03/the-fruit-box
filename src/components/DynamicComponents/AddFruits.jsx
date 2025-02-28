@@ -93,7 +93,7 @@ const AddFruits = ({
               <SelectItem
                 key={item?.id}
                 value={item?.id}
-                className="text-xl border-b border-gray-300 text-gray-600 cursor-pointer"
+                className="text-xs sm:text-base md:text-xl border-b border-gray-300 text-gray-600 cursor-pointer"
               >
                 <p className="flex items-center gap-2">
                   {item?.image && (

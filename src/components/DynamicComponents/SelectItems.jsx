@@ -81,18 +81,18 @@ const SelectItems = ({
         <SelectTrigger
           onClick={() => handleId(selectedId)}
           className={cn(
-            "bg-white border border-primaryLightColor rounded-2xl text-xs text-nowrap placeholder:text-gray-400 text-gray-600 w-full z-40",
+            "bg-white border border-primaryLightColor rounded-2xl text-[10px] sm:text-xs text-nowrap placeholder:text-gray-400 text-gray-600 w-full z-40",
             triggerClass
           )}
         >
-          <SelectValue placeholder={placeholder} className="text-xs" />
+          <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent className="bg-white rounded-2xl text-left">
           <SelectGroup>
             {singleValue ? (
               <SelectItem
                 value={singleValue}
-                className="text-xl border-b text-gray-400 cursor-pointer"
+                className="text-[10px] sm:text-base md:text-xl border-b text-gray-400 cursor-pointer"
               >
                 <p
                   onClick={() => {

@@ -253,11 +253,11 @@ const Cart = () => {
           <div className="bg-white px-5 rounded-3xl py-5 pt-10 w-full">
             {fruits?.length > 0 && (
               <ScrollArea className="w-full overflow-x-auto">
-                <div className="flex items-center justify-end px-10 sm:px-20 md:px-0 text-xl font-bold gap-20 lg:gap-14 lg:ml-10 min-w-max">
+                <div className="flex items-center justify-end px-0 sm:px-0 md:px-0 text-xl font-bold gap-8 sm:gap-14 md:gap-14 lg:gap-14 lg:ml-10 min-w-max">
                   {Cartheader?.map((data) => (
                     <p
                       key={data}
-                      className="text-sm md:text-base lg:text-2xl text-gray-600"
+                      className="text-xs min-[666px]:text-sm md:text-base lg:text-2xl text-gray-600"
                     >
                       {data}
                     </p>
@@ -273,7 +273,7 @@ const Cart = () => {
                 {fruits?.map((fruit) => (
                   <div
                     key={fruit.id}
-                    className="flex flex-wrap items-center justify-between gap-5 xl:gap-12 w-full border-b border-gray-200 py-5  "
+                    className="flex items-center gap-5 xl:gap-12 w-full border-b border-gray-200 py-5  "
                   >
                     <button
                       onClick={() => deleteProduct(fruit?.id)}
@@ -295,103 +295,120 @@ const Cart = () => {
                         )}
                       />
                     </div>
-                    <div className="  flex flex-col gap-5">
-                      <h2 className="text-base md:text-lg lg:text-2xl font-bold text-[#798090] capitalize">
-                        {fruit.name} {"   "}
-                        {fruit?.servings_multiple === null ||
-                        fruit?.price_multiple === null ? (
-                          <span className="text-secondaryTextColor font-bold block">
-                            {fruit?.servings_single || fruit?.servings_single}
-                          </span>
-                        ) : (
-                          <span className="text-secondaryTextColor font-bold">
-                            {selectedServing?.name || fruit?.servings_multiple}
-                          </span>
-                        )}
-                      </h2>
-                      <AddFruits
-                        placeholder="Add another size"
-                        triggerClass="border border-gray-300 text-sm w-44 lg:w-60 placeholder:text-red-400 py-2 h-10 lg:py-3 lg:h-14"
-                        data={fruitsData}
-                        selectedItem={selectedItem}
-                        setSelectedItem={setSelectedItem}
-                      />
-                    </div>
-                    <div className="max-w-[350px]">
-                      <div className="grid grid-cols-3 gap-3 items-center xl:gap-5 text-gray-600 w-full">
-                        {/* <p className="text-xl lg:text-[26px] max-w-28 text-center">
+                    <div className="flex items-center justify-between w-full">
+                      <div className=" flex flex-col gap-5">
+                        <h2 className="text-xs sm:text-base md:text-lg lg:text-2xl font-bold text-[#798090] capitalize">
+                          {fruit.name} {"   "}
+                          {fruit?.servings_multiple === null ||
+                          fruit?.price_multiple === null ? (
+                            <span className="text-secondaryTextColor font-bold block">
+                              {fruit?.servings_single || fruit?.servings_single}
+                            </span>
+                          ) : (
+                            <span className="text-secondaryTextColor font-bold">
+                              {selectedServing?.name ||
+                                fruit?.servings_multiple}
+                            </span>
+                          )}
+                        </h2>
+                        <AddFruits
+                          placeholder="Add another size"
+                          triggerClass="border border-gray-300 text-sm w-32 text-[10px] sm:text-base sm:w-44 lg:w-60 placeholder:text-red-400 py-2 h-10 lg:py-3 lg:h-14"
+                          data={fruitsData}
+                          selectedItem={selectedItem}
+                          setSelectedItem={setSelectedItem}
+                        />
+                      </div>
+                      <div className="max-w-[350px] ml-5">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center xl:gap-5 text-gray-600 w-full">
+                          {/* <p className="text-xl lg:text-[26px] max-w-28 text-center">
                           ${parseFloat(fruit.price)}
                         </p> */}
-                        {fruit?.price_multiple !== null ? (
-                          <p className="text-[26px] w-28 text-center ml-1">
-                            ${parseFloat(selectedServing.price || fruit?.price)}
-                          </p>
-                        ) : (
-                          <p className="text-[26px] w-28 text-center ml-1">
-                            ${parseFloat(fruit?.price)}
-                          </p>
-                        )}
-                        <div>
-                          <div className="flex items-center justify-between gap-2 border border-gray-300 p-2 rounded-xl w-32">
-                            <button
-                              className="rounded bg-primaryLightColor text-black text-sm md:text-base lg:text-xl px-2 py-2"
-                              onClick={() => handleDecrement(fruit?.id)}
-                            >
-                              <FiMinus className="text-black/80 text-[8px] lg:text-sm" />
-                            </button>
-                            <span className="w-5 flex items-center justify-center text-sm lg:text-base">
-                              {fruit?.quantity ? fruit?.quantity : 1}
-                            </span>
-                            <button
-                              className="rounded bg-primaryLightColor text-black text-sm md:text-base lg:text-xl px-2 py-2"
-                              onClick={() => handleIncrement(fruit?.id)}
-                            >
-                              <FiPlus className="text-black/80 text-[8px] lg:text-sm" />
-                            </button>
+                          <div className="">
+                            {fruit?.price_multiple !== null ? (
+                              <p className="sm:text-lg md:text-[26px] w-28 text-left sm:text-center ml-5 sm:ml-1">
+                                $
+                                {parseFloat(
+                                  selectedServing.price || fruit?.price
+                                )}
+                              </p>
+                            ) : (
+                              <p className="sm:text-lg md:text-[26px] w-28 text-left sm:text-center ml-5 sm:ml-1">
+                                ${parseFloat(fruit?.price)}
+                              </p>
+                            )}
                           </div>
-                          {previousPage === "/" || previousPage === "/fruit-box"
-                            ? null
-                            : (fruit?.servings_multiple ||
-                                fruit?.price_multiple ||
-                                fruit?.servings_single === null) && (
-                                <div className="mt-3 w-32">
-                                  <SelectItems
-                                    data={tempservingsData?.servings}
-                                    value={
-                                      fruit?.servings?.name ||
-                                      selectedServing?.name
-                                    }
-                                    setServings={
-                                      handleServingChange ||
-                                      fruit?.servings_multiple
-                                    }
-                                    triggerClass="border border-gray-300 text-gray-500 py-2"
-                                    valueClass={"text-xs px-0"}
-                                    placeholder="# of serving"
-                                  />
-                                </div>
-                              )}
-                        </div>
+                          <div>
+                            <div className="flex items-center justify-between gap-2 border border-gray-300 p-2 rounded-xl w-20 sm:w-28 md:w-32">
+                              <button
+                                className="rounded bg-primaryLightColor text-black text-sm md:text-base lg:text-xl px-1.5 sm:px-2 py-1.5 sm:py-2"
+                                onClick={() => handleDecrement(fruit?.id)}
+                              >
+                                <FiMinus className="text-black/80 text-[8px] lg:text-sm" />
+                              </button>
+                              <span className="w-5 flex items-center justify-center text-base  lg:text-base">
+                                {fruit?.quantity ? fruit?.quantity : 1}
+                              </span>
+                              <button
+                                className="rounded bg-primaryLightColor text-black text-sm md:text-base lg:text-xl px-1.5 sm:px-2 py-1.5 sm:py-2"
+                                onClick={() => handleIncrement(fruit?.id)}
+                              >
+                                <FiPlus className="text-black/80 text-[8px] lg:text-sm" />
+                              </button>
+                            </div>
+                            {previousPage === "/" ||
+                            previousPage === "/fruit-box"
+                              ? null
+                              : (fruit?.servings_multiple ||
+                                  fruit?.price_multiple ||
+                                  fruit?.servings_single === null) && (
+                                  <div className="mt-3 w-20 sm:w-32">
+                                    <SelectItems
+                                      data={tempservingsData?.servings}
+                                      value={
+                                        fruit?.servings?.name ||
+                                        selectedServing?.name
+                                      }
+                                      setServings={
+                                        handleServingChange ||
+                                        fruit?.servings_multiple
+                                      }
+                                      triggerClass="border border-gray-300 text-gray-500 py-2"
+                                      valueClass={"text-xs px-0"}
+                                      placeholder="# of serving"
+                                    />
+                                  </div>
+                                )}
+                          </div>
 
-                        {/* <p className="text-xl lg:text-[26px] text-secondaryTextColor text-center ml-6">
+                          {/* <p className="text-xl lg:text-[26px] text-secondaryTextColor text-center ml-6">
                           $
                           {parseFloat(fruit?.price) *
                             parseFloat(fruit.quantity ? fruit.quantity : 1)}
                         </p> */}
-                        {fruit?.servings_multiple ||
-                        fruit?.servings_single === null ? (
-                          <p className="text-[26px]  text-secondaryTextColor text-center">
-                            $
-                            {parseFloat(selectedServing.price || fruit?.price) *
-                              parseFloat(fruit.quantity ? fruit.quantity : 1)}
-                          </p>
-                        ) : (
-                          <p className="text-[26px]  text-secondaryTextColor text-center">
-                            $
-                            {parseFloat(fruit.price) *
-                              parseFloat(fruit.quantity ? fruit.quantity : 1)}
-                          </p>
-                        )}
+                          <div className=" sm:ml-10 ">
+                            {fruit?.servings_multiple ||
+                            fruit?.servings_single === null ? (
+                              <p className="sm:text-lg md:text-[26px]  w-28 text-left sm:text-center text-secondaryTextColor  ml-5 sm:ml-1 ">
+                                $
+                                {parseFloat(
+                                  selectedServing.price || fruit?.price
+                                ) *
+                                  parseFloat(
+                                    fruit.quantity ? fruit.quantity : 1
+                                  )}
+                              </p>
+                            ) : (
+                              <p className="sm:text-lg md:text-[26px] w-28 text-left sm:text-center text-secondaryTextColor  ml-5 sm:ml-1">
+                                $
+                                {parseFloat(fruit.price) *
+                                  parseFloat(
+                                    fruit.quantity ? fruit.quantity : 1
+                                  )}
+                              </p>
+                            )}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
