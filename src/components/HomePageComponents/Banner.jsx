@@ -9,7 +9,7 @@ const Banner = () => {
         <img
           src={bannerbg}
           alt=""
-          className="h-[800px] md:h-[1000px] lg:h-[1150px] w-full "
+          className="h-[800px] md:h-[1000px] lg:h-[1150px] w-full object-cover xl:object-fill"
         />
         <img
           src={homebanner}
