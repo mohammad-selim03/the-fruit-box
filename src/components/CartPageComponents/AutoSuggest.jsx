@@ -37,13 +37,13 @@ const AddressAutoSuggest = ({ setValue }) => {
     <div className="relative w-full">
       <input
         type="text"
-        placeholder="Start typing a street address, city, or territory..."
+        placeholder="Street Address"
         value={input}
         onChange={handleInputChange}
-        className="w-full p-2 border border-gray-300 rounded-xl"
+        className="w-full px-5 py-3 border border-gray-300 rounded-xl outline-none"
       />
 
-      {suggestions.length > 0 && (
+      {/* {suggestions.length > 0 && (
         <div className="suggestions-box mt-1 border border-gray-300 rounded-xl absolute w-full z-10 bg-white max-h-60 overflow-y-auto">
           {suggestions.map((suggestion, index) => (
             <div
@@ -62,7 +62,7 @@ const AddressAutoSuggest = ({ setValue }) => {
             </div>
           ))}
         </div>
-      )}
+      )} */}
     </div>
   );
 };
