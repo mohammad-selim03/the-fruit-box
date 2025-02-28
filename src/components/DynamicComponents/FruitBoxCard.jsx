@@ -150,7 +150,7 @@ const FruitBoxCard = ({ data }) => {
               )}
             >
               <Button
-                disabled={selectedServing?.length === 0}
+                disabled={data?.custom === 1 && selectedServing?.length === 0}
                 className="border-2 lg:rounded-2xl border-white w-full shadow-black/20 shadow-lg py-3 text-sm md:text-base"
               >
                 <div>

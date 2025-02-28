@@ -102,12 +102,23 @@ const Cart = () => {
 
     // Reset previous page state
   };
+  // const {
+  //   postData,
+  //   isLoading: isPosting,
+  //   isError: isPostingError,
+  //   isSuccess,
+  // } = UsePostApi("order/store", (data) => console.log("error data", data));
   const {
     postData,
     isLoading: isPosting,
     isError: isPostingError,
     isSuccess,
-  } = UsePostApi("order/store");
+    error, // Capture error if needed
+  } = UsePostApi(
+    "order/store",
+    (data) => console.log("✅ Success Response:", data), // Success callback
+    (err) => console.error("❌ Error Response:", err) // Error callback
+  );
 
   const placeOrder = (data) => {
     const combineData = { ...data, ...fruitsObject };
@@ -173,7 +184,6 @@ const Cart = () => {
             ? null
             : selectedServing?.pivot?.serving_id ||
               fruit?.servings?.pivot?.serving_id;
-
         return acc;
       }, {});
       // console.log("Final Fruits Object Payload:", fruitsObject);
@@ -230,7 +240,12 @@ const Cart = () => {
 
   useEffect(() => {
     if (isPostingError) {
-      toast.error("Failed to submit order");
+      // toast.error("Failed to submit order", error?.response?.data?.message);
+      toast.error(
+        error?.response?.data?.message
+          ? "Failed to submit order, Please Select servings"
+          : "Somehting went wrong, please try again"
+      );
     }
   }, [isPostingError]);
 
@@ -296,7 +311,7 @@ const Cart = () => {
                       />
                     </div>
                     <div className="flex items-center justify-between w-full  ">
-                      <div className="flex gap-5  w-40 md:w-60 lg:w-80 xl:w-[60%]">
+                      <div className="flex flex-col gap-5  w-40 md:w-60 lg:w-80 xl:w-[60%]">
                         <h2 className="text-xs flex flex-wrap items-start gap-0 md:gap-2 sm:text-base md:text-lg lg:text-2xl font-bold text-[#798090] capitalize">
                           {fruit.name} {"   "}
                           {fruit?.servings_multiple === null ||
